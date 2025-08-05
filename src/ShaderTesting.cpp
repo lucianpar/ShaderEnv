@@ -32,7 +32,7 @@ public:
   std::string fragPath;
   al::Parameter globalTime{"globalTime", "", 0.0, 0.0, 300.0};
 
-  al::ParameterBool running{"running", "0", false};
+  al::ParameterBool running{"running", "0", true};
 
   void onInit() override {
     // gam::sampleRate(audioIO().framesPerSecond());
@@ -64,8 +64,10 @@ public:
   }
 
   void onAnimate(double dt) override {
-    globalTime = globalTime + dt;
-    std::cout << globalTime << std::endl;
+    if (running == true) {
+      globalTime = globalTime + dt;
+      std::cout << globalTime << std::endl;
+    }
   }
 
   void onDraw(al::Graphics &g) override {
@@ -76,6 +78,20 @@ public:
     shadedSphere.setUniformFloat("u_time", globalTime);
     shadedSphere.draw(g);
   };
+
+  bool onKeyDown(const al::Keyboard &k) override {
+
+    if (isPrimary()) {
+
+      if (k.key() == ' ' && running == false) {
+        running = true;
+        std::cout << "started running" << std::endl;
+      } else if (k.key() == ' ' && running == true) {
+        running = false;
+        std::cout << "stopped running" << std::endl;
+      }
+    }
+  }
 };
 int main() {
   MyApp app;
