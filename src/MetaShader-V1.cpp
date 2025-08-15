@@ -108,20 +108,29 @@ void writeShaderFile(const std::string &path, const std::string &code) {
 
 // === Main === //
 int main() {
+
+  // BEGINS NEW TEMPLATE CREATION. // this section is where you specify which
+  // code bits get retrieved from the shader string library. this would
+  // typically happen in a usage file or command line
   shaderLib::ShaderTemplate newTemplate;
   newTemplate.hasBackground = true;
   newTemplate.backgroundColor = "vec3(0.9, 0.03, 0.07)";
   newTemplate.colorPalette = "BlueGreenPastel";
   newTemplate.globalUniforms = {"u_time"};
 
-  newTemplate.elements.push_back({.structure = "waveGrid",
-                                  .texture = "fbm",
-                                  .symmetry = "rotate",
-                                  .layering = "blend",
-                                  .colorUsage = "primary"});
+  shaderLib::ShaderElement element1;
+  element1.structure = "waveGrid";
+  element1.texture = "fbm";
+  element1.symmetry = "rotate";
+  element1.layering = "blend";
+  element1.colorUsage = "primary";
+
+  newTemplate.elements.push_back(element1);
+
+  // ^ CONCLUDES NEW TEMPLATE CREATION. //
 
   std::string shaderCode = generateShaderCode(newTemplate);
-  writeShaderFile("../shader-env/shaders/newShader2.frag", shaderCode);
+  writeShaderFile("../shader-env/shaders/newShader3.frag", shaderCode);
 
   return 0;
 }

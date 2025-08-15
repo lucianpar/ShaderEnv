@@ -11,6 +11,11 @@
 // === Utility Function String Snippets === //
 
 namespace shaderLib {
+/////
+// INDIVIDUAL ELEMENT STRUCTURE CONTAINS THE FOLLOWING COMPONENTS. the elements
+// are appended to a vector of elements. this vector is looped through, adding
+// all the code to the final shader string //
+/////
 
 struct ShaderElement {
   std::string structure;
@@ -19,7 +24,10 @@ struct ShaderElement {
   std::string layering;
   std::string colorUsage;
 };
-
+////
+// STRUCTURE FOR THE WHOLE SHADER. use this to specify which code gets fetched
+// from the shader string library
+////
 struct ShaderTemplate {
   bool hasBackground;
   std::string backgroundColor;
@@ -28,6 +36,8 @@ struct ShaderTemplate {
   std::vector<ShaderElement> elements; // vector of elements
 };
 
+// HEADER OF STANDARD MATH and begining of allolib compatible glsl files-
+// POPULATE MORE //
 std::string getHeader() {
   return R"GLSL(#version 330 core
 
@@ -40,7 +50,7 @@ out vec4 fragColor;
 const mat2 rot = mat2(0.5, 0.86, -0.86, 0.5);
 )GLSL";
 }
-
+// dynamically takes uniforms inputted from template
 std::string getUniforms(const ShaderTemplate &tmpl) {
   std::ostringstream out;
   for (const auto &u : tmpl.globalUniforms) {
@@ -49,6 +59,7 @@ std::string getUniforms(const ShaderTemplate &tmpl) {
   return out.str();
 }
 
+/// example function -- not necessary for all files
 std::string getWaveFunction() {
   return R"GLSL(
 
@@ -58,6 +69,7 @@ float wave(vec2 p) {
 )GLSL";
 }
 
+// update this main to be more dynamic
 std::string getMainFunction(const ShaderTemplate &tmpl) {
   return R"GLSL(
 
