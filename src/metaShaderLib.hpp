@@ -60,13 +60,21 @@ std::string getUniforms(const ShaderTemplate &tmpl) {
 }
 
 /// example function -- not necessary for all files
-std::string getWaveFunction() {
-  return R"GLSL(
+std::string getElementFunction(const ShaderElement &element) {
+  if (element.structure == "waveGrid") {
+    return R"GLSL(
 
-float wave(vec2 p) {
+//wave equation
+float elementMath(vec2 p) {
     return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));
 }
 )GLSL";
+  }
+
+  // do sequence of if elses of switch statement where cases are dictionary of
+  // elements
+
+  return ""; // if there is no mach
 }
 
 // update this main to be more dynamic
@@ -79,7 +87,8 @@ void main() {
     vec3 col = vec3(0.0);
 
     // example element call:
-    float v = wave(uv);
+    //wave
+    float v = elementMath(uv);
     col = mix(vec3(0.8, 0.9, 1.0), vec3(0.2, 0.6, 0.9), v);
 
 )GLSL" +
