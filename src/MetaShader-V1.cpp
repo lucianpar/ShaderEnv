@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <sys/_types/_size_t.h>
 #include <vector>
 
 #include "../src/metaShaderLib.hpp"
@@ -17,12 +18,19 @@ std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
   glslString << shaderLib::getHeader();
   glslString << shaderLib::getUniforms(tmpl);
   // 1 indexing this instead of 0 seems to function properly
-  for (int i = 0; i <= tmpl.elements.size(); i++) {
-    glslString << shaderLib::getElementFunction(tmpl.elements[i]);
+  // Collect helpers (top-level) and main body (inside main)
+  std::string helpers;
+  std::string body;
+
+  for (size_t i = 0; i < tmpl.elements.size(); ++i) {
+    shaderLib::Emitted e =
+        shaderLib::emitElement(tmpl.elements[i], static_cast<int>(i));
+    helpers += e.helpers;
+    body += e.calls;
   }
-  glslString << shaderLib::getMainFunction(
-      tmpl); // main should only happen once so move this out of the loop and
-             // zero index again
+
+  glslString << helpers;
+  glslString << shaderLib::getMainFunction(tmpl, body);
   return glslString.str();
 }
 

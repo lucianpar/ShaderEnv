@@ -36,6 +36,12 @@ struct ShaderTemplate {
   std::vector<ShaderElement> elements; // vector of elements
 };
 
+// a pair of strings: top-level helpers + main() statements
+struct Emitted {
+  std::string helpers; // GLSL functions/defs (top-level)
+  std::string calls;   // lines to paste inside main()
+};
+
 // HEADER OF STANDARD MATH and begining of allolib compatible glsl files-
 // POPULATE MORE //
 std::string getHeader() {
@@ -59,46 +65,49 @@ std::string getUniforms(const ShaderTemplate &tmpl) {
   return out.str();
 }
 
-/// example function -- not necessary for all files
-std::string getElementFunction(const ShaderElement &element) {
+// Example emitter (waveGrid). Add others similarly.
+Emitted emitElement(const ShaderElement &element, int idx) {
+  Emitted out;
   if (element.structure == "waveGrid") {
-    return R"GLSL(
+    std::string fn = "elementMath_" + std::to_string(idx);
+    std::string v = "v_" + std::to_string(idx);
 
-//wave equation
-float elementMath(vec2 p) {
-    return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));
-}
-)GLSL";
+    out.helpers += "// this is a wave grid function\n"
+                   "float " +
+                   fn +
+                   "(vec2 p) {\n"
+                   "  return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));\n"
+                   "}\n";
+
+    // color mix could branch on element.colorUsage *here in C++*,
+    // but the emitted GLSL is always straight-line.
+    out.calls += "float " + v + " = " + fn +
+                 "(uv);\n"
+                 "col = mix(vec3(0.8, 0.9, 1.0), vec3(0.2, 0.6, 0.9), " +
+                 v + ");\n";
   }
-
-  // do sequence of if elses of switch statement where cases are dictionary of
-  // elements
-
-  return ""; // if there is no mach
+  return out;
 }
 
-// update this main to be more dynamic
-std::string getMainFunction(const ShaderTemplate &tmpl) {
-  return R"GLSL(
-
+/// main() now accepts the stitched body
+std::string getMainFunction(const ShaderTemplate &tmpl,
+                            const std::string &injectedBody) {
+  std::ostringstream m;
+  m <<
+      R"GLSL(
 void main() {
     vec2 uv = vPos.xy;
     float t = u_time;
     vec3 col = vec3(0.0);
 
-    // example element call:
-    //wave
-    float v = elementMath(uv);
-    col = mix(vec3(0.8, 0.9, 1.0), vec3(0.2, 0.6, 0.9), v);
-
-)GLSL" +
-         (tmpl.hasBackground
-              ? "    col = mix(col, " + tmpl.backgroundColor + ", 0.1);\n"
-              : "") +
-         R"GLSL(
-    fragColor = vec4(col, 1.0);
-}
 )GLSL";
+  m << injectedBody;
+
+  if (tmpl.hasBackground) {
+    m << "    col = mix(col, " << tmpl.backgroundColor << ", 0.1);\n";
+  }
+  m << "    fragColor = vec4(col, 1.0);\n}\n";
+  return m.str();
 }
 
 } // namespace shaderLib
