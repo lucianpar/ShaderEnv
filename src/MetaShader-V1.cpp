@@ -18,8 +18,8 @@ std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
   glslString << shaderLib::getHeader();
   glslString << shaderLib::getUniforms(tmpl);
   glslString << shaderLib::getColorPalette(tmpl);
-  // 1 indexing this instead of 0 seems to function properly
-  // Collect helpers (top-level) and main body (inside main)
+  
+  // Collect helpers from selected element functions (top-level) and main body (inside main)
   std::string helpers;
   std::string body;
 
@@ -60,8 +60,8 @@ int main() {
   newTemplate.colorPalette = 
     {{0.8f, 0.9f, 1.0f},
     {0.2f, 0.6f, 0.9f},
-    {0.9f, 0.03f, 0.07f}};
-  newTemplate.globalUniforms = {"u_time"};
+    {0.9f, 0.03f, 0.07f}}; // can have any number of color vectors inside
+  newTemplate.globalUniforms = {"u_time"}; //can create any uniform 
 
   shaderLib::ShaderElement element1;
   element1.structure = "waveGrid";
