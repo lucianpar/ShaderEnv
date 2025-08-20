@@ -17,16 +17,17 @@ std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
   //
   glslString << shaderLib::getHeader();
   glslString << shaderLib::getUniforms(tmpl);
+  glslString << shaderLib::getColorPalette(tmpl);
   // 1 indexing this instead of 0 seems to function properly
   // Collect helpers (top-level) and main body (inside main)
   std::string helpers;
   std::string body;
 
-  for (size_t i = 0; i < tmpl.elements.size(); ++i) {
-    shaderLib::Emitted e =
-        shaderLib::emitElement(tmpl.elements[i], static_cast<int>(i));
-    helpers += e.helpers;
-    body += e.calls;
+  for (int i = 0; i < tmpl.elements.size(); ++i) {
+    shaderLib::Emitted emittedElement =
+        shaderLib::emitElement(tmpl.elements[i], i);
+    helpers += emittedElement.helpers;
+    body += emittedElement.calls;
   }
 
   glslString << helpers;
@@ -52,10 +53,14 @@ int main() {
   // BEGINS NEW TEMPLATE CREATION. // this section is where you specify which
   // code bits get retrieved from the shader string library. this would
   // typically happen in a usage file or command line
+
   shaderLib::ShaderTemplate newTemplate;
   newTemplate.hasBackground = true;
   newTemplate.backgroundColor = "vec3(0.9, 0.03, 0.07)";
-  newTemplate.colorPalette = "BlueGreenPastel";
+  newTemplate.colorPalette = 
+    {{0.8f, 0.9f, 1.0f},
+    {0.2f, 0.6f, 0.9f},
+    {0.9f, 0.03f, 0.07f}};
   newTemplate.globalUniforms = {"u_time"};
 
   shaderLib::ShaderElement element1;

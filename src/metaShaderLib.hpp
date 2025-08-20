@@ -17,6 +17,9 @@ namespace shaderLib {
 // all the code to the final shader string //
 /////
 
+using Color = std::vector<float>;         // alias for "std::vector<float>". "using" seems to helpful for readability
+using ColorPalette = std::vector<Color>;  // alias for "std::vector<std::vector<float>>" 
+
 struct ShaderElement {
   std::string structure;
   std::string texture;
@@ -31,7 +34,7 @@ struct ShaderElement {
 struct ShaderTemplate {
   bool hasBackground;
   std::string backgroundColor;
-  std::string colorPalette;
+  ColorPalette colorPalette;
   std::vector<std::string> globalUniforms;
   std::vector<ShaderElement> elements; // vector of elements
 };
@@ -64,36 +67,67 @@ std::string getUniforms(const ShaderTemplate &tmpl) {
   }
   return out.str();
 }
+std::string getColorPalette(const ShaderTemplate &tmpl) {
+    std::ostringstream out;
 
-// Example emitter (waveGrid). Add others similarly.
-Emitted emitElement(const ShaderElement &element, int idx) {
-  Emitted out;
+    for (int i = 0; i < static_cast<int>(tmpl.colorPalette.size()); ++i) {
+        const auto &c = tmpl.colorPalette[i];
+        if (c.size() == 3) {
+            out << "const vec3 color" << i
+                << " = vec3(" << c[0] << ", "
+                              << c[1] << ", "
+                              << c[2] << ");\n";
+        }
+    }
+    return out.str();
+}
+
+
+// as the code generator loops through the elements vector, this will run for
+// each element
+Emitted emitElement(const ShaderElement &element, int elementIndex) {
+  Emitted emmitedOutput;
   if (element.structure == "waveGrid") {
-    std::string fn = "elementMath_" + std::to_string(idx);
-    std::string v = "v_" + std::to_string(idx);
+    std::string functionName =
+        element.structure + "_" + std::to_string(elementIndex);
+    std::string functionResult =
+        element.structure + "Val_" + std::to_string(elementIndex);
 
-    out.helpers += "// this is a wave grid function\n"
-                   "float " +
-                   fn +
-                   "(vec2 p) {\n"
-                   "  return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));\n"
-                   "}\n";
+    emmitedOutput.helpers +=
+        "// below is a wave grid function\n"
+        "float " +
+        functionName +
+        "(vec2 p) {\n"
+        "  return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));\n"
+        "}\n";
 
     // color mix could branch on element.colorUsage *here in C++*,
     // but the emitted GLSL is always straight-line.
-    out.calls += "float " + v + " = " + fn +
-                 "(uv);\n"
-                 "col = mix(vec3(0.8, 0.9, 1.0), vec3(0.2, 0.6, 0.9), " +
-                 v + ");\n";
+
+    emmitedOutput.calls +=
+        "float " + functionResult + " = " + functionName +
+        "(uv);\n"
+        "// Below mixes color to form the wave grid\n"
+        "col = mix(color1, color2, " +
+        functionResult +
+        ");\n"
+        "// Above is the end of wavegrid color mixing\n";
   }
-  return out;
+
+  // placeholder examples
+  else if (element.structure == "noiseGrid") {
+    // emit noiseGrid
+  } else if (element.structure == "circleField") {
+    // emit circleField
+  }
+  return emmitedOutput;
 }
 
 /// main() now accepts the stitched body
 std::string getMainFunction(const ShaderTemplate &tmpl,
                             const std::string &injectedBody) {
-  std::ostringstream m;
-  m <<
+  std::ostringstream mainFunction;
+  mainFunction <<
       R"GLSL(
 void main() {
     vec2 uv = vPos.xy;
@@ -101,13 +135,14 @@ void main() {
     vec3 col = vec3(0.0);
 
 )GLSL";
-  m << injectedBody;
+  mainFunction << injectedBody;
 
   if (tmpl.hasBackground) {
-    m << "    col = mix(col, " << tmpl.backgroundColor << ", 0.1);\n";
+    mainFunction << "    col = mix(col, " << tmpl.backgroundColor
+                 << ", 0.1);\n";
   }
-  m << "    fragColor = vec4(col, 1.0);\n}\n";
-  return m.str();
+  mainFunction << "    fragColor = vec4(col, 1.0);\n}\n";
+  return mainFunction.str();
 }
 
 } // namespace shaderLib
