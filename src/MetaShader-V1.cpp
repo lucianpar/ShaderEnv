@@ -24,10 +24,21 @@ std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
   std::string body;
 
   for (int i = 0; i < tmpl.elements.size(); ++i) {
-    shaderLib::Emitted emittedElement =
-        shaderLib::emitElement(tmpl.elements[i], i);
-    helpers += emittedElement.helpers;
-    body += emittedElement.calls;
+
+    const auto &element = tmpl.elements[i]; // fetches the current element - just a concise way of writing
+    // shaderLib::Emitted emStructure =
+    //     shaderLib::emitElementStructure(tmpl.elements[i], i);
+
+    // shaderLib::Emitted sym = emitElementSymmetry(element, i);
+    // // helpers += sym.helpers;
+    // // body    += sym.calls;
+
+    // shaderLib::Emitted structure = emitElementStructure(element, i);
+    // helpers += structure.helpers;
+    // body    += structure.calls;
+    shaderLib::Emitted elementOutput = shaderLib::getFullElement(tmpl.elements[i], i);
+    helpers += elementOutput.helpers;
+    body    += elementOutput.calls;
   }
 
   glslString << helpers;
@@ -66,7 +77,7 @@ int main() {
   shaderLib::ShaderElement element1;
   element1.structure = "waveGrid";
   element1.texture = "fbm";
-  element1.symmetry = "rotate";
+  element1.symmetry = "both";
   element1.layering = "blend";
   element1.colorUsage = "primary";
 

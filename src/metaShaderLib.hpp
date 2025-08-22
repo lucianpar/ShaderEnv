@@ -84,8 +84,11 @@ std::string getColorPalette(const ShaderTemplate &tmpl) {
 
 
 // as the code generator loops through the elements vector, this will run for
-// each element
-Emitted emitElement(const ShaderElement &element, int elementIndex) {
+
+
+
+// THE FOLLOWING FUNCTIONS RETRIEVE STRINGS FOR COMPONENETS OF AN ELEMENT ////
+Emitted emitElementStructure(const ShaderElement &element, int elementIndex) {
   Emitted emmitedOutput;
   if (element.structure == "waveGrid") {
     std::string functionName =
@@ -123,7 +126,50 @@ Emitted emitElement(const ShaderElement &element, int elementIndex) {
   return emmitedOutput;
 }
 
-/// main() now accepts the stitched body
+Emitted emitElementSymmetry(const ShaderElement &element, int elementIndex) {
+  Emitted emmitedOutput;
+
+  if (element.symmetry == "horizontal") {
+    emmitedOutput.calls +=
+        "// Apply horizontal symmetry to UVs\n"
+        "uv.x = abs(uv.x);\n";
+  }
+  else if (element.symmetry == "vertical") {
+    emmitedOutput.calls +=
+        "// Apply vertical symmetry to UVs\n"
+        "uv.y = abs(uv.y);\n";
+  }
+  else if (element.symmetry == "both") {
+    emmitedOutput.calls +=
+        "// Apply 4-way symmetry to UVs\n"
+        "uv = abs(uv);\n";
+  }
+
+  return emmitedOutput;
+}
+
+Emitted getFullElement(const ShaderElement &element, int elementIndex){
+    // figure out this part
+    Emitted output;
+    auto addToOutput = [&](const Emitted& em){ output.helpers += em.helpers; output.calls += em.calls; }; // 1 line function used to add emitter outputs 
+
+
+    addToOutput(emitElementStructure(element, elementIndex));
+    addToOutput(emitElementSymmetry(element, elementIndex));
+
+    return output;
+    
+}
+
+
+
+
+
+
+
+
+
+/// THIS SECTION DEALS WITH THE MAIN FUNCTION //////
 std::string getMainFunction(const ShaderTemplate &tmpl,
                             const std::string &injectedBody) {
   std::ostringstream mainFunction;
