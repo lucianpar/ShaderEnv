@@ -69,10 +69,10 @@ int main() {
 
   shaderLib::ShaderElement element1;
   element1.structure = "waveGrid";
-  element1.texture = "fbm";
+  element1.texture = "smooth";
   element1.symmetry = "both";
   element1.layering = "blend";
-  element1.colorUsage = "primary";
+  element1.colorUsage = "secondary";
 
   newTemplate.elements.push_back(element1);
 
