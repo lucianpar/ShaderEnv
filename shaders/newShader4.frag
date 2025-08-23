@@ -21,12 +21,12 @@ void main() {
     float t = u_time;
     vec3 col = vec3(0.0);
 
+// Apply 4-way symmetry to UVs
+uv = abs(uv);
 float waveGridVal_0 = waveGrid_0(uv);
 // Below mixes color to form the wave grid
 col = mix(color1, color2, waveGridVal_0);
 // Above is the end of wavegrid color mixing
-// Apply 4-way symmetry to UVs
-uv = abs(uv);
     col = mix(col, vec3(0.9, 0.03, 0.07), 0.1);
     fragColor = vec4(col, 1.0);
 }

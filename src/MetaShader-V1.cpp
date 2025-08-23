@@ -11,40 +11,33 @@
 #include "../src/metaShaderLib.hpp"
 
 // takes template and generates code //
-std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
-  std::ostringstream glslString;
+// std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
+//   std::ostringstream glslString;
 
-  //
-  glslString << shaderLib::getHeader();
-  glslString << shaderLib::getUniforms(tmpl);
-  glslString << shaderLib::getColorPalette(tmpl);
+//   //
+//   glslString << shaderLib::getHeader();
+//   glslString << shaderLib::getUniforms(tmpl);
+//   glslString << shaderLib::getColorPalette(tmpl);
   
-  // Collect helpers from selected element functions (top-level) and main body (inside main)
-  std::string helpers;
-  std::string body;
+//   // Collect helpers from selected element functions (top-level) and main body (inside main)
+//   std::string helpers;
+//   std::string body;
 
-  for (int i = 0; i < tmpl.elements.size(); ++i) {
+//   for (int i = 0; i < tmpl.elements.size(); ++i) {
 
-    const auto &element = tmpl.elements[i]; // fetches the current element - just a concise way of writing
-    // shaderLib::Emitted emStructure =
-    //     shaderLib::emitElementStructure(tmpl.elements[i], i);
+//     const auto &element = tmpl.elements[i]; // fetches the current element - just a concise way of writing
 
-    // shaderLib::Emitted sym = emitElementSymmetry(element, i);
-    // // helpers += sym.helpers;
-    // // body    += sym.calls;
+//     shaderLib::Emitted elementOutput = shaderLib::getFullElement(tmpl.elements[i], i);
+//     helpers += elementOutput.helpers;
+//     body    += elementOutput.calls;
+//   }
 
-    // shaderLib::Emitted structure = emitElementStructure(element, i);
-    // helpers += structure.helpers;
-    // body    += structure.calls;
-    shaderLib::Emitted elementOutput = shaderLib::getFullElement(tmpl.elements[i], i);
-    helpers += elementOutput.helpers;
-    body    += elementOutput.calls;
-  }
+//   glslString << helpers;
+//   glslString << shaderLib::getMainFunction(tmpl, body);
+//   return glslString.str();
+// }
 
-  glslString << helpers;
-  glslString << shaderLib::getMainFunction(tmpl, body);
-  return glslString.str();
-}
+
 
 // takes code from generateShaderCode and writes to a frag //
 void writeShaderFile(const std::string &path, const std::string &code) {
@@ -85,7 +78,7 @@ int main() {
 
   // ^ CONCLUDES NEW TEMPLATE CREATION. //
 
-  std::string shaderCode = generateShaderCode(newTemplate);
+  std::string shaderCode = shaderLib::generateShaderCode(newTemplate);
   writeShaderFile("../shader-env/shaders/newShader4.frag", shaderCode);
 
   return 0;

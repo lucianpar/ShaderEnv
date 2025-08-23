@@ -90,11 +90,13 @@ std::string getColorPalette(const ShaderTemplate &tmpl) {
 // THE FOLLOWING FUNCTIONS RETRIEVE STRINGS FOR COMPONENETS OF AN ELEMENT ////
 Emitted emitElementStructure(const ShaderElement &element, int elementIndex) {
   Emitted emmitedOutput;
-  if (element.structure == "waveGrid") {
-    std::string functionName =
+
+  std::string functionName =
         element.structure + "_" + std::to_string(elementIndex);
     std::string functionResult =
         element.structure + "Val_" + std::to_string(elementIndex);
+  if (element.structure == "waveGrid") {
+    
 
     emmitedOutput.helpers +=
         "// below is a wave grid function\n"
@@ -148,14 +150,16 @@ Emitted emitElementSymmetry(const ShaderElement &element, int elementIndex) {
   return emmitedOutput;
 }
 
+
+
 Emitted getFullElement(const ShaderElement &element, int elementIndex){
     // figure out this part
     Emitted output;
-    auto addToOutput = [&](const Emitted& em){ output.helpers += em.helpers; output.calls += em.calls; }; // 1 line function used to add emitter outputs 
+    auto addToOutput = [&](const Emitted& em){ output.helpers += em.helpers; output.calls += em.calls; }; // lambda emitter outputs . [&] is a capture of an instance of the emmiter struct. 1line function for taking emmited snippet and adding to output
 
-
-    addToOutput(emitElementStructure(element, elementIndex));
     addToOutput(emitElementSymmetry(element, elementIndex));
+    addToOutput(emitElementStructure(element, elementIndex));
+    
 
     return output;
     
@@ -190,5 +194,36 @@ void main() {
   mainFunction << "    fragColor = vec4(col, 1.0);\n}\n";
   return mainFunction.str();
 }
+
+
+
+// MASTER FUNCTION FOR GENERATING CODE /// 
+std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
+  std::ostringstream glslString;
+
+  //
+  glslString << shaderLib::getHeader();
+  glslString << shaderLib::getUniforms(tmpl);
+  glslString << shaderLib::getColorPalette(tmpl);
+  
+  // Collect helpers from selected element functions (top-level) and main body (inside main)
+  std::string helpers;
+  std::string body;
+
+  for (int i = 0; i < tmpl.elements.size(); ++i) {
+
+    const auto &element = tmpl.elements[i]; // fetches the current element - just a concise way of writing
+
+    shaderLib::Emitted elementOutput = shaderLib::getFullElement(tmpl.elements[i], i);
+    helpers += elementOutput.helpers;
+    body    += elementOutput.calls;
+  }
+
+  glslString << helpers;
+  glslString << shaderLib::getMainFunction(tmpl, body);
+  return glslString.str();
+}
+
+
 
 } // namespace shaderLib
