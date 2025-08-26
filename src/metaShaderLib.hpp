@@ -279,6 +279,18 @@ std::string generateShaderCode(const shaderLib::ShaderTemplate &tmpl) {
   return glslString.str();
 }
 
+// takes code from generateShaderCode and writes to a frag //
+void writeShaderFile(const std::string &path, const std::string &code) {
+  std::ofstream out(path);
+  if (!out.is_open()) {
+    std::cerr << "Failed to open file: " << path << std::endl;
+    return;
+  }
+  out << code;
+  out.close();
+  std::cout << "Shader written to: " << path << std::endl;
+}
+
 
 
 } // namespace shaderLib

@@ -39,17 +39,17 @@
 
 
 
-// takes code from generateShaderCode and writes to a frag //
-void writeShaderFile(const std::string &path, const std::string &code) {
-  std::ofstream out(path);
-  if (!out.is_open()) {
-    std::cerr << "Failed to open file: " << path << std::endl;
-    return;
-  }
-  out << code;
-  out.close();
-  std::cout << "Shader written to: " << path << std::endl;
-}
+// // takes code from generateShaderCode and writes to a frag //
+// void writeShaderFile(const std::string &path, const std::string &code) {
+//   std::ofstream out(path);
+//   if (!out.is_open()) {
+//     std::cerr << "Failed to open file: " << path << std::endl;
+//     return;
+//   }
+//   out << code;
+//   out.close();
+//   std::cout << "Shader written to: " << path << std::endl;
+// }
 
 // === Main === //
 int main() {
@@ -79,7 +79,7 @@ int main() {
   // ^ CONCLUDES NEW TEMPLATE CREATION. //
 
   std::string shaderCode = shaderLib::generateShaderCode(newTemplate);
-  writeShaderFile("../shader-env/shaders/newShader4.frag", shaderCode);
+  shaderLib::writeShaderFile("../shader-env/shaders/newShader4.frag", shaderCode);
 
   return 0;
 }
