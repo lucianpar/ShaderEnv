@@ -21,19 +21,20 @@ using Color = std::vector<float>;         // alias for "std::vector<float>". "us
 using ColorPalette = std::vector<Color>;  // alias for "std::vector<std::vector<float>>" 
 
 struct ShaderElement {
-  std::string structure;
-  std::string texture;
-  std::string symmetry;
-  std::string layering;
-  std::string colorUsage;
+  
+  std::string structure; ///< Valid values: "waveGrid", "noiseGrid", "circleField", "blob", "superformula", "lissajous", "lorenzAttractor", "star"
+  std::string texture; ///< Valid: "abs", "perlin", "fbm"
+  std::string symmetry; ///< Valid: "none", "vertical", "horizontal", "both"
+  std::string layering; ///< Valid: "add", "blend", "screen", "multiply", "overlay"
+  std::string colorUsage;///< Valid: "primary", "secondary", "accent", "alt"
 };
 ////
 // STRUCTURE FOR THE WHOLE SHADER. use this to specify which code gets fetched
 // from the shader string library
 ////
 struct ShaderTemplate {
-  bool hasBackground;
-  std::string backgroundColor;
+  bool hasBackground; ///< boolean
+  std::string backgroundColor; ///<  (value1, value2, value3)
   ColorPalette colorPalette;
   std::vector<std::string> globalUniforms;
   std::vector<ShaderElement> elements; // vector of elements
@@ -120,12 +121,99 @@ Emitted emitElementStructure(const ShaderElement &element, int elementIndex) {
 
   }
 
-  // placeholder examples
-  else if (element.structure == "noiseGrid") {
-    // emit noiseGrid
-  } else if (element.structure == "circleField") {
-    // emit circleField
-  }
+ else if (element.structure == "noiseGrid") {
+  emmitedOutput.helpers +=
+      "// Noise-based grid (pseudo-random)\n"
+      "float " + functionName + "(vec2 p) {\n"
+      "  return fract(sin(dot(p ,vec2(12.9898,78.233))) * 43758.5453);\n"
+      "}\n";
+
+  emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
+}
+
+else if (element.structure == "circleField") {
+  emmitedOutput.helpers +=
+      "// Circle field function\n"
+      "float " + functionName + "(vec2 p) {\n"
+      "  return length(p) - 0.5;\n"
+      "}\n";
+
+  emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
+}
+
+else if (element.structure == "blob") {
+  emmitedOutput.helpers +=
+      "// Organic blob shape with time-based wobble\n"
+      "float " + functionName + "(vec2 p) {\n"
+      "  float r = 0.5 + 0.1*sin(u_time + p.x*10.0) * cos(p.y*10.0);\n"
+      "  return length(p) - r;\n"
+      "}\n";
+
+  emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
+}
+
+else if (element.structure == "superformula") {
+  emmitedOutput.helpers +=
+      "// Superformula-based shape\n"
+      "float " + functionName + "(vec2 p) {\n"
+      "  float m = 6.0;\n"
+      "  float n1 = 0.3;\n"
+      "  float n2 = 1.7;\n"
+      "  float n3 = 1.7;\n"
+      "  float a = 1.0, b = 1.0;\n"
+      "  float phi = atan(p.y, p.x);\n"
+      "  float r = pow(pow(abs(cos(m*phi/4.0)/a), n2) +\n"
+      "                pow(abs(sin(m*phi/4.0)/b), n3), -1.0/n1);\n"
+      "  return length(p) - r;\n"
+      "}\n";
+
+  emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
+}
+
+else if (element.structure == "lissajous") {
+  emmitedOutput.helpers +=
+      "// Lissajous curve pattern\n"
+      "float " + functionName + "(vec2 p) {\n"
+      "  float a = 3.0, b = 2.0;\n"
+      "  float delta = PI/2.0;\n"
+      "  return sin(a*p.x + delta) - sin(b*p.y);\n"
+      "}\n";
+
+  emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
+}
+
+else if (element.structure == "lorenzAttractor") {
+  emmitedOutput.helpers +=
+      "// Lorenz-like attractor projection\n"
+      "float " + functionName + "(vec2 p) {\n"
+      "  float sigma = 10.0;\n"
+      "  float rho = 28.0;\n"
+      "  float beta = 8.0/3.0;\n"
+      "  vec3 v = vec3(p, 0.1);\n"
+      "  for (int i = 0; i < 10; i++) {\n"
+      "    vec3 dv;\n"
+      "    dv.x = sigma * (v.y - v.x);\n"
+      "    dv.y = v.x * (rho - v.z) - v.y;\n"
+      "    dv.z = v.x * v.y - beta * v.z;\n"
+      "    v += 0.01 * dv;\n"
+      "  }\n"
+      "  return length(v.xy);\n"
+      "}\n";
+
+  emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
+}
+
+else if (element.structure == "star") {
+  emmitedOutput.helpers +=
+      "// Star polygon pattern\n"
+      "float " + functionName + "(vec2 p) {\n"
+      "  float a = atan(p.y,p.x);\n"
+      "  float r = cos(5.0*a) * 0.5 + 0.5;\n"
+      "  return length(p) - r;\n"
+      "}\n";
+
+  emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
+}
   return emmitedOutput;
 }
 
@@ -243,7 +331,7 @@ void main() {
   mainFunction << injectedBody;
 
   if (tmpl.hasBackground) {
-    mainFunction << "    col = mix(col, " << tmpl.backgroundColor
+    mainFunction << "    col = mix(col, vec3" << tmpl.backgroundColor
                  << ", 0.1);\n";
   }
   mainFunction << "    fragColor = vec4(col, 1.0);\n}\n";

@@ -21,13 +21,9 @@ void main() {
     float t = u_time;
     vec3 col = vec3(0.0);
 
-// Apply 4-way symmetry to UVs
-uv = abs(uv);
 float val_0 = waveGrid_0(uv);
-// texture: abs
-val_0 = abs(val_0);
-// color usage: secondary
-col = mix(color1, color2, val_0);
+// color usage: primary
+col = mix(color0, color1, val_0);
     col = mix(col, vec3(0.9, 0.03, 0.07), 0.1);
     fragColor = vec4(col, 1.0);
 }

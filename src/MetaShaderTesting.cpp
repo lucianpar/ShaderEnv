@@ -101,7 +101,7 @@ int main() {
 
   shaderLib::ShaderTemplate newTemplate;
   newTemplate.hasBackground = true;
-  newTemplate.backgroundColor = "vec3(0.9, 0.03, 0.07)";
+  newTemplate.backgroundColor = "(0.9, 0.03, 0.07)";
   newTemplate.colorPalette = 
     {{0.8f, 0.9f, 1.0f},
     {0.2f, 0.6f, 0.9f},
@@ -110,10 +110,10 @@ int main() {
 
   shaderLib::ShaderElement element1;
   element1.structure = "waveGrid";
-  element1.texture = "abs";
-  element1.symmetry = "both";
-  element1.layering = "blend";
-  element1.colorUsage = "secondary";
+  element1.texture = "perlin";
+  element1.symmetry = "none";
+  element1.layering = "add";
+  element1.colorUsage = "primary";
 
   newTemplate.elements.push_back(element1);
 
