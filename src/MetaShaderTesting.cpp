@@ -115,7 +115,15 @@ int main() {
   element1.layering = "add";
   element1.colorUsage = "primary";
 
+  shaderLib::ShaderElement element2;
+  element2.structure = "star";
+  element2.texture = "fbm";
+  element2.symmetry = "none";
+  element2.layering = "subtract";
+  element2.colorUsage = "accent";
+
   newTemplate.elements.push_back(element1);
+  newTemplate.elements.push_back(element2);
 
   // ^ CONCLUDES NEW TEMPLATE CREATION. //
 

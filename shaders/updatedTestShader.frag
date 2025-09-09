@@ -15,6 +15,14 @@ const vec3 color2 = vec3(0.9, 0.03, 0.07);
 float waveGrid_0(vec2 p) {
   return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));
 }
+// Star polygon pattern
+float star_1(vec2 p) {
+  float a = atan(p.y,p.x);
+  float r = cos(5.0*a) * 0.5 + 0.5;
+  return length(p) - r;
+}
+// texture: fbm tone-map (placeholder)
+float fbmTone_1(float x){ return 0.5 + 0.5*sin(6.28318*x + 2.0*x); }
 
 void main() {
     vec2 uv = vPos.xy;
@@ -24,6 +32,10 @@ void main() {
 float val_0 = waveGrid_0(uv);
 // color usage: primary
 col = mix(color0, color1, val_0);
+float val_1 = star_1(uv);
+val_1 = fbmTone_1(val_1);
+// color usage: default (grayscale add)
+col += vec3(val_1);
     col = mix(col, vec3(0.9, 0.03, 0.07), 0.1);
     fragColor = vec4(col, 1.0);
 }
