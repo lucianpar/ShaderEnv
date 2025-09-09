@@ -115,8 +115,8 @@ int main() {
   element1.layering = "add";
   element1.colorUsage = "primary";
   element1.behaviorUniform = "u_time";
-  element1.elementBehavior = "rotateUV";
-  element1.speed = 0.2; 
+  element1.elementBehavior = "scrollUV";
+  element1.speed = 2.0; 
 
   shaderLib::ShaderElement element2;
   element2.structure = "blob";

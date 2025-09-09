@@ -30,10 +30,8 @@ void main() {
     vec3 col = vec3(0.0);
 
 float val_0 = blob_0(uv);
-// behavior: rotateUV(u_time) * speed=0.200000
-float a = (u_time * 0.200000) * 0.5;
-float c = cos(a), s = sin(a);
-uv = mat2(c, -s, s, c) * uv;
+// behavior: scrollUV(u_time) * speed=2.000000
+uv += vec2(0.1, 0.0) * (u_time * 2.000000);
 // color usage: primary
 col = mix(color0, color1, val_0);
 // Apply 4-way symmetry to UVs
