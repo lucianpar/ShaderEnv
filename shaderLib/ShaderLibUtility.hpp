@@ -22,8 +22,8 @@ struct ShaderElement {
   std::string symmetry; ///< Valid: "none", "vertical", "horizontal", "both"
   std::string layering; ///< Valid: "add", "blend", "screen", "multiply", "overlay"
   std::string colorUsage;///< Valid: "primary", "secondary", "accent", "alt"
-  std::string elementBehavior; // < Valid Behaviours: 
-  std::string behaviorUniform; // < Enter one of from your uniform vector. Such as u_time, etc
+  std::string elementBehavior;///< Valid:"scaleWith", "sineMod", "rotateUV", "scrollUV", "threshWith"
+  std::string behaviorUniform;///< Enter one of from the uniform vector. Such as u_time, etc
 
 };
 ////

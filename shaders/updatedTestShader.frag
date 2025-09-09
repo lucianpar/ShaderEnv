@@ -11,9 +11,10 @@ uniform float u_time;
 const vec3 color0 = vec3(0.8, 0.9, 1);
 const vec3 color1 = vec3(0.2, 0.6, 0.9);
 const vec3 color2 = vec3(0.9, 0.03, 0.07);
-// below is a wave grid function
-float waveGrid_0(vec2 p) {
-  return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));
+// Organic blob shape with time-based wobble
+float blob_0(vec2 p) {
+  float r = 0.5 + 0.1*sin(u_time + p.x*10.0) * cos(p.y*10.0);
+  return length(p) - r;
 }
 // Organic blob shape with time-based wobble
 float blob_1(vec2 p) {
@@ -28,7 +29,9 @@ void main() {
     float t = u_time;
     vec3 col = vec3(0.0);
 
-float val_0 = waveGrid_0(uv);
+float val_0 = blob_0(uv);
+// behavior: threshWith(u_time)
+val_0 *= step(u_time, val_0);
 // color usage: primary
 col = mix(color0, color1, val_0);
 // Apply 4-way symmetry to UVs

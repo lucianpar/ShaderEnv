@@ -109,11 +109,13 @@ int main() {
   newTemplate.globalUniforms = {"u_time"}; //can create any uniform 
 
   shaderLib::ShaderElement element1;
-  element1.structure = "waveGrid";
+  element1.structure = "blob";
   element1.texture = "perlin";
   element1.symmetry = "none";
   element1.layering = "add";
   element1.colorUsage = "primary";
+  element1.behaviorUniform = "u_time";
+  element1.elementBehavior = "sineMod";
 
   shaderLib::ShaderElement element2;
   element2.structure = "blob";
@@ -121,6 +123,8 @@ int main() {
   element2.symmetry = "both";
   element2.layering = "subtract";
   element2.colorUsage = "accent";
+  element1.behaviorUniform = "u_time";
+  element1.elementBehavior = "threshWith";
 
   newTemplate.elements.push_back(element1);
   newTemplate.elements.push_back(element2);
