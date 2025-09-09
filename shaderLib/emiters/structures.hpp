@@ -1,22 +1,15 @@
 #pragma once
-#include <stdlib.h>
-#include <string>
 
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <vector>
 
 #include "../../shaderLib/metaShaderUtility.hpp"
 
-namespace elementStructure {
+  
 
-//using shaderUtility::Color;
-  //using shaderUtility::ColorPalette;
-  using shaderUtility::ShaderElement;
-  //using shaderUtility::ShaderTemplate;
-  using shaderUtility::Emitted;
+namespace structures {
+
+  using ShaderElement = shaderUtility::ShaderElement;
+  using Emitted       = shaderUtility::Emitted;
+
 
 
 
@@ -172,114 +165,6 @@ else {
 
 
 
-inline Emitted emitElementSymmetry(const ShaderElement &element, int elementIndex){
-  Emitted emmitedOutput;
 
-if (element.symmetry == "" || 
-  element.symmetry == " " ||
-  element.symmetry ==  "  "){
-   std::cerr << "ERROR: Element " << elementIndex << " symmetry is empty " << std::endl;
-
-  }
-  else if (element.symmetry == "horizontal") {
-    emmitedOutput.calls +=
-        "// Apply horizontal symmetry to UVs\n"
-        "uv.x = abs(uv.x);\n";
-  }
-  else if (element.symmetry == "vertical") {
-    emmitedOutput.calls +=
-        "// Apply vertical symmetry to UVs\n"
-        "uv.y = abs(uv.y);\n";
-  }
-  else if (element.symmetry == "both") {
-    emmitedOutput.calls +=
-        "// Apply 4-way symmetry to UVs\n"
-        "uv = abs(uv);\n";
-  }
-
-  else {
-    std::cerr << "ERROR: Inputted symmetry " << elementIndex << " name does not match library" << std::endl;
-  }
-  
-
-  return emmitedOutput;
-}
-
-
-inline Emitted emitElementTexture (const ShaderElement &element, int elementIndex) {
-  Emitted out;
-  std::string val = "val_" + std::to_string(elementIndex);
-if (element.texture == "" || 
-  element.texture == " " ||
-  element.texture ==  "  "){
-   std::cerr << "ERROR: Element " << elementIndex << " texture is empty " << std::endl;
-
-  }
- else if (element.texture == "abs") {
-  out.calls += "// texture: abs\n";
-  out.calls += val + " = abs(" + val + ");\n";
-}
-else if (element.texture == "pow2") {
-  out.calls += "// texture: power curve (x^2)\n";
-  out.calls += val + " = " + val + " * " + val + ";\n";
-}
-else if (element.texture == "smooth") {
-  out.calls += "// texture: smoothstep shaping\n";
-  out.calls += val + " = smoothstep(0.0, 1.0, " + val + ");\n";
-}
-else if (element.texture == "fbm") {
-  std::string fn = "fbmTone_" + std::to_string(elementIndex);
-  out.helpers +=
-    "// texture: fbm tone-map (placeholder)\n"
-    "float " + fn + "(float x){ return 0.5 + 0.5*sin(6.28318*x + 2.0*x); }\n";
-  out.calls += val + " = " + fn + "(" + val + ");\n";
-}
-
-  else {
-    std::cerr << "ERROR: Inputted texture " << elementIndex << "name does not match library" << std::endl;
-  }
-  return out;
-}
-
-inline Emitted emitElementColor   (const ShaderElement &element, int elementIndex){
-  Emitted out;
-  std::string val = "val_" + std::to_string(elementIndex);
-
-  if (element.colorUsage == "primary") {
-    out.calls +=
-      "// color usage: primary\n"
-      "col = mix(color0, color1, " + val + ");\n";
-  } else if (element.colorUsage == "secondary") {
-    out.calls +=
-      "// color usage: secondary\n"
-      "col = mix(color1, color2, " + val + ");\n";
-  } else {
-    out.calls +=
-      "// color usage: default (grayscale add)\n"
-      "col += vec3(" + val + ");\n";
-  }
-
-  
-  return out;
-}
-
-
-
-
-
-inline Emitted getFullElement(const ShaderElement &element, int elementIndex){
-    // figure out this part
-    Emitted output;
-    auto addToOutput = [&](const Emitted& em){ output.helpers += em.helpers; output.calls += em.calls; }; // lambda emitter outputs . [&] is a capture of an instance of the emmiter struct. 1line function for taking emmited snippet and adding to output
-
-    addToOutput(emitElementSymmetry(element, elementIndex));
-    addToOutput(emitElementStructure(element, elementIndex));
-    addToOutput(emitElementTexture(element, elementIndex));
-    addToOutput(emitElementColor(element, elementIndex));
-    
-
-    return output;
-    
-}
 
 }

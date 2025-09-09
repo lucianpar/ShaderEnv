@@ -9,6 +9,9 @@
 #include <vector>
 
 #include "../shaderLib/emiters/structures.hpp"
+#include "../shaderLib/emiters/textures.hpp"
+#include "../shaderLib/emiters/symmetry.hpp"
+#include "../shaderLib/emiters/color.hpp"
 #include "../shaderLib/metaShaderUtility.hpp"
 
 //
@@ -25,16 +28,16 @@ namespace shaderLib {
 
   using shaderUtility::Color;
 using shaderUtility::ColorPalette;
-using shaderUtility::ShaderElement;   // <— add back
+using shaderUtility::ShaderElement;  
 using shaderUtility::ShaderTemplate;
-using shaderUtility::Emitted;         // <— add back
+using shaderUtility::Emitted;        
 
 // Re-export element functions from elementStructure
-using elementStructure::emitElementStructure;
-using elementStructure::emitElementColor;
-using elementStructure::emitElementSymmetry;
-using elementStructure::emitElementTexture;
-using elementStructure::getFullElement;
+using structures::emitElementStructure;
+using color::emitElementColor;
+using symmetry::emitElementSymmetry;
+using textures::emitElementTexture;
+
 
 // HEADER OF STANDARD MATH and begining of allolib compatible glsl files-
 // POPULATE MORE //
@@ -329,16 +332,25 @@ std::string getColorPalette(const ShaderTemplate &tmpl) {
 // }
 
 
+//assembles code from all components of element
+inline Emitted getFullElement(const ShaderElement &element, int elementIndex){
+    // figure out this part
+    Emitted output;
+    auto addToOutput = [&](const Emitted& em){ output.helpers += em.helpers; output.calls += em.calls; }; // lambda emitter outputs . [&] is a capture of an instance of the emmiter struct. 1line function for taking emmited snippet and adding to output
+
+    addToOutput(emitElementSymmetry(element, elementIndex));
+    addToOutput(emitElementStructure(element, elementIndex));
+    addToOutput(emitElementTexture(element, elementIndex));
+    addToOutput(emitElementColor(element, elementIndex));
+    
+
+    return output;
+    
+}
 
 
 
-
-
-
-
-
-
-/// THIS SECTION DEALS WITH THE MAIN FUNCTION //////
+/// THIS SECTION DEALS WITH THE "MAIN" FUNCTION in the glsl file //////
 std::string getMainFunction(const ShaderTemplate &tmpl,
                             const std::string &injectedBody) {
   std::ostringstream mainFunction;
