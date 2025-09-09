@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "../../shaderLib/metaShaderUtility.hpp"
+#include "../../shaderLib/shaderLibUtility.hpp"
 
   
 

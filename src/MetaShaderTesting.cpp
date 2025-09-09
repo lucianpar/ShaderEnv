@@ -20,7 +20,7 @@
 #include <string>
 
 #include "shader-env/shaderUtility/shaderToSphere.hpp"
-#include "../shaderLib/metaShaderLib.hpp"
+#include "../shaderLib/shaderLibMaster.hpp"
 
 struct Common {};
 class MyApp : public al::DistributedAppWithState<Common> {

@@ -12,7 +12,7 @@
 #include "../shaderLib/emiters/textures.hpp"
 #include "../shaderLib/emiters/symmetry.hpp"
 #include "../shaderLib/emiters/color.hpp"
-#include "../shaderLib/metaShaderUtility.hpp"
+#include "../shaderLib/shaderLibUtility.hpp"
 
 //
 
