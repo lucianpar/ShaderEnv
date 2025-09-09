@@ -24,6 +24,7 @@ struct ShaderElement {
   std::string colorUsage;///< Valid: "primary", "secondary", "accent", "alt"
   std::string elementBehavior;///< Valid:"scaleWith", "sineMod", "rotateUV", "scrollUV", "threshWith"
   std::string behaviorUniform;///< Enter one of from the uniform vector. Such as u_time, etc
+  double speed;///< enter a speed multiplier. default is 1.0 //maybe change this to be a uniform 
 
 };
 ////

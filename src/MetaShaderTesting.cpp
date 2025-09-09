@@ -115,7 +115,8 @@ int main() {
   element1.layering = "add";
   element1.colorUsage = "primary";
   element1.behaviorUniform = "u_time";
-  element1.elementBehavior = "sineMod";
+  element1.elementBehavior = "rotateUV";
+  element1.speed = 0.2; 
 
   shaderLib::ShaderElement element2;
   element2.structure = "blob";
@@ -123,8 +124,9 @@ int main() {
   element2.symmetry = "both";
   element2.layering = "subtract";
   element2.colorUsage = "accent";
-  element1.behaviorUniform = "u_time";
-  element1.elementBehavior = "threshWith";
+  element2.behaviorUniform = "u_time";
+  element2.elementBehavior = "sineMod";
+  element2.speed = 0.8;
 
   newTemplate.elements.push_back(element1);
   newTemplate.elements.push_back(element2);

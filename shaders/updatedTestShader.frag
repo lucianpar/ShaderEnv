@@ -30,13 +30,17 @@ void main() {
     vec3 col = vec3(0.0);
 
 float val_0 = blob_0(uv);
-// behavior: threshWith(u_time)
-val_0 *= step(u_time, val_0);
+// behavior: rotateUV(u_time) * speed=0.200000
+float a = (u_time * 0.200000) * 0.5;
+float c = cos(a), s = sin(a);
+uv = mat2(c, -s, s, c) * uv;
 // color usage: primary
 col = mix(color0, color1, val_0);
 // Apply 4-way symmetry to UVs
 uv = abs(uv);
 float val_1 = blob_1(uv);
+// behavior: sineMod(u_time) * speed=0.800000
+val_1 = 0.5 + 0.5 * sin((u_time * 0.800000) + 6.28318 * val_1);
 val_1 = fbmTone_1(val_1);
 // color usage: default (grayscale add)
 col += vec3(val_1);
