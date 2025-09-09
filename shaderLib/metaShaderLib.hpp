@@ -8,6 +8,8 @@
 #include <string>
 #include <vector>
 
+//#include "../shaderLib/emmiters/structures.hpp"
+
 // === Utility Function String Snippets === //
 
 namespace shaderLib {
@@ -27,6 +29,9 @@ struct ShaderElement {
   std::string symmetry; ///< Valid: "none", "vertical", "horizontal", "both"
   std::string layering; ///< Valid: "add", "blend", "screen", "multiply", "overlay"
   std::string colorUsage;///< Valid: "primary", "secondary", "accent", "alt"
+  std::string elementBehavior; // < Valid Behaviours: 
+  std::string behaviorUniform; // < Enter one of from your uniform vector. Such as u_time, etc
+
 };
 ////
 // STRUCTURE FOR THE WHOLE SHADER. use this to specify which code gets fetched
@@ -95,7 +100,14 @@ Emitted emitElementStructure(const ShaderElement &element, int elementIndex) {
   std::string functionName =
         element.structure + "_" + std::to_string(elementIndex);
    std::string val = "val_" + std::to_string(elementIndex);  // <-- standard name
-  if (element.structure == "waveGrid") {
+  
+  if (element.structure == "" || 
+  element.structure == " " ||
+  element.structure ==  "  "){
+   std::cerr << "ERROR: Element " << elementIndex << " structure is empty " << std::endl;
+
+  }
+  else if (element.structure == "waveGrid") {
     
 
     emmitedOutput.helpers +=
@@ -214,13 +226,23 @@ else if (element.structure == "star") {
 
   emmitedOutput.calls += "float " + val + " = " + functionName + "(uv);\n";
 }
+
+else {
+    std::cerr << "ERROR: Inputted structure " << elementIndex << " name does not match library" << std::endl;
+  }
   return emmitedOutput;
 }
 
 Emitted emitElementSymmetry(const ShaderElement &element, int elementIndex) {
   Emitted emmitedOutput;
 
-  if (element.symmetry == "horizontal") {
+if (element.symmetry == "" || 
+  element.symmetry == " " ||
+  element.symmetry ==  "  "){
+   std::cerr << "ERROR: Element " << elementIndex << " symmetry is empty " << std::endl;
+
+  }
+  else if (element.symmetry == "horizontal") {
     emmitedOutput.calls +=
         "// Apply horizontal symmetry to UVs\n"
         "uv.x = abs(uv.x);\n";
@@ -236,6 +258,11 @@ Emitted emitElementSymmetry(const ShaderElement &element, int elementIndex) {
         "uv = abs(uv);\n";
   }
 
+  else {
+    std::cerr << "ERROR: Inputted symmetry " << elementIndex << " name does not match library" << std::endl;
+  }
+  
+
   return emmitedOutput;
 }
 
@@ -243,8 +270,13 @@ Emitted emitElementSymmetry(const ShaderElement &element, int elementIndex) {
 Emitted emitElementTexture(const ShaderElement &element, int elementIndex) {
   Emitted out;
   std::string val = "val_" + std::to_string(elementIndex);
+if (element.texture == "" || 
+  element.texture == " " ||
+  element.texture ==  "  "){
+   std::cerr << "ERROR: Element " << elementIndex << " texture is empty " << std::endl;
 
- if (element.texture == "abs") {
+  }
+ else if (element.texture == "abs") {
   out.calls += "// texture: abs\n";
   out.calls += val + " = abs(" + val + ");\n";
 }
@@ -264,6 +296,9 @@ else if (element.texture == "fbm") {
   out.calls += val + " = " + fn + "(" + val + ");\n";
 }
 
+  else {
+    std::cerr << "ERROR: Inputted texture " << elementIndex << "name does not match library" << std::endl;
+  }
   return out;
 }
 
@@ -284,6 +319,8 @@ Emitted emitElementColor(const ShaderElement &element, int elementIndex) {
       "// color usage: default (grayscale add)\n"
       "col += vec3(" + val + ");\n";
   }
+
+  
   return out;
 }
 

@@ -20,7 +20,7 @@
 #include <string>
 
 #include "shader-env/shaderUtility/shaderToSphere.hpp"
-#include "../src/metaShaderLib.hpp"
+#include "../shaderLib/metaShaderLib.hpp"
 
 struct Common {};
 class MyApp : public al::DistributedAppWithState<Common> {
@@ -67,7 +67,7 @@ public:
   void onAnimate(double dt) override {
     if (running == true) {
       globalTime = globalTime + dt;
-      std::cout << globalTime << std::endl;
+      //std::cout << globalTime << std::endl;
     }
   }
 
