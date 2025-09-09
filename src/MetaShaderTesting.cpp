@@ -116,9 +116,9 @@ int main() {
   element1.colorUsage = "primary";
 
   shaderLib::ShaderElement element2;
-  element2.structure = "star";
+  element2.structure = "blob";
   element2.texture = "fbm";
-  element2.symmetry = "none";
+  element2.symmetry = "both";
   element2.layering = "subtract";
   element2.colorUsage = "accent";
 

@@ -15,10 +15,9 @@ const vec3 color2 = vec3(0.9, 0.03, 0.07);
 float waveGrid_0(vec2 p) {
   return sin(p.x + sin(p.y * 2.0) + sin(p.y * 0.43));
 }
-// Star polygon pattern
-float star_1(vec2 p) {
-  float a = atan(p.y,p.x);
-  float r = cos(5.0*a) * 0.5 + 0.5;
+// Organic blob shape with time-based wobble
+float blob_1(vec2 p) {
+  float r = 0.5 + 0.1*sin(u_time + p.x*10.0) * cos(p.y*10.0);
   return length(p) - r;
 }
 // texture: fbm tone-map (placeholder)
@@ -32,7 +31,9 @@ void main() {
 float val_0 = waveGrid_0(uv);
 // color usage: primary
 col = mix(color0, color1, val_0);
-float val_1 = star_1(uv);
+// Apply 4-way symmetry to UVs
+uv = abs(uv);
+float val_1 = blob_1(uv);
 val_1 = fbmTone_1(val_1);
 // color usage: default (grayscale add)
 col += vec3(val_1);
