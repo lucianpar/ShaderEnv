@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 #include <stdlib.h>
 #include <string>
 
@@ -18,6 +19,8 @@ using ColorPalette = std::vector<Color>;  // alias for "std::vector<std::vector<
 struct ShaderElement {
   
   std::string structure; ///< Valid values: "waveGrid", "noiseGrid", "circleField", "blob", "superformula", "lissajous", "lorenzAttractor", "star"
+  float size = 1.0f; ///< % of screen from 0.01 -> 1.0
+  std::vector<double> placementCoords{0.0,0.0}; ///< x and y coord from -1.0 to 1.0, in < x, y > format. default is the origin
   std::string texture; ///< Valid: "abs", "perlin", "fbm"
   std::string symmetry; ///< Valid: "none", "vertical", "horizontal", "both"
   std::string layering; ///< Valid: "add", "blend", "screen", "multiply", "overlay"
@@ -44,5 +47,8 @@ struct Emitted {
   std::string helpers; // GLSL functions/defs (top-level)
   std::string calls;   // lines to paste inside main()
 };
+
+
+// dealing with element size and placement (minimal code does not require its own module)
 
 }

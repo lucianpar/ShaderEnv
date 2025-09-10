@@ -33,6 +33,8 @@ using shaderUtility::Emitted;
 // all the code to the final shader string //
 /////
 using structures::emitElementStructure;
+using structures::emitElementPlacement;
+using structures::emitElementSize;
 using color::emitElementColor;
 using symmetry::emitElementSymmetry;
 using textures::emitElementTexture;
@@ -86,9 +88,13 @@ inline Emitted getFullElement(const ShaderElement &element, int elementIndex){
     auto addToOutput = [&](const Emitted& em){ output.helpers += em.helpers; output.calls += em.calls; }; // lambda emitter outputs . [&] is a capture of an instance of the emmiter struct. 1line function for taking emmited snippet and adding to output
 
     //ORDER IS CRUCIAL HERE, does not matter when creating template instances
+
     addToOutput(emitElementSymmetry(element, elementIndex));
+    addToOutput(emitElementPlacement( element, elementIndex));
+    addToOutput(emitElementSize( element, elementIndex));
+    addToOutput(emitElementBehavior(element, elementIndex, behave::BehaviorPhase::UV));
     addToOutput(emitElementStructure(element, elementIndex));
-    addToOutput(emitElementBehavior(element, elementIndex));
+    addToOutput(emitElementBehavior(element, elementIndex, behave::BehaviorPhase::VAL));
     addToOutput(emitElementTexture(element, elementIndex));
     addToOutput(emitElementColor(element, elementIndex));
 
