@@ -36,6 +36,12 @@ else if (element.texture == "fbm") {
   out.calls += val + " = " + fn + "(" + val + ");\n";
 }
 
+else if (element.texture == "none") {
+  out.calls += "// texture: none (no-op)\n";
+}
+
+// add back in perlin
+
   else {
     std::cerr << "ERROR: Inputted texture " << elementIndex << "name does not match library" << std::endl;
   }

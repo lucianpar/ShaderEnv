@@ -31,6 +31,10 @@ if (element.symmetry == "" ||
         "// Apply 4-way symmetry to UVs\n"
         "uv = abs(uv);\n";
   }
+  else if (element.symmetry == "none") {
+  // No symmetry applied
+  emmitedOutput.calls += "// symmetry: none (no-op)\n";
+}
 
   else {
     std::cerr << "ERROR: Inputted symmetry " << elementIndex << " name does not match library" << std::endl;
