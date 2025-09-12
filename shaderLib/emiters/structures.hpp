@@ -23,11 +23,23 @@ inline Emitted emitElementStructure(const ShaderElement &element, int elementInd
   std::string val = "val_" + std::to_string(elementIndex);  // <-- standard name
   std::string uvi = "uv_" + std::to_string(elementIndex);   // uv specific to this element - important for element size and placement
   
-  if (element.structure == "" || 
-      element.structure == " " ||
-      element.structure == "  ") {
+  if (shaderUtility::isBlank(element.structure)) {
     std::cerr << "ERROR: Element " << elementIndex << " structure is empty " << std::endl;
 
+  }
+
+   const bool known =
+       element.structure == "waveGrid"      ||
+       element.structure == "noiseGrid"     ||
+       element.structure == "circleField"   ||
+       element.structure == "blob"          ||
+       element.structure == "superformula"  ||
+       element.structure == "lissajous"     ||
+       element.structure == "lorenzAttractor" ||
+       element.structure == "star";
+
+       if (!known) {
+     std::cerr << "ERROR: Inputted structure " << elementIndex << " name does not match library" << std::endl;
   }
   else if (element.structure == "waveGrid") {
     
@@ -149,9 +161,7 @@ inline Emitted emitElementStructure(const ShaderElement &element, int elementInd
     emmitedOutput.calls += "float " + val + " = " + functionName + "(" + uvi + ");\n";
   }
 
-  else {
-    std::cerr << "ERROR: Inputted structure " << elementIndex << " name does not match library" << std::endl;
-  }
+  
   return emmitedOutput;
 }
 

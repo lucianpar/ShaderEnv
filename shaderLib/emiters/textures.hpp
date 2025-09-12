@@ -10,13 +10,22 @@ using Emitted       = shaderUtility::Emitted;
 inline Emitted emitElementTexture (const ShaderElement &element, int elementIndex) {
   Emitted out;
   std::string val = "val_" + std::to_string(elementIndex);
-if (element.texture == "" || 
-  element.texture == " " ||
-  element.texture ==  "  "){
+if (shaderUtility::isBlank(element.texture)) {
    std::cerr << "ERROR: Element " << elementIndex << " texture is empty " << std::endl;
 
   }
- else if (element.texture == "abs") {
+  const bool known =
+      element.texture == "abs"    ||
+      element.texture == "pow2"   ||
+      element.texture == "smooth" ||
+      element.texture == "fbm"    ||
+      element.texture == "none";
+  if (!known) {
+    std::cerr << "ERROR: Element " << elementIndex << " texture name not recognized" << std::endl;
+    return out;
+  
+  }
+  if (element.texture == "abs") {
   out.calls += "// texture: abs\n";
   out.calls += val + " = abs(" + val + ");\n";
 }

@@ -10,13 +10,20 @@ using Emitted       = shaderUtility::Emitted;
 inline Emitted emitElementSymmetry(const ShaderElement &element, int elementIndex){
   Emitted emmitedOutput;
 
-if (element.symmetry == "" || 
-  element.symmetry == " " ||
-  element.symmetry ==  "  "){
+if (shaderUtility::isBlank(element.symmetry)) {
    std::cerr << "ERROR: Element " << elementIndex << " symmetry is empty " << std::endl;
 
   }
-  else if (element.symmetry == "horizontal") {
+    const bool known =
+        element.symmetry == "horizontal" ||
+        element.symmetry == "vertical"   ||
+        element.symmetry == "both"       ||
+        element.symmetry == "none";
+   if (!known) {
+      std::cerr << "ERROR: Inputted symmetry " << elementIndex << " name does not match library" << std::endl;
+  }
+  
+  if (element.symmetry == "horizontal") {
     emmitedOutput.calls +=
         "// Apply horizontal symmetry to UVs\n"
         "uv.x = abs(uv.x);\n";
@@ -36,9 +43,7 @@ if (element.symmetry == "" ||
   emmitedOutput.calls += "// symmetry: none (no-op)\n";
 }
 
-  else {
-    std::cerr << "ERROR: Inputted symmetry " << elementIndex << " name does not match library" << std::endl;
-  }
+  
   
 
   return emmitedOutput;

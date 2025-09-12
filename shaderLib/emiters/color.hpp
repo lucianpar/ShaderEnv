@@ -14,6 +14,18 @@ namespace color {
   Emitted out;
   std::string val = "val_" + std::to_string(elementIndex);
 
+  if (shaderUtility::isBlank(element.colorUsage)) {
+     std::cerr << "ERROR: Element " << elementIndex << " colorUsage is empty " << std::endl;
+
+    }
+      const bool known =
+          element.colorUsage == "primary"   ||
+          element.colorUsage == "secondary" ||
+          element.colorUsage == "default";
+     if (!known) {
+        std::cerr << "ERROR: Inputted colorUsage " << elementIndex << " name does not match library" << std::endl;
+    }
+
   if (element.colorUsage == "primary") {
     out.calls +=
       "// color usage: primary\n"

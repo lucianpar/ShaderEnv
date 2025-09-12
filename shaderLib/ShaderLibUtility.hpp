@@ -49,6 +49,9 @@ struct Emitted {
 };
 
 
-// dealing with element size and placement (minimal code does not require its own module)
+// helper 
+inline bool isBlank(const std::string& s) {
+  return s.empty() || s == " " || s == "  ";
+}
 
 }

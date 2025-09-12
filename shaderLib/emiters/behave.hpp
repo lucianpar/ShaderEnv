@@ -20,13 +20,10 @@ namespace behave {
 // One function, two phases
 enum class BehaviorPhase { UV, VAL };
 
-// helper 
-inline bool isBlank(const std::string& s) {
-  return s.empty() || s == " " || s == "  ";
-}
+
 
 // helper -  verify the uniform was declared
-// inline bool hasUniform(const shaderUtility::ShaderTemplate& tmpl,
+// inline bool hasUniform(const shaderUtility::ShaderTemplate&  ,
 //                        const std::string& name) {
 //   return std::find(tmpl.globalUniforms.begin(),
 //                    tmpl.globalUniforms.end(), name) != tmpl.globalUniforms.end();
@@ -44,10 +41,10 @@ inline Emitted emitElementBehavior(const ShaderElement& element,
   const std::string sp  = glslFloat(element.speed);                 // SPEED multiplier as a GLSL literal
 
   // No behavior? No-op.
-  if (isBlank(element.elementBehavior)) return out;
+  if (shaderUtility::isBlank(element.elementBehavior)) return out;
 
   // Require a uniform for all current behaviors
-  if (isBlank(u)) {
+  if (shaderUtility::isBlank(u)) {
     std::cerr << "ERROR: Element " << elementIndex
               << " behaviorUniform is empty while elementBehavior is '"
               << element.elementBehavior << "'" << std::endl;
