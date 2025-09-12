@@ -22,8 +22,6 @@ float blob_1(vec2 p) {
   float r = 0.5 + 0.1*sin(u_time + p.x*10.0) * cos(p.y*10.0);
   return length(p) - r;
 }
-// texture: fbm tone-map (placeholder)
-float fbmTone_1(float x){ return 0.5 + 0.5*sin(6.28318*x + 2.0*x); }
 
 void main() {
     vec2 uv = vPos.xy;
@@ -45,10 +43,9 @@ col = mix(color0, color1, val_0);
 // Apply 4-way symmetry to UVs
 uv = abs(uv);
 vec2 uv_1 = uv;
-// behavior: scrollUV(u_time) * speed=0.500000
-uv_1 += vec2(0.1, 0.0) * (u_time * 0.500000);
 float val_1 = blob_1(uv_1);
-val_1 = fbmTone_1(val_1);
+// texture: abs
+val_1 = abs(val_1);
 // color usage: secondary
 col = mix(color1, color2, val_1);
     col = mix(col, vec3(0.9, 0.03, 0.07), 0.1);

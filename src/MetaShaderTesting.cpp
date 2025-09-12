@@ -114,7 +114,7 @@ element1.placementCoords  = {1.0, 0.0};
 element1.size             = 0.5f;
 element1.texture          = "fbm";        // was "perlin"
 element1.symmetry         = "horizontal"; // was "none"
-element1.layering         = "add";
+element1.layering         = "screen";
 element1.colorUsage       = "primary";
 element1.behaviorUniform  = "u_time";
 element1.elementBehavior  = "sineMod";
@@ -122,13 +122,13 @@ element1.speed            = 2.0;
 
 shaderLib::ShaderElement element2;
 element2.structure        = "blob";
-element2.texture          = "fbm";
+element2.texture          = "abs";
 element2.symmetry         = "both";
-element2.layering         = "screen";
+element2.layering         = "overlay";
 element2.colorUsage       = "secondary";  // "accent" will just fall back; switch if you want the defined path
 element2.behaviorUniform  = "u_time";
-element2.elementBehavior  = "scrollUV";
-element2.speed            = 0.5;
+//element2.elementBehavior  = "rotateUV ";
+//element2.speed            = 0.5;
 
    newTemplate.elements.push_back(element1);
   newTemplate.elements.push_back(element2);
