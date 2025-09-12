@@ -99,14 +99,14 @@ int main() {
   // code bits get retrieved from the shader string library. this would
   // typically happen in a usage file or command line
 
-  shaderLib::ShaderTemplate newTemplate;
-  newTemplate.hasBackground = true;
-  newTemplate.backgroundColor = "(0.9, 0.03, 0.07)";
-  newTemplate.colorPalette = 
+  shaderLib::ShaderTemplate Template1;
+  Template1.hasBackground = true;
+  Template1.backgroundColor = "(0.9, 0.03, 0.07)";
+  Template1.colorPalette = 
     {{0.8f, 0.9f, 1.0f},
     {0.2f, 0.6f, 0.9f},
     {0.9f, 0.03f, 0.07f}}; // can have any number of color vectors inside
-  newTemplate.globalUniforms = {"u_time"}; //can create any uniform 
+  Template1.globalUniforms = {"u_time"}; //can create any uniform 
 
   shaderLib::ShaderElement element1;
   element1.structure        = "phyllotaxis";
@@ -130,12 +130,72 @@ element2.behaviorUniform  = "u_time";
 // element2.elementBehavior  = "rotateUV ";
 // element2.speed            = 0.5;
 
-   newTemplate.elements.push_back(element1);
-  newTemplate.elements.push_back(element2);
+   Template1.elements.push_back(element1);
+  Template1.elements.push_back(element2);
+
+
+
+
+
+  // another version 
+
+  shaderLib::ShaderTemplate template2;
+template2.hasBackground  = true;
+template2.backgroundColor = "(0.02, 0.02, 0.04)";
+template2.colorPalette = {
+  {0.95f, 0.85f, 0.20f},  // warm gold
+  {0.10f, 0.55f, 0.95f},  // electric blue
+  {0.98f, 0.20f, 0.35f}   // crimson accent
+};
+template2.globalUniforms = {"u_time"}; // add more if needed
+
+// --- Element 1: Quasicrystal field (slow drift) ---
+shaderLib::ShaderElement e1;
+e1.structure        = "quasicrystal";
+e1.placementCoords  = {0.0, 0.0};
+e1.size             = 1.0f;
+e1.texture          = "fbm";
+e1.symmetry         = "radial";
+e1.layering         = "screen";     // luminous interference with background
+e1.colorUsage       = "primary";
+e1.behaviorUniform  = "u_time";
+e1.elementBehavior  = "scrolling";  // gentle global drift
+e1.speed            = 0.35f;
+
+// --- Element 2: Mandala (breathing centerpiece) ---
+shaderLib::ShaderElement e2;
+e2.structure        = "mandalaRadial";
+e2.placementCoords  = {0.0, 0.0};
+e2.size             = 0.72f;
+e2.texture          = "voronoi";
+e2.symmetry         = "radial";
+e2.layering         = "overlay";    // pop over the quasicrystal
+e2.colorUsage       = "secondary";
+e2.behaviorUniform  = "u_time";
+e2.elementBehavior  = "pulsing";    // radius/phase pulse
+e2.speed            = 1.10f;
+
+// --- Element 3: Branching noise (subtle rotating filigree) ---
+shaderLib::ShaderElement e3;
+e3.structure        = "branchNoise";
+e3.placementCoords  = {0.0, 0.0};   // center; reads well as a fine detail layer
+e3.size             = 0.95f;
+e3.texture          = "perlin";
+e3.symmetry         = "vertical";
+e3.layering         = "multiply";   // dark filigree that enriches contrast
+e3.colorUsage       = "default";    // grayscale from structure
+e3.behaviorUniform  = "u_time";
+e3.elementBehavior  = "rotation";   // slow rotation to create evolving moiré
+e3.speed            = 0.20f;
+
+// Push elements (order matters for layering)
+template2.elements.push_back(e1);
+template2.elements.push_back(e2);
+template2.elements.push_back(e3);
 
   // ^ CONCLUDES NEW TEMPLATE CREATION. //
-
-  std::string shaderCode = shaderLib::generateShaderCode(newTemplate);
+  std::string shaderCode = shaderLib::generateShaderCode(Template1);
+  //std::string shaderCode = shaderLib::generateShaderCode(template2);
   shaderLib::writeShaderFile("../shader-env/shaders/updatedTestShader.frag", shaderCode);
   MyApp app;
   app.start();
