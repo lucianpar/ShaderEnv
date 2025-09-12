@@ -12,8 +12,10 @@
 #include "../shaderLib/emiters/textures.hpp"
 #include "../shaderLib/emiters/symmetry.hpp"
 #include "../shaderLib/emiters/color.hpp"
+#include "../shaderLib/emiters/layering.hpp"
 #include "../shaderLib/emiters/behave.hpp"
 #include "../shaderLib/shaderLibUtility.hpp"
+//#include "shader-env/shaderLib/S.hpp"
 
 //
 
@@ -32,13 +34,15 @@ using shaderUtility::Emitted;
 // are appended to a vector of elements. this vector is looped through, adding
 // all the code to the final shader string //
 /////
-using structures::emitElementStructure;
-using structures::emitElementPlacement;
-using structures::emitElementSize;
-using color::emitElementColor;
-using symmetry::emitElementSymmetry;
-using textures::emitElementTexture;
-using behave::emitElementBehavior;
+
+// potenti
+// using structures::emitElementStructure;
+// using structures::emitElementPlacement;
+// using structures::emitElementSize;
+// using color::emitElementColor;
+// using symmetry::emitElementSymmetry;
+// using textures::emitElementTexture;
+// using behave::emitElementBehavior;
 
 
 // HEADER OF STANDARD MATH and begining of allolib compatible glsl files-
@@ -89,14 +93,15 @@ inline Emitted getFullElement(const ShaderElement &element, int elementIndex){
 
     //ORDER IS CRUCIAL HERE, does not matter when creating template instances
 
-    addToOutput(emitElementSymmetry(element, elementIndex));
-    addToOutput(emitElementPlacement( element, elementIndex));
-    addToOutput(emitElementSize( element, elementIndex));
-    addToOutput(emitElementBehavior(element, elementIndex, behave::BehaviorPhase::UV));
-    addToOutput(emitElementStructure(element, elementIndex));
-    addToOutput(emitElementBehavior(element, elementIndex, behave::BehaviorPhase::VAL));
-    addToOutput(emitElementTexture(element, elementIndex));
-    addToOutput(emitElementColor(element, elementIndex));
+    addToOutput(symmetry::emitElementSymmetry(element, elementIndex));
+    addToOutput(structures::emitElementPlacement( element, elementIndex));
+    addToOutput(structures::emitElementSize( element, elementIndex));
+    addToOutput(behave::emitElementBehavior(element, elementIndex, behave::BehaviorPhase::UV)); //phase 1 - before structure
+    addToOutput(structures::emitElementStructure(element, elementIndex));
+    addToOutput(behave::emitElementBehavior(element, elementIndex, behave::BehaviorPhase::VAL)); //phase 2 - after structure
+    addToOutput(textures::emitElementTexture(element, elementIndex));
+    addToOutput(color::emitElementColor(element, elementIndex));
+    addToOutput(layering::emitElementLayering(element, elementIndex));
 
     return output;
     
