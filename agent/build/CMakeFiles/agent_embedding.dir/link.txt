@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libagent_embedding.a CMakeFiles/agent_embedding.dir/AgentEmbedding.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libagent_embedding.a

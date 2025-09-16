@@ -1,0 +1,33 @@
+# --- build outputs (CMake / Ninja / Make) ---
+/build/
+/cmake-build-*/
+**/CMakeFiles/
+**/CMakeCache.txt
+**/cmake_install.cmake
+**/Makefile
+**/*.ninja
+**/rules.ninja
+**/*.vcxproj*
+**/*.sln
+
+# Object / libs / bins
+*.o
+*.obj
+*.a
+*.lib
+*.dll
+*.dylib
+*.so
+*.exe
+*.out
+*.log
+
+# macOS cruft
+.DS_Store
+
+# Project-specific
+/agent/build/              # out-of-tree build dir
+/agent/models/*            # large model files
+!/agent/models/.gitkeep
+!/agent/models/README.md
+*.gguf

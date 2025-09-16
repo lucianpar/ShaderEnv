@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libggml.a "CMakeFiles/ggml.dir/ggml-backend-reg.cpp.o"
-/Library/Developer/CommandLineTools/usr/bin/ranlib libggml.a
