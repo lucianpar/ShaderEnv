@@ -19,10 +19,13 @@ add_subdirectory(third_party/llama.cpp EXCLUDE_FROM_ALL)
 
 # Our library
 add_library(agent_embedding
-    AgentEmbedding.cpp
+agent/src/Agent.cpp
+agent/src/AgentEmbedding.cpp
 )
 target_include_directories(agent_embedding PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}
+  ${CMAKE_CURRENT_SOURCE_DIR}/agent/src
+  ${CMAKE_CURRENT_SOURCE_DIR}/agent/third_party/json
+  ${CMAKE_CURRENT_SOURCE_DIR}/agent/third_party/llama.cpp/include
 )
 target_link_libraries(agent_embedding PRIVATE llama)
 
