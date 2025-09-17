@@ -19,8 +19,10 @@
 #include <ostream>
 #include <string>
 
-#include "shader-env/shaderUtility/shaderToSphere.hpp"
+#include "../shaderUtility/shaderToSphere.hpp"
 #include "../shaderLib/shaderLibMaster.hpp"
+
+#include "../agent/src/agent.hpp"
 
 struct Common {};
 class MyApp : public al::DistributedAppWithState<Common> {
@@ -31,7 +33,7 @@ public:
 
   std::string vertPath;
   std::string fragPath;
-  al::Parameter globalTime{"globalTime", "", 0.0, 0.0, 300.0};
+  al::Parameter globalTime{"globalTime", "", 0.0, 0.0, 3000.0};
 
   al::ParameterBool running{"running", "0", true};
 
@@ -194,7 +196,7 @@ template2.elements.push_back(e2);
 template2.elements.push_back(e3);
 
   // ^ CONCLUDES NEW TEMPLATE CREATION. //
-  std::string shaderCode = shaderLib::generateShaderCode(Template1);
+  std::string shaderCode = shaderLib::generateShaderCode(template2);
   //std::string shaderCode = shaderLib::generateShaderCode(template2);
   shaderLib::writeShaderFile("../shader-env/shaders/updatedTestShader.frag", shaderCode);
   MyApp app;

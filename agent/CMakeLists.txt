@@ -26,8 +26,20 @@ target_include_directories(agent_embedding PUBLIC
   ${CMAKE_CURRENT_SOURCE_DIR}/agent/src
   ${CMAKE_CURRENT_SOURCE_DIR}/agent/third_party/json
   ${CMAKE_CURRENT_SOURCE_DIR}/agent/third_party/llama.cpp/include
+  ${CMAKE_SOURCE_DIR}/agent/third_party/llama.cpp/ggml/include
+
+)
+
+target_link_directories(agent_embedding PRIVATE
+  ${CMAKE_SOURCE_DIR}/agent/third_party/llama.cpp/build/bin
 )
 target_link_libraries(agent_embedding PRIVATE llama)
+set_target_properties(agent_embedding PROPERTIES
+  INSTALL_RPATH "@loader_path/../../third_party/llama.cpp/build/bin"
+)
+
+
+
 
 # Demo executable
 add_executable(encode_demo examples/encode_demo.cpp)
