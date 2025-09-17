@@ -5,10 +5,13 @@
 **/CMakeCache.txt
 **/cmake_install.cmake
 **/Makefile
-**/*.ninja
-**/rules.ninja
-**/*.vcxproj*
-**/*.sln
+*.ninja
+*.o
+*.a
+*.so
+*.dylib
+*.exe
+*.log
 
 # Object / libs / bins
 *.o
@@ -31,3 +34,13 @@
 !/agent/models/.gitkeep
 !/agent/models/README.md
 *.gguf
+
+# Models (large) – keep them local
+/agent/models/
+
+# Generated embeddings / outputs
+/data/*.jsonl
+/data/*.ndjson
+
+# Local env/config
+.env

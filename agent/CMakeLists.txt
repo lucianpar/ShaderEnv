@@ -30,6 +30,19 @@ target_link_libraries(agent_embedding PRIVATE llama)
 add_executable(encode_demo examples/encode_demo.cpp)
 target_link_libraries(encode_demo PRIVATE agent_embedding)
 
+find_package(CURL REQUIRED)
+
+add_executable(embed_file scripts/embed_file.cpp)
+target_link_libraries(embed_file PRIVATE CURL::libcurl)
+target_include_directories(embed_file PRIVATE ${CMAKE_CURRENT_LIST_DIR}/third_party)
+
+add_executable(search_embed scripts/search.cpp)
+target_link_libraries(search_embed PRIVATE CURL::libcurl)
+target_include_directories(search_embed PRIVATE ${CMAKE_CURRENT_LIST_DIR}/third_party)
+
+
+
+
 # (Optional) copy any local models into the build tree for convenience
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/models)
   add_custom_target(agent_assets ALL
