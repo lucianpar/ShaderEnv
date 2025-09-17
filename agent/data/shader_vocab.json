@@ -1,19 +1,26 @@
-{"category":"structure","name":"quasicrystal","pos":["quasicrystal","interference lattice","starburst diffraction"],"neg":["fluid smoke","blobby","organic flow"],"defaults":{"texture":"fbm","symmetry":"radial","layering":"screen","behavior":"scrolling","speed":0.35,"size":1.0,"placement":[0.0,0.0],"colorUsage":"primary"}}
-{"category":"structure","name":"mandalaRadial","pos":["mandala","radial rosette","intricate symmetric centerpiece"],"neg":["gritty","random splatter"],"defaults":{"texture":"voronoi","symmetry":"radial","layering":"overlay","behavior":"pulsing","speed":1.1,"size":0.72,"placement":[0.0,0.0],"colorUsage":"secondary"}}
-{"category":"structure","name":"branchNoise","pos":["branching filigree","fine crackle","thin tendrils"],"neg":["solid blocky shapes"],"defaults":{"texture":"perlin","symmetry":"vertical","layering":"multiply","behavior":"rotation","speed":0.2,"size":0.95,"placement":[0.0,0.0],"colorUsage":"default"}}
-{"category":"texture","name":"fbm","pos":["fbm","fractal brownian motion","layered noise"],"neg":["grid cells"]}
-{"category":"texture","name":"voronoi","pos":["voronoi","cellular","honeycomb facets"],"neg":["smooth sine"]}
-{"category":"texture","name":"perlin","pos":["perlin","soft organic noise"],"neg":["hard edges"]}
-{"category":"symmetry","name":"radial","pos":["radial symmetry","circular symmetry"],"neg":["asymmetric"]}
-{"category":"symmetry","name":"vertical","pos":["vertical symmetry","bilateral mirror"],"neg":["chaotic spin"]}
-{"category":"layering","name":"screen","pos":["luminous","bright overlay","additive feel"],"neg":["dark multiply"]}
-{"category":"layering","name":"overlay","pos":["pop over base","accent overlay"],"neg":["subtractive"]}
-{"category":"layering","name":"multiply","pos":["darken detail","ink filigree"],"neg":["bright wash"]}
-{"category":"behavior","name":"scrolling","pos":["scrolling","drifting","drift motion"],"neg":["static"]}
-{"category":"behavior","name":"pulsing","pos":["pulsing","breathing","throbbing"],"neg":["rigid"]}
-{"category":"behavior","name":"rotation","pos":["rotation","slow spin","turning"],"neg":["stillness"]}
-{"category":"palette","name":"warm_amber_honeycomb","pos":["honeycomb amber glaze","warm gold tones","ceramic glow"],"neg":["icy blue neon","cold steel"],"palette":[[0.95,0.85,0.20],[0.10,0.55,0.95],[0.98,0.20,0.35]],"backgroundColor":[0.02,0.02,0.04],"hasBackground":true}
-{"category":"palette","name":"electric_cool","pos":["electric blue","cool futuristic","neon cyan"],"neg":["earthy amber"],"palette":[[0.1,0.55,0.95],[0.6,0.9,1.0],[0.2,0.2,0.35]],"backgroundColor":[0.01,0.02,0.05],"hasBackground":true}
-
-
-
+[
+  {
+    "kind": "structure",
+    "name": "mandala",
+    "pos": ["luminous mandala"],
+    "neg": []
+  },
+  {
+    "kind": "texture",
+    "name": "quasicrystal",
+    "pos": ["drifting quasicrystal"],
+    "neg": []
+  },
+  {
+    "kind": "style",
+    "name": "filigree",
+    "pos": ["delicate filigree"],
+    "neg": []
+  },
+  {
+    "kind": "palette",
+    "name": "dark-bg",
+    "pos": ["dark background"],
+    "neg": ["bright white background"]
+  }
+]
