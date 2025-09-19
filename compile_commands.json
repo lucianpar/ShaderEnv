@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/lucian/Desktop/shader-env/allolib-kickstart/shader-env/allolib/modules/config/external/cpptoml/examples",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/include  -Wall -pedantic -std=c++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.5 -o CMakeFiles/parse.dir/parse.cpp.o -c /Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/parse.cpp",
+  "file": "/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/parse.cpp",
+  "output": "allolib/modules/config/external/cpptoml/examples/CMakeFiles/parse.dir/parse.cpp.o"
+},
+{
+  "directory": "/Users/lucian/Desktop/shader-env/allolib-kickstart/shader-env/allolib/modules/config/external/cpptoml/examples",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/include  -Wall -pedantic -std=c++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.5 -o CMakeFiles/cpptoml-parser.dir/parse_stdin.cpp.o -c /Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/parse_stdin.cpp",
+  "file": "/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/parse_stdin.cpp",
+  "output": "allolib/modules/config/external/cpptoml/examples/CMakeFiles/cpptoml-parser.dir/parse_stdin.cpp.o"
+},
+{
+  "directory": "/Users/lucian/Desktop/shader-env/allolib-kickstart/shader-env/allolib/modules/config/external/cpptoml/examples",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/include  -Wall -pedantic -std=c++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.5 -o CMakeFiles/cpptoml-build.dir/build_toml.cpp.o -c /Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/build_toml.cpp",
+  "file": "/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/build_toml.cpp",
+  "output": "allolib/modules/config/external/cpptoml/examples/CMakeFiles/cpptoml-build.dir/build_toml.cpp.o"
+},
+{
+  "directory": "/Users/lucian/Desktop/shader-env/allolib-kickstart/shader-env/allolib/modules/config/external/cpptoml/examples",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -I/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/include  -Wall -pedantic -std=c++11 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX15.0.sdk -mmacosx-version-min=14.5 -o CMakeFiles/cpptoml-conversions.dir/conversions.cpp.o -c /Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/conversions.cpp",
+  "file": "/Users/lucian/Desktop/shader-env/allolib-kickstart/allolib/modules/config/external/cpptoml/examples/conversions.cpp",
+  "output": "allolib/modules/config/external/cpptoml/examples/CMakeFiles/cpptoml-conversions.dir/conversions.cpp.o"
+}
+]
