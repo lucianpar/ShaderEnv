@@ -1,0 +1,4163 @@
+.
+|____CMakeLists.txt
+|____models
+| |____nomic-embed-text-v1.5.Q5_K_S.gguf
+| |____README.md
+|____probe_embed_vocab.sh
+|____third_party
+| |____llama.cpp
+| | |____convert_lora_to_gguf.py
+| | |____.flake8
+| | |____.ecrc
+| | |____flake.lock
+| | |____tools
+| | | |____quantize
+| | | | |____CMakeLists.txt
+| | | | |____tests.sh
+| | | | |____README.md
+| | | | |____quantize.cpp
+| | | |____CMakeLists.txt
+| | | |____batched-bench
+| | | | |____batched-bench.cpp
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | |____cvector-generator
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____pca.hpp
+| | | | |____mean.hpp
+| | | | |____positive.txt
+| | | | |____completions.txt
+| | | | |____cvector-generator.cpp
+| | | | |____negative.txt
+| | | |____mtmd
+| | | | |____mtmd.h
+| | | | |____mtmd-helper.cpp
+| | | | |____CMakeLists.txt
+| | | | |____mtmd-audio.h
+| | | | |____requirements.txt
+| | | | |____legacy-models
+| | | | | |____llava_surgery.py
+| | | | | |____glmedge-surgery.py
+| | | | | |____llava_surgery_v2.py
+| | | | | |____minicpmv-surgery.py
+| | | | | |____glmedge-convert-image-encoder-to-gguf.py
+| | | | | |____convert_image_encoder_to_gguf.py
+| | | | | |____minicpmv-convert-image-encoder-to-gguf.py
+| | | | |____test-2.mp3
+| | | | |____tests.sh
+| | | | |____mtmd.cpp
+| | | | |____README.md
+| | | | |____deprecation-warning.cpp
+| | | | |____clip.h
+| | | | |____clip.cpp
+| | | | |____test-1.jpeg
+| | | | |____mtmd-helper.h
+| | | | |____clip-impl.h
+| | | | |____mtmd-audio.cpp
+| | | | |____mtmd-cli.cpp
+| | | |____export-lora
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____export-lora.cpp
+| | | |____server
+| | | | |____chat.sh
+| | | | |____bench
+| | | | | |____requirements.txt
+| | | | | |____bench.py
+| | | | | |____README.md
+| | | | | |____script.js
+| | | | | |____prometheus.yml
+| | | | |____CMakeLists.txt
+| | | | |____tests
+| | | | | |____unit
+| | | | | | |____test_infill.py
+| | | | | | |____test_basic.py
+| | | | | | |____test_security.py
+| | | | | | |____test_ctx_shift.py
+| | | | | | |____test_speculative.py
+| | | | | | |____test_tool_call.py
+| | | | | | |____test_vision_api.py
+| | | | | | |____test_rerank.py
+| | | | | | |____test_embedding.py
+| | | | | | |____test_chat_completion.py
+| | | | | | |____test_tokenize.py
+| | | | | | |____test_slot_save.py
+| | | | | | |____test_completion.py
+| | | | | | |____test_template.py
+| | | | | | |____test_lora.py
+| | | | | |____conftest.py
+| | | | | |____pytest.ini
+| | | | | |____requirements.txt
+| | | | | |____tests.sh
+| | | | | |____README.md
+| | | | | |____.gitignore
+| | | | | |____utils.py
+| | | | |____chat-llama2.sh
+| | | | |____chat.mjs
+| | | | |____README.md
+| | | | |____public
+| | | | | |____loading.html
+| | | | | |____index.html.gz
+| | | | |____webui
+| | | | | |____tsconfig.node.json
+| | | | | |____index.html
+| | | | | |____tailwind.config.js
+| | | | | |____tsconfig.app.json
+| | | | | |____.prettierignore
+| | | | | |____public
+| | | | | | |____demo-conversation.json
+| | | | | |____.gitignore
+| | | | | |____package-lock.json
+| | | | | |____package.json
+| | | | | |____tsconfig.json
+| | | | | |____eslint.config.js
+| | | | | |____vite.config.ts
+| | | | | |____postcss.config.js
+| | | | | |____src
+| | | | | | |____App.tsx
+| | | | | | |____main.tsx
+| | | | | | |____index.scss
+| | | | | | |____utils
+| | | | | | | |____app.context.tsx
+| | | | | | | |____storage.ts
+| | | | | | | |____types.ts
+| | | | | | | |____llama-vscode.ts
+| | | | | | | |____common.tsx
+| | | | | | | |____misc.ts
+| | | | | | |____components
+| | | | | | | |____ChatInputExtraContextItem.tsx
+| | | | | | | |____useChatTextarea.ts
+| | | | | | | |____SettingDialog.tsx
+| | | | | | | |____CanvasPyInterpreter.tsx
+| | | | | | | |____ChatScreen.tsx
+| | | | | | | |____useChatScroll.tsx
+| | | | | | | |____ModalProvider.tsx
+| | | | | | | |____Header.tsx
+| | | | | | | |____Sidebar.tsx
+| | | | | | | |____MarkdownDisplay.tsx
+| | | | | | | |____ChatMessage.tsx
+| | | | | | | |____useChatExtraContext.tsx
+| | | | | | |____vite-env.d.ts
+| | | | | | |____Config.ts
+| | | | |____utils.hpp
+| | | | |____themes
+| | | | | |____buttons-top
+| | | | | | |____buttons_top.png
+| | | | | | |____favicon.ico
+| | | | | | |____index.html
+| | | | | | |____README.md
+| | | | | |____README.md
+| | | | | |____wild
+| | | | | | |____favicon.ico
+| | | | | | |____index.html
+| | | | | | |____README.md
+| | | | | | |____llama_cpp.png
+| | | | | | |____llamapattern.png
+| | | | | | |____wild.png
+| | | | |____public_legacy
+| | | | | |____system-prompts.js
+| | | | | |____colorthemes.css
+| | | | | |____favicon.ico
+| | | | | |____theme-polarnight.css
+| | | | | |____index.html
+| | | | | |____prompt-formats.js
+| | | | | |____index.js
+| | | | | |____completion.js
+| | | | | |____theme-snowstorm.css
+| | | | | |____theme-mangotango.css
+| | | | | |____theme-beeninorder.css
+| | | | | |____style.css
+| | | | | |____index-new.html
+| | | | | |____loading.html
+| | | | | |____theme-playground.css
+| | | | | |____json-schema-to-grammar.mjs
+| | | | | |____theme-ketivah.css
+| | | | |____public_simplechat
+| | | | | |____simplechat.js
+| | | | | |____index.html
+| | | | | |____datautils.mjs
+| | | | | |____ui.mjs
+| | | | | |____readme.md
+| | | | | |____simplechat.css
+| | | | | |____simplechat_screens.webp
+| | | | |____server.cpp
+| | | |____imatrix
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____imatrix.cpp
+| | | |____perplexity
+| | | | |____CMakeLists.txt
+| | | | |____perplexity.cpp
+| | | | |____README.md
+| | | |____gguf-split
+| | | | |____CMakeLists.txt
+| | | | |____tests.sh
+| | | | |____README.md
+| | | | |____gguf-split.cpp
+| | | |____llama-bench
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____llama-bench.cpp
+| | | |____tts
+| | | | |____CMakeLists.txt
+| | | | |____tts-outetts.py
+| | | | |____convert_pt_to_hf.py
+| | | | |____README.md
+| | | | |____tts.cpp
+| | | |____run
+| | | | |____CMakeLists.txt
+| | | | |____run.cpp
+| | | | |____README.md
+| | | | |____linenoise.cpp
+| | | | | |____linenoise.h
+| | | | | |____linenoise.cpp
+| | | |____rpc
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____rpc-server.cpp
+| | | |____main
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____main.cpp
+| | | |____tokenize
+| | | | |____CMakeLists.txt
+| | | | |____tokenize.cpp
+| | |____CMakeLists.txt
+| | |____.devops
+| | | |____vulkan.Dockerfile
+| | | |____llama-cpp-cuda.srpm.spec
+| | | |____intel.Dockerfile
+| | | |____nix
+| | | | |____jetson-support.nix
+| | | | |____scope.nix
+| | | | |____devshells.nix
+| | | | |____package-gguf-py.nix
+| | | | |____python-scripts.nix
+| | | | |____package.nix
+| | | | |____apps.nix
+| | | | |____docker.nix
+| | | | |____nixpkgs-instances.nix
+| | | | |____sif.nix
+| | | |____rocm.Dockerfile
+| | | |____cpu.Dockerfile
+| | | |____llama-cpp.srpm.spec
+| | | |____musa.Dockerfile
+| | | |____llama-cli-cann.Dockerfile
+| | | |____cuda.Dockerfile
+| | | |____tools.sh
+| | | |____cann.Dockerfile
+| | |____pyrightconfig.json
+| | |____LICENSE
+| | |____requirements.txt
+| | |____cmake
+| | | |____arm64-apple-clang.cmake
+| | | |____llama.pc.in
+| | | |____arm64-windows-llvm.cmake
+| | | |____x64-windows-llvm.cmake
+| | | |____build-info.cmake
+| | | |____git-vars.cmake
+| | | |____llama-config.cmake.in
+| | | |____common.cmake
+| | |____licenses
+| | | |____LICENSE-linenoise
+| | | |____LICENSE-httplib
+| | | |____LICENSE-curl
+| | | |____LICENSE-jsonhpp
+| | |____AUTHORS
+| | |____.pre-commit-config.yaml
+| | |____Makefile
+| | |____ci
+| | | |____run.sh
+| | | |____README.md
+| | |____include
+| | | |____llama-cpp.h
+| | | |____llama.h
+| | |____CODEOWNERS
+| | |____pyproject.toml
+| | |____.clang-tidy
+| | |____gguf-py
+| | | |____LICENSE
+| | | |____pyproject.toml
+| | | |____gguf
+| | | | |____gguf_writer.py
+| | | | |____gguf.py
+| | | | |____vocab.py
+| | | | |____metadata.py
+| | | | |____gguf_reader.py
+| | | | |____tensor_mapping.py
+| | | | |____utility.py
+| | | | |____constants.py
+| | | | |______init__.py
+| | | | |____scripts
+| | | | | |____gguf_convert_endian.py
+| | | | | |____gguf_new_metadata.py
+| | | | | |____gguf_editor_gui.py
+| | | | | |____gguf_dump.py
+| | | | | |____gguf_hash.py
+| | | | | |____gguf_set_metadata.py
+| | | | |____py.typed
+| | | | |____lazy.py
+| | | | |____quants.py
+| | | |____tests
+| | | | |____test_metadata.py
+| | | | |______init__.py
+| | | | |____test_quants.py
+| | | |____README.md
+| | | |____examples
+| | | | |____reader.py
+| | | | |____writer.py
+| | |____tests
+| | | |____test-arg-parser.cpp
+| | | |____test-c.c
+| | | |____test-tokenizer-0.sh
+| | | |____test-llama-grammar.cpp
+| | | |____test-grammar-llguidance.cpp
+| | | |____test-rope.cpp
+| | | |____test-chat.cpp
+| | | |____CMakeLists.txt
+| | | |____test-model-load-cancel.cpp
+| | | |____test-json-partial.cpp
+| | | |____test-tokenizer-1-bpe.cpp
+| | | |____test-autorelease.cpp
+| | | |____test-tokenizer-1-spm.cpp
+| | | |____test-grammar-integration.cpp
+| | | |____test-quantize-stats.cpp
+| | | |____test-grammar-parser.cpp
+| | | |____test-json-schema-to-grammar.cpp
+| | | |____test-quantize-fns.cpp
+| | | |____test-log.cpp
+| | | |____test-thread-safety.cpp
+| | | |____test-tokenizer-0.cpp
+| | | |____get-model.h
+| | | |____get-model.cpp
+| | | |____test-opt.cpp
+| | | |____test-barrier.cpp
+| | | |____test-tokenizer-0.py
+| | | |____test-double-float.cpp
+| | | |____run-json-schema-to-grammar.mjs
+| | | |____test-tokenizer-random.py
+| | | |____test-sampling.cpp
+| | | |____test-quantize-perf.cpp
+| | | |____.gitignore
+| | | |____test-regex-partial.cpp
+| | | |____test-tokenizers-repo.sh
+| | | |____test-lora-conversion-inference.sh
+| | | |____test-mtmd-c-api.c
+| | | |____test-chat-parser.cpp
+| | | |____test-gbnf-validator.cpp
+| | | |____test-chat-template.cpp
+| | | |____test-gguf.cpp
+| | | |____test-backend-ops.cpp
+| | |____models
+| | | |____ggml-vocab-mpt.gguf
+| | | |____ggml-vocab-gpt-2.gguf.out
+| | | |____ggml-vocab-refact.gguf
+| | | |____ggml-vocab-deepseek-coder.gguf.out
+| | | |____ggml-vocab-falcon.gguf.out
+| | | |____ggml-vocab-deepseek-llm.gguf.inp
+| | | |____ggml-vocab-deepseek-coder.gguf
+| | | |____ggml-vocab-deepseek-llm.gguf.out
+| | | |____ggml-vocab-falcon.gguf.inp
+| | | |____ggml-vocab-deepseek-coder.gguf.inp
+| | | |____ggml-vocab-deepseek-llm.gguf
+| | | |____ggml-vocab-gpt-2.gguf.inp
+| | | |____ggml-vocab-command-r.gguf
+| | | |____ggml-vocab-llama-spm.gguf
+| | | |____ggml-vocab-qwen2.gguf.inp
+| | | |____ggml-vocab-llama-bpe.gguf
+| | | |____ggml-vocab-baichuan.gguf
+| | | |____ggml-vocab-llama-spm.gguf.inp
+| | | |____ggml-vocab-aquila.gguf
+| | | |____ggml-vocab-qwen2.gguf
+| | | |____ggml-vocab-llama-spm.gguf.out
+| | | |____ggml-vocab-phi-3.gguf
+| | | |____ggml-vocab-bert-bge.gguf
+| | | |____.editorconfig
+| | | |____ggml-vocab-qwen2.gguf.out
+| | | |____ggml-vocab-refact.gguf.inp
+| | | |____ggml-vocab-starcoder.gguf
+| | | |____ggml-vocab-starcoder.gguf.inp
+| | | |____ggml-vocab-bert-bge.gguf.inp
+| | | |____ggml-vocab-phi-3.gguf.out
+| | | |____ggml-vocab-llama-bpe.gguf.out
+| | | |____ggml-vocab-llama-bpe.gguf.inp
+| | | |____ggml-vocab-phi-3.gguf.inp
+| | | |____ggml-vocab-bert-bge.gguf.out
+| | | |____ggml-vocab-starcoder.gguf.out
+| | | |____ggml-vocab-refact.gguf.out
+| | | |____templates
+| | | | |____meta-llama-Llama-3.1-8B-Instruct.jinja
+| | | | |____ByteDance-Seed-OSS.jinja
+| | | | |____llama-cpp-deepseek-r1.jinja
+| | | | |____google-gemma-2-2b-it.jinja
+| | | | |____mistralai-Mistral-Nemo-Instruct-2407.jinja
+| | | | |____Mistral-Small-3.2-24B-Instruct-2506.jinja
+| | | | |____NousResearch-Hermes-3-Llama-3.1-8B-tool_use.jinja
+| | | | |____CohereForAI-c4ai-command-r-plus-tool_use.jinja
+| | | | |____meta-llama-Llama-3.3-70B-Instruct.jinja
+| | | | |____Qwen-Qwen3-0.6B.jinja
+| | | | |____CohereForAI-c4ai-command-r7b-12-2024-tool_use.jinja
+| | | | |____fireworks-ai-llama-3-firefunction-v2.jinja
+| | | | |____README.md
+| | | | |____Qwen-Qwen2.5-7B-Instruct.jinja
+| | | | |____moonshotai-Kimi-K2.jinja
+| | | | |____Qwen-QwQ-32B.jinja
+| | | | |____NousResearch-Hermes-2-Pro-Llama-3-8B-tool_use.jinja
+| | | | |____deepseek-ai-DeepSeek-R1-Distill-Qwen-32B.jinja
+| | | | |____llama-cpp-rwkv-world.jinja
+| | | | |____meetkai-functionary-medium-v3.2.jinja
+| | | | |____microsoft-Phi-3.5-mini-instruct.jinja
+| | | | |____unsloth-mistral-Devstral-Small-2507.jinja
+| | | | |____openai-gpt-oss-120b.jinja
+| | | | |____deepseek-ai-DeepSeek-R1-Distill-Llama-8B.jinja
+| | | | |____NVIDIA-Nemotron-Nano-v2.jinja
+| | | | |____ibm-granite-granite-3.3-2B-Instruct.jinja
+| | | | |____meetkai-functionary-medium-v3.1.jinja
+| | | | |____meta-llama-Llama-3.2-3B-Instruct.jinja
+| | | | |____deepseek-ai-DeepSeek-V3.1.jinja
+| | | |____ggml-vocab-mpt.gguf.out
+| | | |____ggml-vocab-command-r.gguf.out
+| | | |____ggml-vocab-nomic-bert-moe.gguf
+| | | |____ggml-vocab-falcon.gguf
+| | | |____ggml-vocab-gpt-2.gguf
+| | | |____ggml-vocab-command-r.gguf.inp
+| | | |____ggml-vocab-mpt.gguf.inp
+| | | |____ggml-vocab-gpt-neox.gguf
+| | |____requirements
+| | | |____requirements-convert_hf_to_gguf.txt
+| | | |____requirements-compare-llama-bench.txt
+| | | |____requirements-server-bench.txt
+| | | |____requirements-gguf_editor_gui.txt
+| | | |____requirements-convert_hf_to_gguf_update.txt
+| | | |____requirements-convert_legacy_llama.txt
+| | | |____requirements-convert_lora_to_gguf.txt
+| | | |____requirements-test-tokenizer-random.txt
+| | | |____requirements-tool_bench.txt
+| | | |____requirements-all.txt
+| | | |____requirements-convert_llama_ggml_to_gguf.txt
+| | | |____requirements-pydantic.txt
+| | |____docs
+| | | |____function-calling.md
+| | | |____ops.md
+| | | |____android.md
+| | | |____development
+| | | | |____llama-star
+| | | | | |____idea-arch.key
+| | | | | |____idea-arch.pdf
+| | | | |____debugging-tests.md
+| | | | |____token_generation_performance_tips.md
+| | | | |____HOWTO-add-model.md
+| | | |____build-s390x.md
+| | | |____install.md
+| | | |____backend
+| | | | |____OPENCL.md
+| | | | |____SYCL.md
+| | | | |____CUDA-FEDORA.md
+| | | | |____CANN.md
+| | | | |____BLIS.md
+| | | |____multimodal
+| | | | |____gemma3.md
+| | | | |____minicpmo2.6.md
+| | | | |____minicpmv2.6.md
+| | | | |____granitevision.md
+| | | | |____minicpmv4.0.md
+| | | | |____minicpmo4.0.md
+| | | | |____glmedge.md
+| | | | |____minicpmv4.5.md
+| | | | |____llava.md
+| | | | |____minicpmv2.5.md
+| | | | |____MobileVLM.md
+| | | |____build.md
+| | | |____ops
+| | | | |____OpenCL.csv
+| | | | |____zDNN.csv
+| | | | |____CUDA.csv
+| | | | |____SYCL.csv
+| | | | |____BLAS.csv
+| | | | |____CANN.csv
+| | | | |____CPU.csv
+| | | | |____Vulkan.csv
+| | | | |____Metal.csv
+| | | |____docker.md
+| | | |____llguidance.md
+| | | |____multimodal.md
+| | |____.gitmodules
+| | |____.editorconfig
+| | |____README.md
+| | |____CMakePresets.json
+| | |____grammars
+| | | |____chess.gbnf
+| | | |____english.gbnf
+| | | |____japanese.gbnf
+| | | |____README.md
+| | | |____list.gbnf
+| | | |____json.gbnf
+| | | |____json_arr.gbnf
+| | | |____arithmetic.gbnf
+| | | |____c.gbnf
+| | |____mypy.ini
+| | |____common
+| | | |____json-partial.h
+| | | |____build-info.cpp.in
+| | | |____console.h
+| | | |____common.cpp
+| | | |____log.cpp
+| | | |____CMakeLists.txt
+| | | |____ngram-cache.h
+| | | |____chat.h
+| | | |____arg.cpp
+| | | |____chat.cpp
+| | | |____console.cpp
+| | | |____regex-partial.h
+| | | |____arg.h
+| | | |____speculative.h
+| | | |____json-partial.cpp
+| | | |____speculative.cpp
+| | | |____regex-partial.cpp
+| | | |____chat-parser.h
+| | | |____common.h
+| | | |____json-schema-to-grammar.h
+| | | |____log.h
+| | | |____llguidance.cpp
+| | | |____json-schema-to-grammar.cpp
+| | | |____sampling.h
+| | | |____ngram-cache.cpp
+| | | |____sampling.cpp
+| | | |____chat-parser.cpp
+| | | |____base64.hpp
+| | |____.dockerignore
+| | |____.gitignore
+| | |____flake.nix
+| | |____CONTRIBUTING.md
+| | |____examples
+| | | |____json_schema_to_grammar.py
+| | | |____chat.sh
+| | | |____convert-llama2c-to-ggml
+| | | | |____CMakeLists.txt
+| | | | |____convert-llama2c-to-ggml.cpp
+| | | | |____README.md
+| | | |____gguf-hash
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____deps
+| | | | | |____rotate-bits
+| | | | | | |____rotate-bits.h
+| | | | | | |____package.json
+| | | | | |____sha256
+| | | | | | |____sha256.h
+| | | | | | |____package.json
+| | | | | | |____sha256.c
+| | | | | |____sha1
+| | | | | | |____sha1.c
+| | | | | | |____package.json
+| | | | | | |____sha1.h
+| | | | | |____xxhash
+| | | | | | |____xxhash.h
+| | | | | | |____clib.json
+| | | | | | |____xxhash.c
+| | | | |____gguf-hash.cpp
+| | | |____gen-docs
+| | | | |____CMakeLists.txt
+| | | | |____gen-docs.cpp
+| | | |____eval-callback
+| | | | |____eval-callback.cpp
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | |____parallel
+| | | | |____CMakeLists.txt
+| | | | |____parallel.cpp
+| | | | |____README.md
+| | | |____chat-persistent.sh
+| | | |____CMakeLists.txt
+| | | |____lookahead
+| | | | |____CMakeLists.txt
+| | | | |____lookahead.cpp
+| | | | |____README.md
+| | | |____pydantic_models_to_grammar_examples.py
+| | | |____json_schema_pydantic_example.py
+| | | |____ts-type-to-grammar.sh
+| | | |____server_embd.py
+| | | |____passkey
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____passkey.cpp
+| | | |____Miku.sh
+| | | |____model-conversion
+| | | | |____CMakeLists.txt
+| | | | |____requirements.txt
+| | | | |____Makefile
+| | | | |____README.md
+| | | | |____.gitignore
+| | | | |____scripts
+| | | | | |____causal
+| | | | | | |____compare-logits.py
+| | | | | | |____run-converted-model.sh
+| | | | | | |____run-org-model.py
+| | | | | | |____run-converted-model-embeddings-logits.sh
+| | | | | | |____run-casual-gen-embeddings-org.py
+| | | | | | |____modelcard.template
+| | | | | | |____compare-embeddings-logits.sh
+| | | | | | |____convert-model.sh
+| | | | | |____embedding
+| | | | | | |____run-converted-model.sh
+| | | | | | |____modelcard.template
+| | | | | | |____run-original-model.py
+| | | | | | |____compare-embeddings-logits.sh
+| | | | | | |____convert-model.sh
+| | | | | |____utils
+| | | | | | |____perplexity-gen.sh
+| | | | | | |____perplexity-run-simple.sh
+| | | | | | |____perplexity-run.sh
+| | | | | | |____check-nmse.py
+| | | | | | |____run-embedding-server.sh
+| | | | | | |____hf-add-model-to-collection.py
+| | | | | | |____hf-create-model.py
+| | | | | | |____create-collection-add-model.sh
+| | | | | | |____inspect-org-model.py
+| | | | | | |____quantize.sh
+| | | | | | |____hf-create-collection.py
+| | | | | | |____curl-embedding-server.sh
+| | | | | | |____inspect-converted-model.sh
+| | | | | | |____hf-upload-gguf-model.py
+| | | | | | |____semantic_check.py
+| | | | |____logits.cpp
+| | | |____simple-cmake-pkg
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____.gitignore
+| | | |____batched
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____batched.cpp
+| | | |____jeopardy
+| | | | |____questions.txt
+| | | | |____qasheet.csv
+| | | | |____graph.py
+| | | | |____README.md
+| | | | |____jeopardy.sh
+| | | |____training
+| | | | |____finetune.cpp
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | |____embedding
+| | | | |____embedding.cpp
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | |____gguf
+| | | | |____CMakeLists.txt
+| | | | |____gguf.cpp
+| | | |____lookup
+| | | | |____lookup-create.cpp
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____lookup-stats.cpp
+| | | | |____lookup-merge.cpp
+| | | | |____lookup.cpp
+| | | |____convert_legacy_llama.py
+| | | |____diffusion
+| | | | |____CMakeLists.txt
+| | | | |____diffusion-cli.cpp
+| | | | |____README.md
+| | | |____batched.swift
+| | | | |____Makefile
+| | | | |____README.md
+| | | | |____.gitignore
+| | | | |____Package.swift
+| | | | |____Sources
+| | | | | |____main.swift
+| | | |____save-load-state
+| | | | |____save-load-state.cpp
+| | | | |____CMakeLists.txt
+| | | |____simple
+| | | | |____CMakeLists.txt
+| | | | |____simple.cpp
+| | | | |____README.md
+| | | |____llama.swiftui
+| | | | |____llama.cpp.swift
+| | | | | |____LibLlama.swift
+| | | | |____README.md
+| | | | |____llama.swiftui
+| | | | | |____UI
+| | | | | | |____DownloadButton.swift
+| | | | | | |____InputButton.swift
+| | | | | | |____LoadCustomButton.swift
+| | | | | | |____ContentView.swift
+| | | | | |____Resources
+| | | | | | |____models
+| | | | | | | |____.gitignore
+| | | | | |____Assets.xcassets
+| | | | | | |____AppIcon.appiconset
+| | | | | | | |____Contents.json
+| | | | | | |____Contents.json
+| | | | | |____Models
+| | | | | | |____LlamaState.swift
+| | | | | |____llama_swiftuiApp.swift
+| | | | |____.gitignore
+| | | | |____llama.swiftui.xcodeproj
+| | | | | |____project.pbxproj
+| | | | | |____project.xcworkspace
+| | | | | | |____contents.xcworkspacedata
+| | | | | | |____xcshareddata
+| | | | | | | |____IDEWorkspaceChecks.plist
+| | | |____llama.vim
+| | | |____chat-13B.sh
+| | | |____retrieval
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | | |____retrieval.cpp
+| | | |____llm.vim
+| | | |____gritlm
+| | | | |____CMakeLists.txt
+| | | | |____gritlm.cpp
+| | | | |____README.md
+| | | |____sycl
+| | | | |____win-run-llama3.bat
+| | | | |____win-run-llama2.bat
+| | | | |____CMakeLists.txt
+| | | | |____ls-sycl-device.cpp
+| | | | |____README.md
+| | | | |____win-build-sycl.bat
+| | | | |____build.sh
+| | | | |____run-llama3.sh
+| | | | |____run-llama2.sh
+| | | |____pydantic_models_to_grammar.py
+| | | |____regex_to_grammar.py
+| | | |____simple-chat
+| | | | |____simple-chat.cpp
+| | | | |____CMakeLists.txt
+| | | | |____README.md
+| | | |____chat-13B.bat
+| | | |____llama.android
+| | | | |____app
+| | | | | |____proguard-rules.pro
+| | | | | |____.gitignore
+| | | | | |____build.gradle.kts
+| | | | | |____src
+| | | | | | |____main
+| | | | | | | |____res
+| | | | | | | | |____mipmap-mdpi
+| | | | | | | | | |____ic_launcher.webp
+| | | | | | | | | |____ic_launcher_round.webp
+| | | | | | | | |____mipmap-hdpi
+| | | | | | | | | |____ic_launcher.webp
+| | | | | | | | | |____ic_launcher_round.webp
+| | | | | | | | |____drawable
+| | | | | | | | | |____ic_launcher_foreground.xml
+| | | | | | | | | |____ic_launcher_background.xml
+| | | | | | | | |____mipmap-xxxhdpi
+| | | | | | | | | |____ic_launcher.webp
+| | | | | | | | | |____ic_launcher_round.webp
+| | | | | | | | |____mipmap-xxhdpi
+| | | | | | | | | |____ic_launcher.webp
+| | | | | | | | | |____ic_launcher_round.webp
+| | | | | | | | |____values
+| | | | | | | | | |____colors.xml
+| | | | | | | | | |____themes.xml
+| | | | | | | | | |____strings.xml
+| | | | | | | | |____xml
+| | | | | | | | | |____backup_rules.xml
+| | | | | | | | | |____data_extraction_rules.xml
+| | | | | | | | |____mipmap-xhdpi
+| | | | | | | | | |____ic_launcher.webp
+| | | | | | | | | |____ic_launcher_round.webp
+| | | | | | | | |____mipmap-anydpi
+| | | | | | | | | |____ic_launcher.xml
+| | | | | | | | | |____ic_launcher_round.xml
+| | | | | | | |____AndroidManifest.xml
+| | | | | | | |____java
+| | | | | | | | |____com
+| | | | | | | | | |____example
+| | | | | | | | | | |____llama
+| | | | | | | | | | | |____MainViewModel.kt
+| | | | | | | | | | | |____ui
+| | | | | | | | | | | | |____theme
+| | | | | | | | | | | | | |____Color.kt
+| | | | | | | | | | | | | |____Theme.kt
+| | | | | | | | | | | | | |____Type.kt
+| | | | | | | | | | | |____MainActivity.kt
+| | | | | | | | | | | |____Downloadable.kt
+| | | | |____README.md
+| | | | |____gradle
+| | | | | |____wrapper
+| | | | | | |____gradle-wrapper.jar
+| | | | | | |____gradle-wrapper.properties
+| | | | |____gradlew
+| | | | |____.gitignore
+| | | | |____build.gradle.kts
+| | | | |____settings.gradle.kts
+| | | | |____gradle.properties
+| | | | |____llama
+| | | | | |____consumer-rules.pro
+| | | | | |____proguard-rules.pro
+| | | | | |____.gitignore
+| | | | | |____build.gradle.kts
+| | | | | |____src
+| | | | | | |____androidTest
+| | | | | | | |____java
+| | | | | | | | |____android
+| | | | | | | | | |____llama
+| | | | | | | | | | |____cpp
+| | | | | | | | | | | |____ExampleInstrumentedTest.kt
+| | | | | | |____test
+| | | | | | | |____java
+| | | | | | | | |____android
+| | | | | | | | | |____llama
+| | | | | | | | | | |____cpp
+| | | | | | | | | | | |____ExampleUnitTest.kt
+| | | | | | |____main
+| | | | | | | |____AndroidManifest.xml
+| | | | | | | |____java
+| | | | | | | | |____android
+| | | | | | | | | |____llama
+| | | | | | | | | | |____cpp
+| | | | | | | | | | | |____LLamaAndroid.kt
+| | | | | | | |____cpp
+| | | | | | | | |____CMakeLists.txt
+| | | | | | | | |____llama-android.cpp
+| | | |____server-llama2-13B.sh
+| | | |____speculative
+| | | | |____CMakeLists.txt
+| | | | |____speculative.cpp
+| | | | |____README.md
+| | | |____reason-act.sh
+| | | |____speculative-simple
+| | | | |____CMakeLists.txt
+| | | | |____speculative-simple.cpp
+| | | | |____README.md
+| | | |____deprecation-warning
+| | | | |____README.md
+| | | | |____deprecation-warning.cpp
+| | | |____chat-vicuna.sh
+| | |____scripts
+| | | |____apple
+| | | | |____validate-macos.sh
+| | | | |____validate-visionos.sh
+| | | | |____validate-apps.sh
+| | | | |____validate-ios.sh
+| | | | |____validate-tvos.sh
+| | | |____fetch_server_test_models.py
+| | | |____build-info.sh
+| | | |____tool_bench.sh
+| | | |____server-bench.py
+| | | |____gen-authors.sh
+| | | |____sync-ggml-am.sh
+| | | |____get-hellaswag.sh
+| | | |____get-wikitext-103.sh
+| | | |____check-requirements.sh
+| | | |____debug-test.sh
+| | | |____install-oneapi.bat
+| | | |____gen-unicode-data.py
+| | | |____run-all-ppl.sh
+| | | |____get-pg.sh
+| | | |____jinja
+| | | | |____jinja-tester.py
+| | | | |____requirements.txt
+| | | |____get-flags.mk
+| | | |____get-wikitext-2.sh
+| | | |____sync-ggml.sh
+| | | |____hf.sh
+| | | |____xxd.cmake
+| | | |____tool_bench.py
+| | | |____get_chat_template.py
+| | | |____sync_vendor.py
+| | | |____sync-ggml.last
+| | | |____compare-llama-bench.py
+| | | |____verify-checksum-models.py
+| | | |____ci-run.sh
+| | | |____compare-commits.sh
+| | | |____get-winogrande.sh
+| | | |____qnt-all.sh
+| | | |____create_ops_docs.py
+| | | |____run-all-perf.sh
+| | |____.clang-format
+| | |____build-xcframework.sh
+| | |____.github
+| | | |____labeler.yml
+| | | |____workflows
+| | | | |____gguf-publish.yml
+| | | | |____editorconfig.yml
+| | | | |____release.yml
+| | | | |____build-linux-cross.yml
+| | | | |____python-check-requirements.yml
+| | | | |____labeler.yml
+| | | | |____winget.yml
+| | | | |____pre-tokenizer-hashes.yml
+| | | | |____close-issue.yml
+| | | | |____update-ops-docs.yml
+| | | | |____bench.yml.disabled
+| | | | |____build-riscv-native.yml
+| | | | |____copilot-setup-steps.yml
+| | | | |____build-cmake-pkg.yml
+| | | | |____docker.yml
+| | | | |____server.yml
+| | | | |____python-type-check.yml
+| | | | |____build.yml
+| | | | |____python-lint.yml
+| | | |____pull_request_template.md
+| | | |____copilot-instructions.md
+| | | |____actions
+| | | | |____windows-setup-curl
+| | | | | |____action.yml
+| | | | |____get-tag-name
+| | | | | |____action.yml
+| | | | |____windows-setup-cuda
+| | | | | |____action.yml
+| | | |____ISSUE_TEMPLATE
+| | | | |____011-bug-results.yml
+| | | | |____010-bug-compilation.yml
+| | | | |____020-enhancement.yml
+| | | | |____030-research.yml
+| | | | |____040-refactor.yml
+| | | | |____019-bug-misc.yml
+| | | | |____config.yml
+| | |____prompts
+| | | |____mnemonics.txt
+| | | |____reason-act.txt
+| | | |____assistant.txt
+| | | |____chat-with-bob.txt
+| | | |____dan-modified.txt
+| | | |____dan.txt
+| | | |____LLM-questions.txt
+| | | |____parallel-questions.txt
+| | | |____alpaca.txt
+| | | |____chat.txt
+| | | |____chat-with-qwen.txt
+| | | |____chat-with-baichuan.txt
+| | | |____chat-with-vicuna-v1.txt
+| | | |____chat-with-vicuna-v0.txt
+| | |____convert_hf_to_gguf.py
+| | |____convert_llama_ggml_to_gguf.py
+| | |____build
+| | | |____tools
+| | | | |____quantize
+| | | | | |____CMakeFiles
+| | | | | | |____llama-quantize.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____quantize.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____quantize.cpp.o
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____batched-bench
+| | | | | |____CMakeFiles
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-batched-bench.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____batched-bench.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____batched-bench.cpp.o
+| | | | | | | |____flags.make
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____CMakeFiles
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cvector-generator
+| | | | | |____CMakeFiles
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-cvector-generator.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____cvector-generator.cpp.o.d
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cvector-generator.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____mtmd
+| | | | | |____CMakeFiles
+| | | | | | |____llama-minicpmv-cli.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____deprecation-warning.cpp.o.d
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____deprecation-warning.cpp.o
+| | | | | | | |____flags.make
+| | | | | | |____llama-qwen2vl-cli.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____deprecation-warning.cpp.o.d
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____deprecation-warning.cpp.o
+| | | | | | | |____flags.make
+| | | | | | |____mtmd.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____clip.cpp.o.d
+| | | | | | | |____mtmd.cpp.o.d
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____mtmd-audio.cpp.o
+| | | | | | | |____mtmd-audio.cpp.o.d
+| | | | | | | |____mtmd-helper.cpp.o
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____clip.cpp.o
+| | | | | | | |____link.txt
+| | | | | | | |____mtmd-helper.cpp.o.d
+| | | | | | | |____progress.make
+| | | | | | | |____mtmd.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____llama-llava-cli.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____deprecation-warning.cpp.o.d
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____deprecation-warning.cpp.o
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-gemma3-cli.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____deprecation-warning.cpp.o.d
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____deprecation-warning.cpp.o
+| | | | | | | |____flags.make
+| | | | | | |____llama-mtmd-cli.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____mtmd-cli.cpp.o
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____mtmd-cli.cpp.o.d
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____libmtmd.a
+| | | | | |____CTestTestfile.cmake
+| | | | |____cmake_install.cmake
+| | | | |____export-lora
+| | | | | |____CMakeFiles
+| | | | | | |____llama-export-lora.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____export-lora.cpp.o
+| | | | | | | |____export-lora.cpp.o.d
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____CTestTestfile.cmake
+| | | | |____server
+| | | | | |____CMakeFiles
+| | | | | | |____llama-server.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____server.cpp.o.d
+| | | | | | | |____server.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____loading.html.hpp
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | | |____index.html.gz.hpp
+| | | | |____imatrix
+| | | | | |____CMakeFiles
+| | | | | | |____llama-imatrix.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____imatrix.cpp.o.d
+| | | | | | | |____imatrix.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____perplexity
+| | | | | |____CMakeFiles
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-perplexity.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____perplexity.cpp.o.d
+| | | | | | | |____perplexity.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____gguf-split
+| | | | | |____CMakeFiles
+| | | | | | |____llama-gguf-split.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____gguf-split.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____gguf-split.cpp.o.d
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____llama-bench
+| | | | | |____CMakeFiles
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-bench.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____llama-bench.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____llama-bench.cpp.o
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____tts
+| | | | | |____CMakeFiles
+| | | | | | |____llama-tts.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____tts.cpp.o
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____tts.cpp.o.d
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____run
+| | | | | |____CMakeFiles
+| | | | | | |____llama-run.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____run.cpp.o
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____run.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____linenoise.cpp
+| | | | | | | | |____linenoise.cpp.o
+| | | | | | | | |____linenoise.cpp.o.d
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____main
+| | | | | |____CMakeFiles
+| | | | | | |____llama-cli.dir
+| | | | | | | |____main.cpp.o
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____main.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____tokenize
+| | | | | |____CMakeFiles
+| | | | | | |____llama-tokenize.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____tokenize.cpp.o.d
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____tokenize.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | |____compile_commands.json
+| | | |____bin
+| | | | |____test-tokenizer-1-spm
+| | | | |____llama-gritlm
+| | | | |____llama-tokenize
+| | | | |____llama-cli
+| | | | |____llama-batched-bench
+| | | | |____llama-save-load-state
+| | | | |____llama-minicpmv-cli
+| | | | |____llama-convert-llama2c-to-ggml
+| | | | |____llama-lookup-merge
+| | | | |____llama-gguf-hash
+| | | | |____llama-eval-callback
+| | | | |____test-grammar-integration
+| | | | |____llama-lookahead
+| | | | |____test-llama-grammar
+| | | | |____llama-simple-chat
+| | | | |____llama-embedding
+| | | | |____test-regex-partial
+| | | | |____test-chat-parser
+| | | | |____llama-q8dot
+| | | | |____llama-speculative
+| | | | |____test-backend-ops
+| | | | |____llama-gguf-split
+| | | | |____llama-perplexity
+| | | | |____llama-imatrix
+| | | | |____test-model-load-cancel
+| | | | |____test-gbnf-validator
+| | | | |____ggml-metal.metal
+| | | | |____test-chat-template
+| | | | |____llama-qwen2vl-cli
+| | | | |____test-tokenizer-1-bpe
+| | | | |____llama-gemma3-cli
+| | | | |____test-quantize-perf
+| | | | |____test-arg-parser
+| | | | |____test-quantize-stats
+| | | | |____test-sampling
+| | | | |____ggml-common.h
+| | | | |____llama-retrieval
+| | | | |____test-rope
+| | | | |____test-autorelease
+| | | | |____test-thread-safety
+| | | | |____llama-batched
+| | | | |____llama-finetune
+| | | | |____llama-mtmd-cli
+| | | | |____llama-cvector-generator
+| | | | |____llama-gguf
+| | | | |____test-quantize-fns
+| | | | |____llama-run
+| | | | |____llama-vdot
+| | | | |____llama-bench
+| | | | |____test-opt
+| | | | |____test-log
+| | | | |____llama-speculative-simple
+| | | | |____llama-logits
+| | | | |____test-gguf
+| | | | |____llama-diffusion-cli
+| | | | |____test-json-schema-to-grammar
+| | | | |____test-grammar-parser
+| | | | |____llama-lookup-create
+| | | | |____test-tokenizer-0
+| | | | |____llama-server
+| | | | |____llama-lookup
+| | | | |____llama-llava-cli
+| | | | |____test-barrier
+| | | | |____test-c
+| | | | |____test-chat
+| | | | |____llama-tts
+| | | | |____llama-lookup-stats
+| | | | |____llama-simple
+| | | | |____llama-quantize
+| | | | |____llama-export-lora
+| | | | |____llama-gen-docs
+| | | | |____test-json-partial
+| | | | |____llama-parallel
+| | | | |____llama-passkey
+| | | | |____ggml-metal-impl.h
+| | | | |____test-mtmd-c-api
+| | | |____CMakeFiles
+| | | | |____NightlyTest.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ExperimentalStart.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ContinuousStart.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ExperimentalTest.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____CMakeRuleHashes.txt
+| | | | |____ContinuousSubmit.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ExperimentalUpdate.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____NightlyBuild.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____cmake.check_cache
+| | | | |____NightlyCoverage.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____3.30.5
+| | | | | |____CMakeDetermineCompilerABI_CXX.bin
+| | | | | |____CompilerIdASM
+| | | | | |____CMakeDetermineCompilerABI_C.bin
+| | | | | |____CompilerIdC
+| | | | | | |____CMakeCCompilerId.c
+| | | | | | |____CMakeCCompilerId.o
+| | | | | | |____tmp
+| | | | | |____CompilerIdCXX
+| | | | | | |____CMakeCXXCompilerId.o
+| | | | | | |____CMakeCXXCompilerId.cpp
+| | | | | | |____tmp
+| | | | | |____CMakeCXXCompiler.cmake
+| | | | | |____CMakeCCompiler.cmake
+| | | | | |____CMakeSystem.cmake
+| | | | | |____CMakeASMCompiler.cmake
+| | | | |____Nightly.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ContinuousCoverage.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ExperimentalMemCheck.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____CMakeConfigureLog.yaml
+| | | | |____NightlySubmit.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____Continuous.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ContinuousConfigure.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____NightlyStart.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ContinuousTest.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____CMakeScratch
+| | | | |____ExperimentalSubmit.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____NightlyMemoryCheck.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ContinuousUpdate.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____Makefile.cmake
+| | | | |____pkgRedirects
+| | | | |____ContinuousMemCheck.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ExperimentalCoverage.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____progress.marks
+| | | | |____TargetDirectories.txt
+| | | | |____CMakeDirectoryInformation.cmake
+| | | | |____NightlyMemCheck.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ContinuousBuild.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____Experimental.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ExperimentalBuild.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____ExperimentalConfigure.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____Makefile2
+| | | | |____NightlyUpdate.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | | |____NightlyConfigure.dir
+| | | | | |____DependInfo.cmake
+| | | | | |____compiler_depend.ts
+| | | | | |____compiler_depend.make
+| | | | | |____cmake_clean.cmake
+| | | | | |____progress.make
+| | | | | |____build.make
+| | | |____Makefile
+| | | |____cmake_install.cmake
+| | | |____tests
+| | | | |____CMakeFiles
+| | | | | |____test-arg-parser.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____test-arg-parser.cpp.o
+| | | | | | |____test-arg-parser.cpp.o.d
+| | | | | |____test-rope.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-rope.cpp.o
+| | | | | | |____test-rope.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-llama-grammar.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____test-llama-grammar.cpp.o
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____test-llama-grammar.cpp.o.d
+| | | | | |____test-json-partial.dir
+| | | | | | |____test-json-partial.cpp.o.d
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-json-partial.cpp.o
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-tokenizer-1-bpe.dir
+| | | | | | |____test-tokenizer-1-bpe.cpp.o.d
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____test-tokenizer-1-bpe.cpp.o
+| | | | | | |____flags.make
+| | | | | |____test-model-load-cancel.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____test-model-load-cancel.cpp.o.d
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____test-model-load-cancel.cpp.o
+| | | | | |____test-chat.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-chat.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____test-chat.cpp.o
+| | | | | | |____flags.make
+| | | | | |____test-tokenizer-1-spm.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____test-tokenizer-1-spm.cpp.o.d
+| | | | | | |____progress.make
+| | | | | | |____test-tokenizer-1-spm.cpp.o
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-autorelease.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____test-autorelease.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____test-autorelease.cpp.o
+| | | | | |____test-log.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____test-log.cpp.o
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-log.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-quantize-fns.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-quantize-fns.cpp.o
+| | | | | | |____build.make
+| | | | | | |____test-quantize-fns.cpp.o.d
+| | | | | | |____flags.make
+| | | | | |____test-json-schema-to-grammar.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-json-schema-to-grammar.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____test-json-schema-to-grammar.cpp.o
+| | | | | | |____flags.make
+| | | | | |____test-quantize-stats.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____progress.make
+| | | | | | |____test-quantize-stats.cpp.o
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____test-quantize-stats.cpp.o.d
+| | | | | |____test-grammar-integration.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____test-grammar-integration.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____test-grammar-integration.cpp.o
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-grammar-parser.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-grammar-parser.cpp.o
+| | | | | | |____test-grammar-parser.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-mtmd-c-api.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____test-mtmd-c-api.c.o
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____test-mtmd-c-api.c.o.d
+| | | | | | |____flags.make
+| | | | | |____test-tokenizer-0.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____compiler_depend.make
+| | | | | | |____test-tokenizer-0.cpp.o
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____test-tokenizer-0.cpp.o.d
+| | | | | | |____flags.make
+| | | | | |____test-thread-safety.dir
+| | | | | | |____test-thread-safety.cpp.o
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____test-thread-safety.cpp.o.d
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-c.dir
+| | | | | | |____test-c.c.o.d
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____compiler_depend.make
+| | | | | | |____test-c.c.o
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-barrier.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____test-barrier.cpp.o
+| | | | | | |____test-barrier.cpp.o.d
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-opt.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____test-opt.cpp.o
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____test-opt.cpp.o.d
+| | | | | |____test-quantize-perf.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____test-quantize-perf.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-quantize-perf.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-sampling.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____test-sampling.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____test-sampling.cpp.o
+| | | | | |____test-regex-partial.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____test-regex-partial.cpp.o.d
+| | | | | | |____test-regex-partial.cpp.o
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-chat-parser.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-chat-parser.cpp.o.d
+| | | | | | |____test-chat-parser.cpp.o
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____progress.marks
+| | | | | |____test-chat-template.dir
+| | | | | | |____test-chat-template.cpp.o
+| | | | | | |____DependInfo.cmake
+| | | | | | |____test-chat-template.cpp.o.d
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____test-gbnf-validator.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____test-gbnf-validator.cpp.o
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____progress.make
+| | | | | | |____test-gbnf-validator.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-backend-ops.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____test-backend-ops.cpp.o
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____test-backend-ops.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____test-gguf.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____get-model.cpp.o.d
+| | | | | | |____test-gguf.cpp.o.d
+| | | | | | |____test-gguf.cpp.o
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____get-model.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____CTestTestfile.cmake
+| | | |____CTestTestfile.cmake
+| | | |____Testing
+| | | | |____Temporary
+| | | |____common
+| | | | |____CMakeFiles
+| | | | | |____common.dir
+| | | | | | |____log.cpp.o.d
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____sampling.cpp.o
+| | | | | | |____json-schema-to-grammar.cpp.o
+| | | | | | |____llguidance.cpp.o
+| | | | | | |____console.cpp.o.d
+| | | | | | |____cmake_clean_target.cmake
+| | | | | | |____common.cpp.o.d
+| | | | | | |____compiler_depend.make
+| | | | | | |____sampling.cpp.o.d
+| | | | | | |____regex-partial.cpp.o
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____json-partial.cpp.o
+| | | | | | |____speculative.cpp.o.d
+| | | | | | |____link.txt
+| | | | | | |____progress.make
+| | | | | | |____arg.cpp.o.d
+| | | | | | |____speculative.cpp.o
+| | | | | | |____chat-parser.cpp.o.d
+| | | | | | |____console.cpp.o
+| | | | | | |____regex-partial.cpp.o.d
+| | | | | | |____ngram-cache.cpp.o.d
+| | | | | | |____common.cpp.o
+| | | | | | |____build.make
+| | | | | | |____arg.cpp.o
+| | | | | | |____ngram-cache.cpp.o
+| | | | | | |____flags.make
+| | | | | | |____json-schema-to-grammar.cpp.o.d
+| | | | | | |____log.cpp.o
+| | | | | | |____chat-parser.cpp.o
+| | | | | | |____chat.cpp.o.d
+| | | | | | |____chat.cpp.o
+| | | | | | |____json-partial.cpp.o.d
+| | | | | | |____llguidance.cpp.o.d
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____build_info.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____progress.make
+| | | | | | |____build-info.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | | |____build-info.cpp.o
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____build-info.cpp
+| | | | |____libcommon.a
+| | | |____llama.pc
+| | | |____examples
+| | | | |____convert-llama2c-to-ggml
+| | | | | |____CMakeFiles
+| | | | | | |____llama-convert-llama2c-to-ggml.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____convert-llama2c-to-ggml.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____convert-llama2c-to-ggml.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____gguf-hash
+| | | | | |____CMakeFiles
+| | | | | | |____xxhash.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____progress.make
+| | | | | | | |____deps
+| | | | | | | | |____xxhash
+| | | | | | | | | |____xxhash.c.o
+| | | | | | | | | |____xxhash.c.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____sha1.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____progress.make
+| | | | | | | |____deps
+| | | | | | | | |____sha1
+| | | | | | | | | |____sha1.c.o.d
+| | | | | | | | | |____sha1.c.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____sha256.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____progress.make
+| | | | | | | |____deps
+| | | | | | | | |____sha256
+| | | | | | | | | |____sha256.c.o
+| | | | | | | | | |____sha256.c.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-gguf-hash.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____gguf-hash.cpp.o.d
+| | | | | | | |____gguf-hash.cpp.o
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____gen-docs
+| | | | | |____CMakeFiles
+| | | | | | |____llama-gen-docs.dir
+| | | | | | | |____gen-docs.cpp.o.d
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____gen-docs.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____eval-callback
+| | | | | |____CMakeFiles
+| | | | | | |____progress.marks
+| | | | | | |____llama-eval-callback.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____eval-callback.cpp.o
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____eval-callback.cpp.o.d
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____parallel
+| | | | | |____CMakeFiles
+| | | | | | |____llama-parallel.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____parallel.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____parallel.cpp.o.d
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____lookahead
+| | | | | |____CMakeFiles
+| | | | | | |____llama-lookahead.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____lookahead.cpp.o.d
+| | | | | | | |____progress.make
+| | | | | | | |____lookahead.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____passkey
+| | | | | |____CMakeFiles
+| | | | | | |____llama-passkey.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____passkey.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____passkey.cpp.o
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____model-conversion
+| | | | | |____CMakeFiles
+| | | | | | |____llama-logits.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____logits.cpp.o.d
+| | | | | | | |____logits.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____CMakeFiles
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____batched
+| | | | | |____CMakeFiles
+| | | | | | |____llama-batched.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____batched.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____batched.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____training
+| | | | | |____CMakeFiles
+| | | | | | |____llama-finetune.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____finetune.cpp.o
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____finetune.cpp.o.d
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____embedding
+| | | | | |____CMakeFiles
+| | | | | | |____llama-embedding.dir
+| | | | | | | |____embedding.cpp.o.d
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____embedding.cpp.o
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____cmake_install.cmake
+| | | | |____gguf
+| | | | | |____CMakeFiles
+| | | | | | |____llama-gguf.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____gguf.cpp.o
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____gguf.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____CTestTestfile.cmake
+| | | | |____lookup
+| | | | | |____CMakeFiles
+| | | | | | |____llama-lookup.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____lookup.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____lookup.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-lookup-create.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____lookup-create.cpp.o.d
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____lookup-create.cpp.o
+| | | | | | |____llama-lookup-stats.dir
+| | | | | | | |____lookup-stats.cpp.o.d
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____lookup-stats.cpp.o
+| | | | | | |____llama-lookup-merge.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____lookup-merge.cpp.o.d
+| | | | | | | |____flags.make
+| | | | | | | |____lookup-merge.cpp.o
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____diffusion
+| | | | | |____CMakeFiles
+| | | | | | |____llama-diffusion-cli.dir
+| | | | | | | |____diffusion-cli.cpp.o
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____diffusion-cli.cpp.o.d
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____save-load-state
+| | | | | |____CMakeFiles
+| | | | | | |____llama-save-load-state.dir
+| | | | | | | |____save-load-state.cpp.o.d
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____save-load-state.cpp.o
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____simple
+| | | | | |____CMakeFiles
+| | | | | | |____llama-simple.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____simple.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____simple.cpp.o.d
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____retrieval
+| | | | | |____CMakeFiles
+| | | | | | |____llama-retrieval.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____retrieval.cpp.o
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____retrieval.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____gritlm
+| | | | | |____CMakeFiles
+| | | | | | |____llama-gritlm.dir
+| | | | | | | |____gritlm.cpp.o
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____gritlm.cpp.o.d
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____simple-chat
+| | | | | |____CMakeFiles
+| | | | | | |____llama-simple-chat.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____simple-chat.cpp.o
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____simple-chat.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____speculative
+| | | | | |____CMakeFiles
+| | | | | | |____llama-speculative.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____speculative.cpp.o.d
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____speculative.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____speculative-simple
+| | | | | |____CMakeFiles
+| | | | | | |____llama-speculative-simple.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____speculative-simple.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____speculative-simple.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | |____CMakeCache.txt
+| | | |____ggml
+| | | | |____ggml-config.cmake
+| | | | |____CMakeFiles
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____ggml-version.cmake
+| | | | |____src
+| | | | | |____libggml-base.a
+| | | | | |____ggml-blas
+| | | | | | |____CMakeFiles
+| | | | | | | |____ggml-blas.dir
+| | | | | | | | |____DependInfo.cmake
+| | | | | | | | |____compiler_depend.ts
+| | | | | | | | |____cmake_clean_target.cmake
+| | | | | | | | |____ggml-blas.cpp.o
+| | | | | | | | |____compiler_depend.make
+| | | | | | | | |____depend.make
+| | | | | | | | |____cmake_clean.cmake
+| | | | | | | | |____link.txt
+| | | | | | | | |____progress.make
+| | | | | | | | |____ggml-blas.cpp.o.d
+| | | | | | | | |____build.make
+| | | | | | | | |____flags.make
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | | |____libggml-blas.a
+| | | | | |____CMakeFiles
+| | | | | | |____ggml.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____ggml-backend-reg.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____ggml-backend-reg.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____ggml-base.dir
+| | | | | | | |____ggml-opt.cpp.o.d
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____gguf.cpp.o
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____ggml.c.o
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____ggml.cpp.o.d
+| | | | | | | |____ggml-threading.cpp.o.d
+| | | | | | | |____gguf.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____ggml-alloc.c.o
+| | | | | | | |____ggml-backend.cpp.o
+| | | | | | | |____progress.make
+| | | | | | | |____ggml-opt.cpp.o
+| | | | | | | |____ggml.c.o.d
+| | | | | | | |____ggml-quants.c.o.d
+| | | | | | | |____ggml-threading.cpp.o
+| | | | | | | |____ggml.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____ggml-alloc.c.o.d
+| | | | | | | |____flags.make
+| | | | | | | |____ggml-quants.c.o
+| | | | | | | |____ggml-backend.cpp.o.d
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____ggml-cpu.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____ggml-cpu
+| | | | | | | | |____unary-ops.cpp.o
+| | | | | | | | |____ggml-cpu.cpp.o
+| | | | | | | | |____vec.cpp.o
+| | | | | | | | |____vec.cpp.o.d
+| | | | | | | | |____binary-ops.cpp.o
+| | | | | | | | |____binary-ops.cpp.o.d
+| | | | | | | | |____ggml-cpu.cpp.o.d
+| | | | | | | | |____unary-ops.cpp.o.d
+| | | | | | | | |____hbm.cpp.o
+| | | | | | | | |____quants.c.o.d
+| | | | | | | | |____ggml-cpu.c.o.d
+| | | | | | | | |____llamafile
+| | | | | | | | | |____sgemm.cpp.o.d
+| | | | | | | | | |____sgemm.cpp.o
+| | | | | | | | |____amx
+| | | | | | | | | |____amx.cpp.o
+| | | | | | | | | |____mmq.cpp.o
+| | | | | | | | | |____mmq.cpp.o.d
+| | | | | | | | | |____amx.cpp.o.d
+| | | | | | | | |____quants.c.o
+| | | | | | | | |____hbm.cpp.o.d
+| | | | | | | | |____repack.cpp.o
+| | | | | | | | |____traits.cpp.o.d
+| | | | | | | | |____arch
+| | | | | | | | | |____arm
+| | | | | | | | | | |____quants.c.o.d
+| | | | | | | | | | |____quants.c.o
+| | | | | | | | | | |____repack.cpp.o
+| | | | | | | | | | |____repack.cpp.o.d
+| | | | | | | | |____ops.cpp.o
+| | | | | | | | |____ops.cpp.o.d
+| | | | | | | | |____repack.cpp.o.d
+| | | | | | | | |____ggml-cpu.c.o
+| | | | | | | | |____traits.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | |____Makefile
+| | | | | |____libggml-cpu.a
+| | | | | |____cmake_install.cmake
+| | | | | |____ggml-cpu
+| | | | | | |____CMakeFiles
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | |____ggml-metal
+| | | | | | |____CMakeFiles
+| | | | | | | |____ggml-metal.dir
+| | | | | | | | |____DependInfo.cmake
+| | | | | | | | |____depend.internal
+| | | | | | | | |____ASM.includecache
+| | | | | | | | |______
+| | | | | | | | | |______
+| | | | | | | | | | |______
+| | | | | | | | | | | |____autogenerated
+| | | | | | | | | | | | |____ggml-metal-embed.s.o
+| | | | | | | | |____compiler_depend.ts
+| | | | | | | | |____cmake_clean_target.cmake
+| | | | | | | | |____ggml-metal-common.cpp.o
+| | | | | | | | |____compiler_depend.make
+| | | | | | | | |____ggml-metal-common.cpp.o.d
+| | | | | | | | |____depend.make
+| | | | | | | | |____cmake_clean.cmake
+| | | | | | | | |____link.txt
+| | | | | | | | |____progress.make
+| | | | | | | | |____ggml-metal.m.o.d
+| | | | | | | | |____build.make
+| | | | | | | | |____flags.make
+| | | | | | | | |____ggml-metal.m.o
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | | |____libggml-metal.a
+| | | | | |____libggml.a
+| | | |____DartConfiguration.tcl
+| | | |____autogenerated
+| | | | |____ggml-metal-embed.s
+| | | | |____ggml-metal-embed.metal.tmp
+| | | | |____ggml-metal-embed.metal
+| | | |____llama-config.cmake
+| | | |____llama-version.cmake
+| | | |____src
+| | | | |____CMakeFiles
+| | | | | |____llama.dir
+| | | | | | |____llama-sampling.cpp.o.d
+| | | | | | |____llama-cparams.cpp.o
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____llama-mmap.cpp.o
+| | | | | | |____llama-cparams.cpp.o.d
+| | | | | | |____llama-adapter.cpp.o
+| | | | | | |____llama-chat.cpp.o
+| | | | | | |____llama-mmap.cpp.o.d
+| | | | | | |____llama-memory.cpp.o.d
+| | | | | | |____llama.cpp.o
+| | | | | | |____cmake_clean_target.cmake
+| | | | | | |____llama-memory-hybrid.cpp.o
+| | | | | | |____compiler_depend.make
+| | | | | | |____llama-impl.cpp.o.d
+| | | | | | |____llama-grammar.cpp.o
+| | | | | | |____llama-quant.cpp.o
+| | | | | | |____unicode-data.cpp.o
+| | | | | | |____depend.make
+| | | | | | |____llama-memory.cpp.o
+| | | | | | |____llama-model.cpp.o.d
+| | | | | | |____llama-io.cpp.o.d
+| | | | | | |____llama-arch.cpp.o
+| | | | | | |____llama-adapter.cpp.o.d
+| | | | | | |____llama-model.cpp.o
+| | | | | | |____llama-model-saver.cpp.o.d
+| | | | | | |____llama-context.cpp.o
+| | | | | | |____llama-grammar.cpp.o.d
+| | | | | | |____llama-kv-cache.cpp.o
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____llama-model-saver.cpp.o
+| | | | | | |____link.txt
+| | | | | | |____llama-impl.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____unicode.cpp.o.d
+| | | | | | |____llama-arch.cpp.o.d
+| | | | | | |____llama-sampling.cpp.o
+| | | | | | |____llama-quant.cpp.o.d
+| | | | | | |____llama-context.cpp.o.d
+| | | | | | |____llama.cpp.o.d
+| | | | | | |____llama-memory-recurrent.cpp.o.d
+| | | | | | |____llama-io.cpp.o
+| | | | | | |____llama-batch.cpp.o
+| | | | | | |____llama-model-loader.cpp.o
+| | | | | | |____llama-vocab.cpp.o
+| | | | | | |____llama-hparams.cpp.o.d
+| | | | | | |____llama-batch.cpp.o.d
+| | | | | | |____llama-memory-hybrid.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____llama-kv-cache-iswa.cpp.o
+| | | | | | |____llama-graph.cpp.o.d
+| | | | | | |____llama-graph.cpp.o
+| | | | | | |____llama-kv-cache.cpp.o.d
+| | | | | | |____flags.make
+| | | | | | |____llama-hparams.cpp.o
+| | | | | | |____llama-kv-cache-iswa.cpp.o.d
+| | | | | | |____llama-chat.cpp.o.d
+| | | | | | |____llama-memory-recurrent.cpp.o
+| | | | | | |____llama-vocab.cpp.o.d
+| | | | | | |____llama-model-loader.cpp.o.d
+| | | | | | |____unicode.cpp.o
+| | | | | | |____unicode-data.cpp.o.d
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____libllama.a
+| | | |____pocs
+| | | | |____CMakeFiles
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____vdot
+| | | | | |____CMakeFiles
+| | | | | | |____llama-vdot.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____vdot.cpp.o
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____vdot.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____llama-q8dot.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____q8dot.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | | |____q8dot.cpp.o
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____CTestTestfile.cmake
+| | | | |____CTestTestfile.cmake
+| | |____poetry.lock
+| | |____.git
+| | |____ggml
+| | | |____CMakeLists.txt
+| | | |____cmake
+| | | | |____ggml-config.cmake.in
+| | | | |____GitVars.cmake
+| | | | |____common.cmake
+| | | |____include
+| | | | |____ggml-vulkan.h
+| | | | |____ggml-zdnn.h
+| | | | |____ggml-opencl.h
+| | | | |____ggml-cann.h
+| | | | |____ggml-cpp.h
+| | | | |____ggml-sycl.h
+| | | | |____ggml-blas.h
+| | | | |____ggml-backend.h
+| | | | |____ggml-cuda.h
+| | | | |____ggml-alloc.h
+| | | | |____ggml-opt.h
+| | | | |____ggml-metal.h
+| | | | |____ggml-cpu.h
+| | | | |____gguf.h
+| | | | |____ggml-webgpu.h
+| | | | |____ggml-rpc.h
+| | | | |____ggml.h
+| | | |____.gitignore
+| | | |____src
+| | | | |____ggml-opt.cpp
+| | | | |____ggml-quants.c
+| | | | |____ggml.cpp
+| | | | |____ggml-threading.h
+| | | | |____CMakeLists.txt
+| | | | |____ggml-blas
+| | | | | |____CMakeLists.txt
+| | | | | |____ggml-blas.cpp
+| | | | |____ggml-zdnn
+| | | | | |____CMakeLists.txt
+| | | | | |____ggml-zdnn.cpp
+| | | | | |____ggml-zdnn-impl.h
+| | | | |____ggml-webgpu
+| | | | | |____CMakeLists.txt
+| | | | | |____wgsl-shaders
+| | | | | | |____embed_wgsl.py
+| | | | | | |____set_rows.wgsl
+| | | | | | |____memset.wgsl
+| | | | | | |____mul_mat.tmpl.wgsl
+| | | | | | |____cpy.wgsl
+| | | | | |____ggml-webgpu.cpp
+| | | | |____ggml-backend.cpp
+| | | | |____ggml-alloc.c
+| | | | |____ggml.c
+| | | | |____ggml-cpu
+| | | | | |____ops.cpp
+| | | | | |____hbm.h
+| | | | | |____quants.c
+| | | | | |____ggml-cpu-impl.h
+| | | | | |____unary-ops.h
+| | | | | |____traits.h
+| | | | | |____unary-ops.cpp
+| | | | | |____binary-ops.h
+| | | | | |____CMakeLists.txt
+| | | | | |____vec.cpp
+| | | | | |____cmake
+| | | | | | |____FindSIMD.cmake
+| | | | | |____vec.h
+| | | | | |____binary-ops.cpp
+| | | | | |____ggml-cpu.c
+| | | | | |____llamafile
+| | | | | | |____sgemm.h
+| | | | | | |____sgemm.cpp
+| | | | | |____repack.cpp
+| | | | | |____quants.h
+| | | | | |____amx
+| | | | | | |____mmq.h
+| | | | | | |____mmq.cpp
+| | | | | | |____common.h
+| | | | | | |____amx.cpp
+| | | | | | |____amx.h
+| | | | | |____simd-mappings.h
+| | | | | |____traits.cpp
+| | | | | |____common.h
+| | | | | |____arch-fallback.h
+| | | | | |____repack.h
+| | | | | |____arch
+| | | | | | |____powerpc
+| | | | | | | |____quants.c
+| | | | | | | |____cpu-feats.cpp
+| | | | | | |____wasm
+| | | | | | | |____quants.c
+| | | | | | |____s390
+| | | | | | | |____quants.c
+| | | | | | |____loongarch
+| | | | | | | |____quants.c
+| | | | | | |____x86
+| | | | | | | |____quants.c
+| | | | | | | |____cpu-feats.cpp
+| | | | | | | |____repack.cpp
+| | | | | | |____arm
+| | | | | | | |____quants.c
+| | | | | | | |____cpu-feats.cpp
+| | | | | | | |____repack.cpp
+| | | | | | |____riscv
+| | | | | | | |____quants.c
+| | | | | | | |____repack.cpp
+| | | | | |____kleidiai
+| | | | | | |____kleidiai.cpp
+| | | | | | |____kernels.h
+| | | | | | |____kernels.cpp
+| | | | | | |____kleidiai.h
+| | | | | |____ops.h
+| | | | | |____hbm.cpp
+| | | | | |____ggml-cpu.cpp
+| | | | |____ggml-cuda
+| | | | | |____rope.cuh
+| | | | | |____norm.cu
+| | | | | |____conv-transpose-1d.cu
+| | | | | |____fattn-mma-f16.cuh
+| | | | | |____argsort.cuh
+| | | | | |____cross-entropy-loss.cu
+| | | | | |____fattn-tile.cu
+| | | | | |____convert.cu
+| | | | | |____conv2d-transpose.cu
+| | | | | |____getrows.cuh
+| | | | | |____argmax.cuh
+| | | | | |____tsembd.cuh
+| | | | | |____template-instances
+| | | | | | |____fattn-mma-f16-instance-ncols1_8-ncols2_1.cu
+| | | | | | |____mmf-instance-ncols_5.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_4-ncols2_4.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_1-q4_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_0-q4_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_0-q5_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs64-f16-f16.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_1-q5_1.cu
+| | | | | | |____mmq-instance-iq2_xxs.cu
+| | | | | | |____mmq-instance-iq2_s.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_1-q8_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q8_0-q4_1.cu
+| | | | | | |____mmf-instance-ncols_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q8_0-q5_0.cu
+| | | | | | |____mmq-instance-q3_k.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_64-ncols2_1.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_8-ncols2_4.cu
+| | | | | | |____mmq-instance-q2_k.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q8_0-q4_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_0-q8_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q8_0-q5_1.cu
+| | | | | | |____mmq-instance-iq3_s.cu
+| | | | | | |____mmf-instance-ncols_4.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_1-q4_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q8_0-q8_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_0-q4_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_0-q5_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs256-f16-f16.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_16-ncols2_2.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_1-q5_0.cu
+| | | | | | |____mmq-instance-mxfp4.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_1-q4_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs64-f16-f16.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_0-q4_1.cu
+| | | | | | |____mmf-instance-ncols_14.cu
+| | | | | | |____mmq-instance-q5_k.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_0-q5_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_1-q5_1.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_2-ncols2_4.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_1-q8_0.cu
+| | | | | | |____mmq-instance-iq2_xs.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_32-ncols2_2.cu
+| | | | | | |____mmf-instance-ncols_10.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_1-f16.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_1-f16.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_0-q8_0.cu
+| | | | | | |____mmf-instance-ncols_11.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_1-f16.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_1-f16.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_1-q4_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_0-q4_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs256-f16-f16.cu
+| | | | | | |____mmq-instance-q4_k.cu
+| | | | | | |____mmf-instance-ncols_15.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_1-ncols2_16.cu
+| | | | | | |____mmq-instance-iq4_xs.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_0-q5_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_1-q5_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs64-f16-q4_1.cu
+| | | | | | |____mmf-instance-ncols_9.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_4-ncols2_8.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q8_0-f16.cu
+| | | | | | |____mmf-instance-ncols_12.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q8_0-q5_0.cu
+| | | | | | |____mmq-instance-iq4_nl.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_1-q8_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q8_0-q4_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs64-f16-q5_0.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_4-ncols2_16.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_0-q5_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_1-q5_1.cu
+| | | | | | |____mmq-instance-iq3_xxs.cu
+| | | | | | |____mmf-instance-ncols_16.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_1-q4_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_0-q4_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs64-f16-q8_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_0-q5_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_1-q5_0.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_8-ncols2_8.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_1-q4_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q8_0-q8_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_0-q4_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs64-f16-q4_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q8_0-f16.cu
+| | | | | | |____mmf-instance-ncols_8.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-f16-f16.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_32-ncols2_1.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_1-ncols2_8.cu
+| | | | | | |____mmf-instance-ncols_13.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q8_0-q5_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q8_0-q4_0.cu
+| | | | | | |____mmq-instance-q6_k.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_0-q8_0.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_2-ncols2_16.cu
+| | | | | | |____fattn-vec-f32-instance-hs64-f16-q5_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-f16-q4_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs64-f16-q5_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-f16-q4_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q5_0-f16.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_0-f16.cu
+| | | | | | |____mmq-instance-q5_0.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_4-ncols2_2.cu
+| | | | | | |____mmf-instance-ncols_3.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_2-ncols2_8.cu
+| | | | | | |____mmq-instance-q4_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-f16-q5_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_1-q8_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs64-f16-q4_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-f16-q5_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_0-q5_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-f16-q8_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_1-q5_1.cu
+| | | | | | |____mmf-instance-ncols_7.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_16-ncols2_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_1-q4_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_0-q4_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_0-q5_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-f16-q8_0.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_8-ncols2_2.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_1-q5_0.cu
+| | | | | | |____mmf-instance-ncols_6.cu
+| | | | | | |____mmq-instance-q8_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs64-f16-q8_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_1-q4_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_0-q4_0.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-f16-q4_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs64-f16-q5_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-f16-q4_1.cu
+| | | | | | |____generate_cu_files.py
+| | | | | | |____mmq-instance-q5_1.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q4_0-f16.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-q5_0-f16.cu
+| | | | | | |____mmf-instance-ncols_2.cu
+| | | | | | |____mmq-instance-q4_0.cu
+| | | | | | |____fattn-mma-f16-instance-ncols1_16-ncols2_4.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-f16-q5_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs64-f16-q4_0.cu
+| | | | | | |____fattn-vec-f16-instance-hs128-f16-f16.cu
+| | | | | | |____mmq-instance-iq1_s.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-f16-q5_1.cu
+| | | | | | |____fattn-vec-f32-instance-hs128-q4_0-q8_0.cu
+| | | | | |____dequantize.cuh
+| | | | | |____vecdotq.cuh
+| | | | | |____getrows.cu
+| | | | | |____vendors
+| | | | | | |____musa.h
+| | | | | | |____hip.h
+| | | | | | |____cuda.h
+| | | | | |____common.cuh
+| | | | | |____mmq.cu
+| | | | | |____fattn-vec-f16.cuh
+| | | | | |____conv-transpose-1d.cuh
+| | | | | |____diagmask.cu
+| | | | | |____sum.cuh
+| | | | | |____upscale.cuh
+| | | | | |____im2col.cuh
+| | | | | |____CMakeLists.txt
+| | | | | |____cpy.cuh
+| | | | | |____set-rows.cu
+| | | | | |____wkv.cu
+| | | | | |____cp-async.cuh
+| | | | | |____out-prod.cuh
+| | | | | |____fattn-wmma-f16.cu
+| | | | | |____opt-step-adamw.cuh
+| | | | | |____upscale.cu
+| | | | | |____ssm-scan.cu
+| | | | | |____conv2d.cuh
+| | | | | |____argmax.cu
+| | | | | |____convert.cuh
+| | | | | |____gla.cuh
+| | | | | |____unary.cuh
+| | | | | |____argsort.cu
+| | | | | |____ssm-conv.cu
+| | | | | |____add-id.cu
+| | | | | |____sumrows.cu
+| | | | | |____fattn-wmma-f16.cuh
+| | | | | |____sumrows.cuh
+| | | | | |____mean.cuh
+| | | | | |____opt-step-sgd.cuh
+| | | | | |____binbcast.cu
+| | | | | |____norm.cuh
+| | | | | |____ssm-scan.cuh
+| | | | | |____quantize.cu
+| | | | | |____concat.cu
+| | | | | |____concat.cuh
+| | | | | |____out-prod.cu
+| | | | | |____mmf.cu
+| | | | | |____roll.cuh
+| | | | | |____roll.cu
+| | | | | |____softcap.cuh
+| | | | | |____mmf.cuh
+| | | | | |____mmq.cuh
+| | | | | |____cpy.cu
+| | | | | |____mmvf.cuh
+| | | | | |____unary.cu
+| | | | | |____mmvq.cuh
+| | | | | |____conv2d-dw.cu
+| | | | | |____fattn-tile.cuh
+| | | | | |____acc.cuh
+| | | | | |____pad_reflect_1d.cu
+| | | | | |____arange.cuh
+| | | | | |____add-id.cuh
+| | | | | |____sum.cu
+| | | | | |____fattn-common.cuh
+| | | | | |____cpy-utils.cuh
+| | | | | |____wkv.cuh
+| | | | | |____acc.cu
+| | | | | |____pad.cuh
+| | | | | |____mmvq.cu
+| | | | | |____mma.cuh
+| | | | | |____diagmask.cuh
+| | | | | |____clamp.cuh
+| | | | | |____fattn.cu
+| | | | | |____softmax.cuh
+| | | | | |____conv2d-transpose.cuh
+| | | | | |____set-rows.cuh
+| | | | | |____im2col.cu
+| | | | | |____tsembd.cu
+| | | | | |____pool2d.cuh
+| | | | | |____softmax.cu
+| | | | | |____pad_reflect_1d.cuh
+| | | | | |____binbcast.cuh
+| | | | | |____scale.cu
+| | | | | |____gla.cu
+| | | | | |____quantize.cuh
+| | | | | |____conv2d-dw.cuh
+| | | | | |____reduce_rows.cuh
+| | | | | |____conv2d.cu
+| | | | | |____mmvf.cu
+| | | | | |____mean.cu
+| | | | | |____cross-entropy-loss.cuh
+| | | | | |____pool2d.cu
+| | | | | |____clamp.cu
+| | | | | |____scale.cuh
+| | | | | |____opt-step-adamw.cu
+| | | | | |____pad.cu
+| | | | | |____arange.cu
+| | | | | |____fattn-vec-f32.cuh
+| | | | | |____ggml-cuda.cu
+| | | | | |____opt-step-sgd.cu
+| | | | | |____softcap.cu
+| | | | | |____fattn.cuh
+| | | | | |____count-equal.cuh
+| | | | | |____count-equal.cu
+| | | | | |____ssm-conv.cuh
+| | | | | |____rope.cu
+| | | | |____ggml-metal
+| | | | | |____ggml-metal-common.h
+| | | | | |____CMakeLists.txt
+| | | | | |____ggml-metal.metal
+| | | | | |____ggml-metal.m
+| | | | | |____ggml-metal-common.cpp
+| | | | | |____ggml-metal-impl.h
+| | | | |____ggml-common.h
+| | | | |____ggml-rpc
+| | | | | |____CMakeLists.txt
+| | | | | |____ggml-rpc.cpp
+| | | | |____ggml-sycl
+| | | | | |____quantize.hpp
+| | | | | |____rope.cpp
+| | | | | |____tsembd.cpp
+| | | | | |____getrows.cpp
+| | | | | |____dpct
+| | | | | | |____helper.hpp
+| | | | | |____common.cpp
+| | | | | |____im2col.cpp
+| | | | | |____sycl_hw.cpp
+| | | | | |____cpy.cpp
+| | | | | |____set_rows.cpp
+| | | | | |____CMakeLists.txt
+| | | | | |____outprod.cpp
+| | | | | |____element_wise.cpp
+| | | | | |____convert.cpp
+| | | | | |____gla.cpp
+| | | | | |____mmq.hpp
+| | | | | |____mmvq.hpp
+| | | | | |____dmmv.hpp
+| | | | | |____norm.cpp
+| | | | | |____wkv.hpp
+| | | | | |____softmax.hpp
+| | | | | |____quants.hpp
+| | | | | |____conv.hpp
+| | | | | |____binbcast.hpp
+| | | | | |____concat.cpp
+| | | | | |____gla.hpp
+| | | | | |____mmq.cpp
+| | | | | |____mmvq.cpp
+| | | | | |____dmmv.cpp
+| | | | | |____wkv.cpp
+| | | | | |____norm.hpp
+| | | | | |____softmax.cpp
+| | | | | |____presets.hpp
+| | | | | |____conv.cpp
+| | | | | |____binbcast.cpp
+| | | | | |____concat.hpp
+| | | | | |____ggml-sycl.cpp
+| | | | | |____gemm.hpp
+| | | | | |____rope.hpp
+| | | | | |____tsembd.hpp
+| | | | | |____backend.hpp
+| | | | | |____getrows.hpp
+| | | | | |____common.hpp
+| | | | | |____dequantize.hpp
+| | | | | |____vecdotq.hpp
+| | | | | |____im2col.hpp
+| | | | | |____sycl_hw.hpp
+| | | | | |____set_rows.hpp
+| | | | | |____cpy.hpp
+| | | | | |____outprod.hpp
+| | | | | |____element_wise.hpp
+| | | | | |____convert.hpp
+| | | | |____ggml-opencl
+| | | | | |____kernels
+| | | | | | |____flash_attn_f16.cl
+| | | | | | |____flash_attn_f32.cl
+| | | | | | |____mul_mv_id_q4_0_f32_8x_flat.cl
+| | | | | | |____mul_mv_id_mxfp4_f32.cl
+| | | | | | |____cpy.cl
+| | | | | | |____sigmoid.cl
+| | | | | | |____flash_attn_f32_f16.cl
+| | | | | | |____im2col_f32.cl
+| | | | | | |____tsembd.cl
+| | | | | | |____mul_mm_f16_f32_l4_lm.cl
+| | | | | | |____mul_mat_f16_f32.cl
+| | | | | | |____rms_norm.cl
+| | | | | | |____scale.cl
+| | | | | | |____silu.cl
+| | | | | | |____im2col_f16.cl
+| | | | | | |____mul_mm_f32_f32_l4_lm.cl
+| | | | | | |____mul_mv_q4_0_f32_1d_8x_flat.cl
+| | | | | | |____pad.cl
+| | | | | | |____mul.cl
+| | | | | | |____clamp.cl
+| | | | | | |____repeat.cl
+| | | | | | |____conv2d.cl
+| | | | | | |____transpose.cl
+| | | | | | |____sub.cl
+| | | | | | |____relu.cl
+| | | | | | |____rope.cl
+| | | | | | |____diag_mask_inf.cl
+| | | | | | |____mul_mv_f16_f32_l4.cl
+| | | | | | |____softmax_4_f32.cl
+| | | | | | |____add_id.cl
+| | | | | | |____conv2d_f16_f32.cl
+| | | | | | |____gelu.cl
+| | | | | | |____mul_mv_f16_f32_1row.cl
+| | | | | | |____gemv_noshuffle_general.cl
+| | | | | | |____softmax_4_f16.cl
+| | | | | | |____cvt.cl
+| | | | | | |____norm.cl
+| | | | | | |____get_rows.cl
+| | | | | | |____mul_mv_f16_f16.cl
+| | | | | | |____mul_mv_q4_0_f32.cl
+| | | | | | |____group_norm.cl
+| | | | | | |____upscale.cl
+| | | | | | |____mul_mv_f32_f32.cl
+| | | | | | |____mul_mv_f16_f32.cl
+| | | | | | |____mul_mv_q6_k.cl
+| | | | | | |____mul_mat_Ab_Bi_8x4.cl
+| | | | | | |____sum_rows.cl
+| | | | | | |____embed_kernel.py
+| | | | | | |____mul_mv_q4_0_f32_v.cl
+| | | | | | |____gemv_noshuffle.cl
+| | | | | | |____set_rows.cl
+| | | | | | |____argsort.cl
+| | | | | | |____glu.cl
+| | | | | | |____mul_mv_q4_0_f32_8x_flat.cl
+| | | | | | |____softmax_f16.cl
+| | | | | | |____tanh.cl
+| | | | | | |____add.cl
+| | | | | | |____mul_mv_q4_0_f32_1d_16x_flat.cl
+| | | | | | |____softmax_f32.cl
+| | | | | | |____mul_mv_mxfp4_f32.cl
+| | | | | | |____concat.cl
+| | | | | | |____div.cl
+| | | | | |____CMakeLists.txt
+| | | | | |____ggml-opencl.cpp
+| | | | |____ggml-quants.h
+| | | | |____ggml-musa
+| | | | | |____CMakeLists.txt
+| | | | | |____mudnn.cu
+| | | | | |____mudnn.cuh
+| | | | |____ggml-backend-reg.cpp
+| | | | |____ggml-vulkan
+| | | | | |____CMakeLists.txt
+| | | | | |____cmake
+| | | | | | |____host-toolchain.cmake.in
+| | | | | |____ggml-vulkan.cpp
+| | | | | |____vulkan-shaders
+| | | | | | |____mul.comp
+| | | | | | |____diag_mask_inf.comp
+| | | | | | |____hardsigmoid.comp
+| | | | | | |____mul_mat_split_k_reduce.comp
+| | | | | | |____test_integer_dot_support.comp
+| | | | | | |____flash_attn.comp
+| | | | | | |____silu.comp
+| | | | | | |____timestep_embedding.comp
+| | | | | | |____swiglu.comp
+| | | | | | |____mul_mat_vec_p021.comp
+| | | | | | |____mul_mmq_funcs.comp
+| | | | | | |____test_coopmat2_support.comp
+| | | | | | |____opt_step_adamw.comp
+| | | | | | |____dequant_iq2_xs.comp
+| | | | | | |____gelu.comp
+| | | | | | |____rope_head.comp
+| | | | | | |____CMakeLists.txt
+| | | | | | |____relu.comp
+| | | | | | |____norm.comp
+| | | | | | |____cos.comp
+| | | | | | |____conv2d_dw.comp
+| | | | | | |____rte.comp
+| | | | | | |____pool2d.comp
+| | | | | | |____im2col.comp
+| | | | | | |____group_norm.comp
+| | | | | | |____dequant_head.comp
+| | | | | | |____mul_mat_vec_iq2_s.comp
+| | | | | | |____soft_max_back.comp
+| | | | | | |____dequant_funcs_cm2.comp
+| | | | | | |____dequant_funcs.comp
+| | | | | | |____mul_mmq.comp
+| | | | | | |____mul_mat_vec_iq2_xxs.comp
+| | | | | | |____mul_mat_vec_iq3_xxs.comp
+| | | | | | |____geglu_quick.comp
+| | | | | | |____dequant_f32.comp
+| | | | | | |____mul_mat_vec_q3_k.comp
+| | | | | | |____dequant_q3_k.comp
+| | | | | | |____silu_back.comp
+| | | | | | |____swiglu_oai.comp
+| | | | | | |____copy_from_quant.comp
+| | | | | | |____get_rows_quant.comp
+| | | | | | |____argsort.comp
+| | | | | | |____flash_attn_cm1.comp
+| | | | | | |____gelu_quick.comp
+| | | | | | |____acc.comp
+| | | | | | |____sqrt.comp
+| | | | | | |____mul_mat_vec.comp
+| | | | | | |____add.comp
+| | | | | | |____conv2d_mm.comp
+| | | | | | |____repeat.comp
+| | | | | | |____dequant_iq4_nl.comp
+| | | | | | |____dequant_q5_1.comp
+| | | | | | |____mul_mat_vec_iq2_xs.comp
+| | | | | | |____dequant_q5_k.comp
+| | | | | | |____dequant_q5_0.comp
+| | | | | | |____mul_mat_vec_q5_k.comp
+| | | | | | |____roll.comp
+| | | | | | |____mul_mm.comp
+| | | | | | |____repeat_back.comp
+| | | | | | |____leaky_relu.comp
+| | | | | | |____div.comp
+| | | | | | |____add_id.comp
+| | | | | | |____mul_mm_cm2.comp
+| | | | | | |____tanh.comp
+| | | | | | |____utils.comp
+| | | | | | |____exp.comp
+| | | | | | |____dequant_iq2_s.comp
+| | | | | | |____mul_mat_vec_nc.comp
+| | | | | | |____sub.comp
+| | | | | | |____gelu_erf.comp
+| | | | | | |____glu_main.comp
+| | | | | | |____geglu.comp
+| | | | | | |____wkv6.comp
+| | | | | | |____conv_transpose_1d.comp
+| | | | | | |____mul_mat_vec_iq1_s.comp
+| | | | | | |____glu_head.comp
+| | | | | | |____soft_max.comp
+| | | | | | |____dequant_iq1_m.comp
+| | | | | | |____sum_rows.comp
+| | | | | | |____types.comp
+| | | | | | |____rope_norm.comp
+| | | | | | |____dequant_q2_k.comp
+| | | | | | |____generic_head.comp
+| | | | | | |____mul_mat_vecq.comp
+| | | | | | |____mul_mat_vec_q2_k.comp
+| | | | | | |____wkv7.comp
+| | | | | | |____mul_mat_vec_iq3_s.comp
+| | | | | | |____multi_add.comp
+| | | | | | |____mul_mat_vec_base.comp
+| | | | | | |____dequant_iq4_xs.comp
+| | | | | | |____quantize_q8_1.comp
+| | | | | | |____upscale.comp
+| | | | | | |____reglu.comp
+| | | | | | |____mul_mm_funcs.comp
+| | | | | | |____flash_attn_cm2.comp
+| | | | | | |____dequant_q4_1.comp
+| | | | | | |____pad.comp
+| | | | | | |____flash_attn_base.comp
+| | | | | | |____hardswish.comp
+| | | | | | |____concat.comp
+| | | | | | |____im2col_3d.comp
+| | | | | | |____rms_norm_back.comp
+| | | | | | |____l2_norm.comp
+| | | | | | |____dequant_q6_k.comp
+| | | | | | |____mul_mat_vec_q6_k.comp
+| | | | | | |____copy_to_quant.comp
+| | | | | | |____vulkan-shaders-gen.cpp
+| | | | | | |____generic_unary_head.comp
+| | | | | | |____dequant_iq1_s.comp
+| | | | | | |____geglu_erf.comp
+| | | | | | |____test_bfloat16_support.comp
+| | | | | | |____get_rows.comp
+| | | | | | |____copy.comp
+| | | | | | |____rope_neox.comp
+| | | | | | |____opt_step_sgd.comp
+| | | | | | |____rope_multi.comp
+| | | | | | |____rope_vision.comp
+| | | | | | |____count_equal.comp
+| | | | | | |____dequant_iq3_s.comp
+| | | | | | |____sin.comp
+| | | | | | |____generic_binary_head.comp
+| | | | | | |____test_coopmat_support.comp
+| | | | | | |____scale.comp
+| | | | | | |____dequant_mxfp4.comp
+| | | | | | |____mul_mat_vec_iq1_m.comp
+| | | | | | |____rms_norm_partials.comp
+| | | | | | |____argmax.comp
+| | | | | | |____clamp.comp
+| | | | | | |____rms_norm.comp
+| | | | | | |____sigmoid.comp
+| | | | | | |____contig_copy.comp
+| | | | | | |____dequant_iq3_xxs.comp
+| | | | | | |____flash_attn_split_k_reduce.comp
+| | | | | | |____dequant_iq2_xxs.comp
+| | | | | | |____dequant_q8_0.comp
+| | | | | | |____mul_mat_vec_q4_k.comp
+| | | | | | |____square.comp
+| | | | | | |____dequant_q4_0.comp
+| | | | | | |____dequant_q4_k.comp
+| | | | |____ggml-impl.h
+| | | | |____ggml-threading.cpp
+| | | | |____ggml-cann
+| | | | | |____CMakeLists.txt
+| | | | | |____aclnn_ops.h
+| | | | | |____acl_tensor.h
+| | | | | |____aclnn_ops.cpp
+| | | | | |____common.h
+| | | | | |____ggml-cann.cpp
+| | | | | |____acl_tensor.cpp
+| | | | | |____Doxyfile
+| | | | |____ggml-backend-impl.h
+| | | | |____gguf.cpp
+| | | | |____ggml-hip
+| | | | | |____CMakeLists.txt
+| | |____convert_hf_to_gguf_update.py
+| | |____vendor
+| | | |____miniaudio
+| | | | |____miniaudio.h
+| | | |____minja
+| | | | |____chat-template.hpp
+| | | | |____minja.hpp
+| | | |____stb
+| | | | |____stb_image.h
+| | | |____nlohmann
+| | | | |____json.hpp
+| | | | |____json_fwd.hpp
+| | | |____cpp-httplib
+| | | | |____httplib.h
+| | |____SECURITY.md
+| | |____media
+| | | |____llama1-icon.svg
+| | | |____llama1-icon-transparent.svg
+| | | |____llama0-banner.png
+| | | |____llama1-icon.png
+| | | |____llama1-icon-transparent.png
+| | | |____llama1-logo.svg
+| | | |____matmul.svg
+| | | |____llama1-banner.png
+| | | |____matmul.png
+| | | |____llama0-logo.png
+| | | |____llama1-logo.png
+| | |____src
+| | | |____llama-sampling.h
+| | | |____llama-model-loader.cpp
+| | | |____llama-kv-cache.h
+| | | |____llama-cparams.cpp
+| | | |____llama-vocab.cpp
+| | | |____CMakeLists.txt
+| | | |____llama-model-loader.h
+| | | |____llama-kv-cache.cpp
+| | | |____llama-grammar.cpp
+| | | |____llama-io.cpp
+| | | |____llama.cpp
+| | | |____llama-hparams.cpp
+| | | |____llama-memory-recurrent.cpp
+| | | |____llama-context.h
+| | | |____llama-memory-hybrid.cpp
+| | | |____llama-graph.cpp
+| | | |____unicode-data.h
+| | | |____llama-adapter.h
+| | | |____llama-memory.h
+| | | |____llama-vocab.h
+| | | |____llama-arch.h
+| | | |____llama-kv-cells.h
+| | | |____llama-io.h
+| | | |____llama-kv-cache-iswa.cpp
+| | | |____llama-model.h
+| | | |____llama-quant.cpp
+| | | |____llama-mmap.h
+| | | |____llama-impl.h
+| | | |____llama-memory-hybrid.h
+| | | |____llama-quant.h
+| | | |____unicode.h
+| | | |____llama-chat.h
+| | | |____llama-impl.cpp
+| | | |____llama-arch.cpp
+| | | |____llama-model.cpp
+| | | |____llama-mmap.cpp
+| | | |____llama-model-saver.h
+| | | |____llama-grammar.h
+| | | |____llama-cparams.h
+| | | |____llama-graph.h
+| | | |____llama-batch.cpp
+| | | |____llama-hparams.h
+| | | |____llama-memory.cpp
+| | | |____llama-context.cpp
+| | | |____llama-chat.cpp
+| | | |____unicode-data.cpp
+| | | |____llama-kv-cache-iswa.h
+| | | |____llama-sampling.cpp
+| | | |____llama-memory-recurrent.h
+| | | |____llama-batch.h
+| | | |____llama-model-saver.cpp
+| | | |____unicode.cpp
+| | | |____llama-adapter.cpp
+| | |____pocs
+| | | |____CMakeLists.txt
+| | | |____vdot
+| | | | |____CMakeLists.txt
+| | | | |____vdot.cpp
+| | | | |____q8dot.cpp
+| |____compile_commands.json
+| |____Makefile
+| |____cmake_install.cmake
+| |____third_party
+| | |____llama.cpp
+| | | |____CMakeFiles
+| | | | |____progress.marks
+| | | | |____CMakeDirectoryInformation.cmake
+| | | |____Makefile
+| | | |____cmake_install.cmake
+| | | |____llama.pc
+| | | |____ggml
+| | | | |____ggml-config.cmake
+| | | | |____CMakeFiles
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____ggml-version.cmake
+| | | | |____src
+| | | | | |____ggml-blas
+| | | | | | |____CMakeFiles
+| | | | | | | |____ggml-blas.dir
+| | | | | | | | |____DependInfo.cmake
+| | | | | | | | |____compiler_depend.ts
+| | | | | | | | |____cmake_clean_target.cmake
+| | | | | | | | |____compiler_depend.make
+| | | | | | | | |____depend.make
+| | | | | | | | |____cmake_clean.cmake
+| | | | | | | | |____link.txt
+| | | | | | | | |____progress.make
+| | | | | | | | |____build.make
+| | | | | | | | |____flags.make
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | |____CMakeFiles
+| | | | | | |____ggml.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____ggml-base.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____ggml-cpu.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____ggml-cpu
+| | | | | | | | |____llamafile
+| | | | | | | | |____amx
+| | | | | | | | |____arch
+| | | | | | | | | |____arm
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | |____Makefile
+| | | | | |____cmake_install.cmake
+| | | | | |____ggml-cpu
+| | | | | | |____CMakeFiles
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | |____ggml-metal
+| | | | | | |____CMakeFiles
+| | | | | | | |____ggml-metal.dir
+| | | | | | | | |____DependInfo.cmake
+| | | | | | | | |______
+| | | | | | | | | |______
+| | | | | | | | | | |______
+| | | | | | | | | | | |______
+| | | | | | | | | | | | |____autogenerated
+| | | | | | | | |____compiler_depend.ts
+| | | | | | | | |____cmake_clean_target.cmake
+| | | | | | | | |____compiler_depend.make
+| | | | | | | | |____depend.make
+| | | | | | | | |____cmake_clean.cmake
+| | | | | | | | |____link.txt
+| | | | | | | | |____progress.make
+| | | | | | | | |____build.make
+| | | | | | | | |____flags.make
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | |____llama-config.cmake
+| | | |____llama-version.cmake
+| | | |____src
+| | | | |____CMakeFiles
+| | | | | |____llama.dir
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____cmake_clean_target.cmake
+| | | | | | |____compiler_depend.make
+| | | | | | |____depend.make
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____link.txt
+| | | | | | |____progress.make
+| | | | | | |____build.make
+| | | | | | |____flags.make
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| |____nlohmann
+| | |____json.hpp
+| |____CMakeCache.txt
+| |____autogenerated
+|____examples
+| |____encode_demo.cpp
+|____scripts
+| |____embed_file.cpp
+| |____search.cpp
+|____file_structure.txt
+|____search_demo.cpp
+|____build
+| |____compile_commands.json
+| |____bin
+| | |____plan_shader
+| | |____ggml-metal.metal
+| | |____embed_vocab
+| | |____ggml-common.h
+| | |____ggml-metal-impl.h
+| |____CMakeFiles
+| | |____agent_embedding.dir
+| | | |____DependInfo.cmake
+| | | |____compiler_depend.ts
+| | | |____cmake_clean_target.cmake
+| | | |____compiler_depend.internal
+| | | |____compiler_depend.make
+| | | |____depend.make
+| | | |____cmake_clean.cmake
+| | | |____link.txt
+| | | |____progress.make
+| | | |____build.make
+| | | |____flags.make
+| | | |____src
+| | | | |____AgentEmbedding.cpp.o
+| | | | |____AgentEmbedding.cpp.o.d
+| | |____CMakeRuleHashes.txt
+| | |____cmake.check_cache
+| | |____3.30.5
+| | | |____CMakeDetermineCompilerABI_CXX.bin
+| | | |____CompilerIdASM
+| | | |____CMakeDetermineCompilerABI_C.bin
+| | | |____CompilerIdC
+| | | | |____CMakeCCompilerId.c
+| | | | |____CMakeCCompilerId.o
+| | | | |____tmp
+| | | |____CompilerIdCXX
+| | | | |____CMakeCXXCompilerId.o
+| | | | |____CMakeCXXCompilerId.cpp
+| | | | |____tmp
+| | | |____CMakeCXXCompiler.cmake
+| | | |____CMakeCCompiler.cmake
+| | | |____CMakeSystem.cmake
+| | | |____CMakeASMCompiler.cmake
+| | |____CMakeConfigureLog.yaml
+| | |____agent_assets.dir
+| | | |____DependInfo.cmake
+| | | |____compiler_depend.ts
+| | | |____compiler_depend.make
+| | | |____cmake_clean.cmake
+| | | |____progress.make
+| | | |____build.make
+| | |____CMakeScratch
+| | |____Makefile.cmake
+| | |____pkgRedirects
+| | |____embed_vocab.dir
+| | | |____DependInfo.cmake
+| | | |____compiler_depend.ts
+| | | |____compiler_depend.internal
+| | | |____compiler_depend.make
+| | | |____depend.make
+| | | |____cmake_clean.cmake
+| | | |____link.txt
+| | | |____progress.make
+| | | |____build.make
+| | | |____flags.make
+| | | |____src
+| | | | |____embed_vocab.cpp.o.d
+| | | | |____embed_vocab.cpp.o
+| | |____progress.marks
+| | |____TargetDirectories.txt
+| | |____CMakeDirectoryInformation.cmake
+| | |____plan_shader.dir
+| | | |____DependInfo.cmake
+| | | |____compiler_depend.ts
+| | | |____compiler_depend.internal
+| | | |____compiler_depend.make
+| | | |____depend.make
+| | | |____cmake_clean.cmake
+| | | |____link.txt
+| | | |____progress.make
+| | | |____build.make
+| | | |____flags.make
+| | | |____src
+| | | | |____plan_shader.cpp.o.d
+| | | | |____plan_shader.cpp.o
+| | |____Makefile2
+| |____Makefile
+| |____cmake_install.cmake
+| |____models
+| | |____nomic-embed-text-v1.5.Q5_K_S.gguf
+| | |____README.md
+| |____third_party
+| | |____llama.cpp
+| | | |____CMakeFiles
+| | | | |____progress.marks
+| | | | |____CMakeDirectoryInformation.cmake
+| | | |____Makefile
+| | | |____cmake_install.cmake
+| | | |____llama.pc
+| | | |____ggml
+| | | | |____ggml-config.cmake
+| | | | |____CMakeFiles
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____ggml-version.cmake
+| | | | |____src
+| | | | | |____libggml-base.a
+| | | | | |____ggml-blas
+| | | | | | |____CMakeFiles
+| | | | | | | |____ggml-blas.dir
+| | | | | | | | |____DependInfo.cmake
+| | | | | | | | |____compiler_depend.ts
+| | | | | | | | |____cmake_clean_target.cmake
+| | | | | | | | |____ggml-blas.cpp.o
+| | | | | | | | |____compiler_depend.internal
+| | | | | | | | |____compiler_depend.make
+| | | | | | | | |____depend.make
+| | | | | | | | |____cmake_clean.cmake
+| | | | | | | | |____link.txt
+| | | | | | | | |____progress.make
+| | | | | | | | |____ggml-blas.cpp.o.d
+| | | | | | | | |____build.make
+| | | | | | | | |____flags.make
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | | |____libggml-blas.a
+| | | | | |____CMakeFiles
+| | | | | | |____ggml.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.internal
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____ggml-backend-reg.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____ggml-backend-reg.cpp.o.d
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | | |____ggml-base.dir
+| | | | | | | |____ggml-opt.cpp.o.d
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____gguf.cpp.o
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____ggml.c.o
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.internal
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____ggml.cpp.o.d
+| | | | | | | |____ggml-threading.cpp.o.d
+| | | | | | | |____gguf.cpp.o.d
+| | | | | | | |____depend.make
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____ggml-alloc.c.o
+| | | | | | | |____ggml-backend.cpp.o
+| | | | | | | |____progress.make
+| | | | | | | |____ggml-opt.cpp.o
+| | | | | | | |____ggml.c.o.d
+| | | | | | | |____ggml-quants.c.o.d
+| | | | | | | |____ggml-threading.cpp.o
+| | | | | | | |____ggml.cpp.o
+| | | | | | | |____build.make
+| | | | | | | |____ggml-alloc.c.o.d
+| | | | | | | |____flags.make
+| | | | | | | |____ggml-quants.c.o
+| | | | | | | |____ggml-backend.cpp.o.d
+| | | | | | |____progress.marks
+| | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____ggml-cpu.dir
+| | | | | | | |____DependInfo.cmake
+| | | | | | | |____compiler_depend.ts
+| | | | | | | |____cmake_clean_target.cmake
+| | | | | | | |____compiler_depend.internal
+| | | | | | | |____compiler_depend.make
+| | | | | | | |____depend.make
+| | | | | | | |____ggml-cpu
+| | | | | | | | |____unary-ops.cpp.o
+| | | | | | | | |____ggml-cpu.cpp.o
+| | | | | | | | |____vec.cpp.o
+| | | | | | | | |____vec.cpp.o.d
+| | | | | | | | |____binary-ops.cpp.o
+| | | | | | | | |____binary-ops.cpp.o.d
+| | | | | | | | |____ggml-cpu.cpp.o.d
+| | | | | | | | |____unary-ops.cpp.o.d
+| | | | | | | | |____hbm.cpp.o
+| | | | | | | | |____quants.c.o.d
+| | | | | | | | |____ggml-cpu.c.o.d
+| | | | | | | | |____llamafile
+| | | | | | | | | |____sgemm.cpp.o.d
+| | | | | | | | | |____sgemm.cpp.o
+| | | | | | | | |____amx
+| | | | | | | | | |____amx.cpp.o
+| | | | | | | | | |____mmq.cpp.o
+| | | | | | | | | |____mmq.cpp.o.d
+| | | | | | | | | |____amx.cpp.o.d
+| | | | | | | | |____quants.c.o
+| | | | | | | | |____hbm.cpp.o.d
+| | | | | | | | |____repack.cpp.o
+| | | | | | | | |____traits.cpp.o.d
+| | | | | | | | |____arch
+| | | | | | | | | |____arm
+| | | | | | | | | | |____quants.c.o.d
+| | | | | | | | | | |____quants.c.o
+| | | | | | | | | | |____repack.cpp.o
+| | | | | | | | | | |____repack.cpp.o.d
+| | | | | | | | |____ops.cpp.o
+| | | | | | | | |____ops.cpp.o.d
+| | | | | | | | |____repack.cpp.o.d
+| | | | | | | | |____ggml-cpu.c.o
+| | | | | | | | |____traits.cpp.o
+| | | | | | | |____cmake_clean.cmake
+| | | | | | | |____link.txt
+| | | | | | | |____progress.make
+| | | | | | | |____build.make
+| | | | | | | |____flags.make
+| | | | | |____Makefile
+| | | | | |____libggml-cpu.a
+| | | | | |____cmake_install.cmake
+| | | | | |____ggml-cpu
+| | | | | | |____CMakeFiles
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | |____ggml-metal
+| | | | | | |____CMakeFiles
+| | | | | | | |____ggml-metal.dir
+| | | | | | | | |____DependInfo.cmake
+| | | | | | | | |____depend.internal
+| | | | | | | | |____ASM.includecache
+| | | | | | | | |______
+| | | | | | | | | |______
+| | | | | | | | | | |______
+| | | | | | | | | | | |______
+| | | | | | | | | | | | |______
+| | | | | | | | | | | | | |____autogenerated
+| | | | | | | | | | | | | | |____ggml-metal-embed.s.o
+| | | | | | | | |____compiler_depend.ts
+| | | | | | | | |____cmake_clean_target.cmake
+| | | | | | | | |____ggml-metal-common.cpp.o
+| | | | | | | | |____compiler_depend.internal
+| | | | | | | | |____compiler_depend.make
+| | | | | | | | |____ggml-metal-common.cpp.o.d
+| | | | | | | | |____depend.make
+| | | | | | | | |____cmake_clean.cmake
+| | | | | | | | |____link.txt
+| | | | | | | | |____progress.make
+| | | | | | | | |____ggml-metal.m.o.d
+| | | | | | | | |____build.make
+| | | | | | | | |____flags.make
+| | | | | | | | |____ggml-metal.m.o
+| | | | | | | |____progress.marks
+| | | | | | | |____CMakeDirectoryInformation.cmake
+| | | | | | |____Makefile
+| | | | | | |____cmake_install.cmake
+| | | | | | |____libggml-metal.a
+| | | | | |____libggml.a
+| | | |____llama-config.cmake
+| | | |____llama-version.cmake
+| | | |____src
+| | | | |____CMakeFiles
+| | | | | |____llama.dir
+| | | | | | |____llama-sampling.cpp.o.d
+| | | | | | |____llama-cparams.cpp.o
+| | | | | | |____DependInfo.cmake
+| | | | | | |____compiler_depend.ts
+| | | | | | |____llama-mmap.cpp.o
+| | | | | | |____llama-cparams.cpp.o.d
+| | | | | | |____llama-adapter.cpp.o
+| | | | | | |____llama-chat.cpp.o
+| | | | | | |____llama-mmap.cpp.o.d
+| | | | | | |____llama-memory.cpp.o.d
+| | | | | | |____llama.cpp.o
+| | | | | | |____cmake_clean_target.cmake
+| | | | | | |____llama-memory-hybrid.cpp.o
+| | | | | | |____compiler_depend.internal
+| | | | | | |____compiler_depend.make
+| | | | | | |____llama-impl.cpp.o.d
+| | | | | | |____llama-grammar.cpp.o
+| | | | | | |____llama-quant.cpp.o
+| | | | | | |____unicode-data.cpp.o
+| | | | | | |____depend.make
+| | | | | | |____llama-memory.cpp.o
+| | | | | | |____llama-model.cpp.o.d
+| | | | | | |____llama-io.cpp.o.d
+| | | | | | |____llama-arch.cpp.o
+| | | | | | |____llama-adapter.cpp.o.d
+| | | | | | |____llama-model.cpp.o
+| | | | | | |____llama-model-saver.cpp.o.d
+| | | | | | |____llama-context.cpp.o
+| | | | | | |____llama-grammar.cpp.o.d
+| | | | | | |____llama-kv-cache.cpp.o
+| | | | | | |____cmake_clean.cmake
+| | | | | | |____llama-model-saver.cpp.o
+| | | | | | |____link.txt
+| | | | | | |____llama-impl.cpp.o
+| | | | | | |____progress.make
+| | | | | | |____unicode.cpp.o.d
+| | | | | | |____llama-arch.cpp.o.d
+| | | | | | |____llama-sampling.cpp.o
+| | | | | | |____llama-quant.cpp.o.d
+| | | | | | |____llama-context.cpp.o.d
+| | | | | | |____llama.cpp.o.d
+| | | | | | |____llama-memory-recurrent.cpp.o.d
+| | | | | | |____llama-io.cpp.o
+| | | | | | |____llama-batch.cpp.o
+| | | | | | |____llama-model-loader.cpp.o
+| | | | | | |____llama-vocab.cpp.o
+| | | | | | |____llama-hparams.cpp.o.d
+| | | | | | |____llama-batch.cpp.o.d
+| | | | | | |____llama-memory-hybrid.cpp.o.d
+| | | | | | |____build.make
+| | | | | | |____llama-kv-cache-iswa.cpp.o
+| | | | | | |____llama-graph.cpp.o.d
+| | | | | | |____llama-graph.cpp.o
+| | | | | | |____llama-kv-cache.cpp.o.d
+| | | | | | |____flags.make
+| | | | | | |____llama-hparams.cpp.o
+| | | | | | |____llama-kv-cache-iswa.cpp.o.d
+| | | | | | |____llama-chat.cpp.o.d
+| | | | | | |____llama-memory-recurrent.cpp.o
+| | | | | | |____llama-vocab.cpp.o.d
+| | | | | | |____llama-model-loader.cpp.o.d
+| | | | | | |____unicode.cpp.o
+| | | | | | |____unicode-data.cpp.o.d
+| | | | | |____progress.marks
+| | | | | |____CMakeDirectoryInformation.cmake
+| | | | |____Makefile
+| | | | |____cmake_install.cmake
+| | | | |____libllama.a
+| |____lib
+| | |____libagent_embedding.a
+| |____CMakeCache.txt
+| |____autogenerated
+| | |____ggml-metal-embed.s
+| | |____ggml-metal-embed.metal.tmp
+| | |____ggml-metal-embed.metal
+|____data
+| |____query.jsonl
+| |____shader_vocab.json
+| |____smoke.jsonl
+| |____query.txt
+| |____docs.jsonl
+| |____vocab.jsonl
+| |____docs.txt
+|____.cache
+| |____clangd
+| | |____index
+| | | |____llama-grammar.h.5E93FDCE10646DB1.idx
+| | | |____llama-graph.h.48306DCFEA2DDD14.idx
+| | | |____llama-grammar.cpp.4451070FDB8F3F6E.idx
+| | | |____simd-mappings.h.6763830E8F4F768B.idx
+| | | |____ggml-opt.cpp.2C0830F512A9CCAB.idx
+| | | |____ggml-metal.m.EC979A797F3324FA.idx
+| | | |____llama.h.57A4196FF118FAC0.idx
+| | | |____quants.c.16C19A6B1BC0589B.idx
+| | | |____llama-memory-hybrid.cpp.50182579BE4BA81A.idx
+| | | |____llama-model.cpp.9C2D4C2F7CCC2C84.idx
+| | | |____llama-model-loader.h.B3F76FEB96C51F1D.idx
+| | | |____ggml-threading.h.77FF9C60C04A1F64.idx
+| | | |____llama-chat.cpp.2348A0CD25D33767.idx
+| | | |____common.h.0C62A840AB107840.idx
+| | | |____llama-io.h.BBAA3E68195E6053.idx
+| | | |____ggml-quants.h.12CA57E77801B98D.idx
+| | | |____unary-ops.cpp.31A2055BD254545F.idx
+| | | |____llama-mmap.h.31408AE70E959027.idx
+| | | |____quants.c.02D8CC5DE53F3352.idx
+| | | |____gguf.cpp.6C2FDD463A39EC78.idx
+| | | |____ggml-cpu-impl.h.14FDA98EC5B2A6A4.idx
+| | | |____llama-kv-cache.h.4DB1E72C39051D9B.idx
+| | | |____llama-arch.h.8EB6D67603EF6ACA.idx
+| | | |____llama-model.h.959BFF12D9508F17.idx
+| | | |____ggml-backend-impl.h.E6219AC3440C70D5.idx
+| | | |____quants.h.11094986BB496A11.idx
+| | | |____traits.cpp.1DC6AF4F1840622A.idx
+| | | |____llama-quant.cpp.54E10F964D80DC48.idx
+| | | |____ggml-metal.h.ABDE02F08D633CE8.idx
+| | | |____ggml-threading.cpp.71ED4ADE0837FFA6.idx
+| | | |____llama-hparams.h.0E45BFCEC6910299.idx
+| | | |____llama-memory-recurrent.h.C499EFD4FC42FE0F.idx
+| | | |____gguf.h.FB2524691901389F.idx
+| | | |____llama-model-saver.cpp.782ECCFED6ECF00E.idx
+| | | |____llama-hparams.cpp.74208175D059F782.idx
+| | | |____unary-ops.h.A52AF8B57158927A.idx
+| | | |____llama-model-loader.cpp.436C38B44A867526.idx
+| | | |____ggml-backend.h.3DD79E41ABF6CC58.idx
+| | | |____llama-adapter.cpp.E952935225F1BBF1.idx
+| | | |____llama-context.cpp.065A6B6EBFA8D5F8.idx
+| | | |____ggml-metal-common.h.064A9E56A9948B73.idx
+| | | |____llama-model-saver.h.5377CDFBB2C79873.idx
+| | | |____llama-impl.h.1A4780E7DFBE7637.idx
+| | | |____llama-graph.cpp.C87C1E58CB5DF9BA.idx
+| | | |____llama-sampling.cpp.C1C68859BA50D1F7.idx
+| | | |____agent.hpp.D47CF21C669EC59C.idx
+| | | |____ggml-blas.cpp.17ECE5B73EB388ED.idx
+| | | |____llama.cpp.D48D12875C744342.idx
+| | | |____ggml-blas.h.B6CE575DD4618A99.idx
+| | | |____mmq.h.CB768DC39C8F8B30.idx
+| | | |____llama-cparams.h.2D9BA9539BB68BBA.idx
+| | | |____llama-kv-cells.h.0A43FA41E9030680.idx
+| | | |____vec.cpp.802D34A13D5C0509.idx
+| | | |____unicode-data.h.46FB4E94FF0F6765.idx
+| | | |____vec.h.73A8462947B666F1.idx
+| | | |____repack.h.52221806AB22041F.idx
+| | | |____llama-batch.h.1D2AE790D0583AA2.idx
+| | | |____ggml-alloc.h.656A45A2C0498ED4.idx
+| | | |____arch-fallback.h.AC31B72E51EBB527.idx
+| | | |____unicode.cpp.53824ADD79C8CE3D.idx
+| | | |____ggml-cpu.c.461CCA13AA73D86C.idx
+| | | |____llama-io.cpp.62269D93B56EAAFC.idx
+| | | |____ggml.cpp.5F0A0BE121A6231B.idx
+| | | |____hbm.cpp.2EB1D6A33BD02FFD.idx
+| | | |____llama-memory.h.DE71A26164B3B1FA.idx
+| | | |____ggml-impl.h.620961273D297736.idx
+| | | |____ggml-backend.cpp.C97BDDCDD30ADC9D.idx
+| | | |____ggml-backend-reg.cpp.4EB2D29BE458FED5.idx
+| | | |____llama-batch.cpp.256EF74E506B0034.idx
+| | | |____unicode-data.cpp.6E38E1BB41BDFD47.idx
+| | | |____llama-kv-cache.cpp.9CE00E6040D334A1.idx
+| | | |____sgemm.cpp.0D353B5596B7700E.idx
+| | | |____binary-ops.cpp.7BB7FDA0A83DE173.idx
+| | | |____llama-adapter.h.F8A30D20C16C602A.idx
+| | | |____ggml-cpp.h.FF20E5C1110136F5.idx
+| | | |____binary-ops.h.7028E00AB982ABE3.idx
+| | | |____amx.cpp.F715DFFD2960BD91.idx
+| | | |____llama-context.h.2E54BB6E73607618.idx
+| | | |____llama-kv-cache-iswa.cpp.A54ABE090BE11488.idx
+| | | |____common.h.8E1FE716F2EE32BC.idx
+| | | |____ops.h.E3B565964D3FDAA4.idx
+| | | |____ggml-common.h.CEDB0BAA7CF5B317.idx
+| | | |____amx.h.DB79F39E40DBFD37.idx
+| | | |____ops.cpp.BC8867E948F1D64D.idx
+| | | |____llama-vocab.cpp.3FB73B5FAA2B5BDE.idx
+| | | |____llama-quant.h.3CDA0825C1D7F566.idx
+| | | |____llama-kv-cache-iswa.h.49152180B9C2E052.idx
+| | | |____ggml-cpu.h.CFB56D288363C009.idx
+| | | |____repack.cpp.4605538D20812386.idx
+| | | |____ggml-metal-common.cpp.0964D2756800BC3A.idx
+| | | |____llama-memory-recurrent.cpp.3769CB25ED81DB3E.idx
+| | | |____llama-memory-hybrid.h.895F467CDA0BD196.idx
+| | | |____ggml.h.75295E0A09604570.idx
+| | | |____ggml-cpu.cpp.96D099529D16CFE4.idx
+| | | |____llama-sampling.h.3734755B28A1FE97.idx
+| | | |____mmq.cpp.5637D9C1E12F3F96.idx
+| | | |____sgemm.h.825BDC7D2DFFA947.idx
+| | | |____repack.cpp.E744A18745C9193D.idx
+| | | |____unicode.h.50707FF54AF52FDC.idx
+| | | |____llama-impl.cpp.2124D0BEE81CB3CB.idx
+| | | |____llama-memory.cpp.04E8543415806571.idx
+| | | |____traits.h.EB0556CF70B66445.idx
+| | | |____ggml-metal-impl.h.D53A52501E3CC043.idx
+| | | |____llama-chat.h.217996AF0380ED96.idx
+| | | |____ggml-opt.h.A30DE663F3B24CC5.idx
+| | | |____llama-mmap.cpp.666C36CACB571ECA.idx
+| | | |____llama-cparams.cpp.A720B505924AFA32.idx
+| | | |____ggml-quants.c.3890918DD30A9EEE.idx
+| | | |____ggml-alloc.c.F4302F9267B4FE03.idx
+| | | |____llama-arch.cpp.62410F0FFF4A5189.idx
+| | | |____ggml.c.3DADC7D8E8DEB7C6.idx
+| | | |____llama-vocab.h.FD87451E693B2E15.idx
+|____src
+| |____agent.hpp
+| |____AgentEmbedding.hpp
+| |____AgentEmbedding.cpp
+| |____embed_vocab.cpp
+| |____plan_shader.cpp

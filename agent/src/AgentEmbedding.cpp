@@ -9,6 +9,7 @@
 #include <vector>
 #include <cmath>
 #include <array>
+#include <iostream>  // ✅ NEW for debug
 
 namespace {
 inline float l2norm(const std::vector<float>& v) {
@@ -41,9 +42,13 @@ inline bool tokenize_for_bert(const llama_vocab* vocab,
   const char* c = s.c_str();
   const int32_t n = (int32_t)s.size();
   // Preferred for BERT encoders: add special tokens, don't parse-as-special
-  if (tokenize_two_pass(vocab, c, n, /*add_special=*/true,  /*parse_special=*/false, out)) return true;
-  if (tokenize_two_pass(vocab, c, n, /*add_special=*/false, /*parse_special=*/false, out)) return true;
-  if (tokenize_two_pass(vocab, c, n, /*add_special=*/true,  /*parse_special=*/true,  out)) return true;
+  if (tokenize_two_pass(vocab, c, n, true,  false, out)) return true;
+  if (tokenize_two_pass(vocab, c, n, false, false, out)) return true;
+  if (tokenize_two_pass(vocab, c, n, true,  true,  out)) return true;
+
+  // ✅ NEW fallback: no special, parse special
+  if (tokenize_two_pass(vocab, c, n, false, true, out)) return true;
+
   return false;
 }
 } // namespace
@@ -62,10 +67,10 @@ struct AgentEmbedding::Impl {
     if (!model) throw std::runtime_error("Failed to load GGUF model: " + model_path);
 
     llama_context_params cp = llama_context_default_params();
-    cp.embeddings   = true;                        // enable embeddings
-    cp.pooling_type = LLAMA_POOLING_TYPE_MEAN;     // pooled embedding out of llama_get_embeddings()
+    cp.embeddings   = true;
+    cp.pooling_type = LLAMA_POOLING_TYPE_MEAN;
     cp.n_threads    = std::max(1u, std::thread::hardware_concurrency());
-    cp.n_ctx        = 2048;                        // safe upper bound for nomic-bert
+    cp.n_ctx        = 2048;
 
     ctx = llama_init_from_model(model, cp);
     if (!ctx) throw std::runtime_error("Failed to create llama context");
@@ -87,14 +92,15 @@ struct AgentEmbedding::Impl {
     const llama_vocab* vocab = llama_model_get_vocab(model);
     if (!vocab) throw std::runtime_error("llama_model_get_vocab returned nullptr");
 
-    // Variants to try (in order)
-    std::array<std::string, 6> variants = {
-      canonical_prefix + text,         // e.g. "search_query: ...", "search_document: ..."
-      alt_prefix + text,               // e.g. "query: ...", "passage: ..."
-      std::string(" ") + text,         // leading space sometimes helps WPM
-      text,                            // plain
-      canonical_prefix + " " + text,   // with extra space after colon
-      alt_prefix + " " + text
+    std::array<std::string, 8> variants = {
+      canonical_prefix + text,
+      alt_prefix + text,
+      std::string(" ") + text,
+      text,
+      canonical_prefix + " " + text,
+      alt_prefix + " " + text,
+      std::string("search_document: ") + text,     // ✅ New fixed default
+      std::string("passage: ") + text              // ✅ More BERT-like
     };
 
     std::vector<llama_token> tokens;
@@ -103,26 +109,25 @@ struct AgentEmbedding::Impl {
       tokens.clear();
       if (tokenize_for_bert(vocab, variants[i], tokens) && !tokens.empty()) {
         chosen = i;
+        std::cerr << "✅ Using prefix variant " << i << ": \"" << variants[i] << "\"\n"; // ✅ Debug
         break;
       }
     }
 
     if (chosen == -1) {
+      std::cerr << "❌ Failed to tokenize any prompt variant for input: " << text << "\n";
       throw std::runtime_error("Tokenization produced no tokens for any prompt variant");
     }
 
-    // --- Encode with batch API (encoder path) ---
-    llama_batch batch = llama_batch_init(/*n_tokens_alloc*/ (int32_t)tokens.size(),
-                                         /*embd*/ 0, /*n_seq_max*/ 1);
+    llama_batch batch = llama_batch_init((int32_t)tokens.size(), 0, 1);
     for (int i = 0; i < (int)tokens.size(); ++i) {
       batch.token[i]     = tokens[i];
       batch.pos[i]       = i;
       batch.n_seq_id[i]  = 1;
-      batch.seq_id[i][0] = 0;   // single sequence
+      batch.seq_id[i][0] = 0;
       batch.logits[i]    = 0;
     }
-    // toggle last-step logits to ensure outputs are materialized
-    batch.logits[(int)tokens.size() - 1] = 1;
+    batch.logits[tokens.size() - 1] = 1;
     batch.n_tokens = (int32_t)tokens.size();
 
     if (llama_encode(ctx, batch) != 0) {
@@ -141,7 +146,6 @@ struct AgentEmbedding::Impl {
 
     llama_batch_free(batch);
 
-    // L2-normalize for cosine similarity workflows
     float norm = l2norm(out.v);
     if (norm > 0.0f) for (auto &x : out.v) x /= norm;
 
@@ -155,10 +159,9 @@ AgentEmbedding::AgentEmbedding(const std::string& gguf_model_path)
 AgentEmbedding::~AgentEmbedding() = default;
 
 EmbedVec AgentEmbedding::encode(const std::string& text) const {
-  // Common prefixes for nomic-embed-text
   return impl_->embed_with_prefix("search_query: ", "query: ", text);
 }
 
 EmbedVec AgentEmbedding::encodeDocument(const std::string& text) const {
-  return impl_->embed_with_prefix("search_document: ", "passage: ", text);
+return impl_->embed_with_prefix("", "", text);
 }

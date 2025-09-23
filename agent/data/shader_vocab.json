@@ -1,26 +1,13 @@
-[
-  {
-    "kind": "structure",
-    "name": "mandala",
-    "pos": ["luminous mandala"],
-    "neg": []
-  },
-  {
-    "kind": "texture",
-    "name": "quasicrystal",
-    "pos": ["drifting quasicrystal"],
-    "neg": []
-  },
-  {
-    "kind": "style",
-    "name": "filigree",
-    "pos": ["delicate filigree"],
-    "neg": []
-  },
-  {
-    "kind": "palette",
-    "name": "dark-bg",
-    "pos": ["dark background"],
-    "neg": ["bright white background"]
-  }
-]
+{
+  "structure": [
+    {
+      "name": "phyllotaxis",
+      "pos": ["spiral growth", "sunflower pattern"],
+      "neg": ["grid", "random"]
+    },
+    {
+      "name": "blob",
+      "pos": ["organic shape"]
+    }
+  ]
+}
