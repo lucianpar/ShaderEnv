@@ -1,0 +1,344 @@
+{
+  "structures": [
+    {
+      "type": "structure",
+      "id": "waveGrid",
+      "positive_tags": [
+        "sinusoidal waves",
+        "grid pattern",
+        "mathematical functions",
+        "periodic oscillations",
+        "smooth curves",
+        "harmonic motion"
+      ],
+      "negative_tags": [
+        "random noise",
+        "organic shapes",
+        "cellular patterns",
+        "geometric polygons",
+        "chaotic attractors",
+        "fractal designs"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "noiseGrid",
+      "positive_tags": [
+        "pseudo-random values",
+        "grid-based noise",
+        "hash functions",
+        "stochastic patterns",
+        "irregular distribution",
+        "procedural randomness"
+      ],
+      "negative_tags": [
+        "smooth waves",
+        "geometric shapes",
+        "periodic oscillations",
+        "organic blobs",
+        "symmetric patterns",
+        "deterministic curves"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "circleField",
+      "positive_tags": [
+        "circular distance fields",
+        "radial symmetry",
+        "geometric circles",
+        "distance-based shapes",
+        "uniform radius",
+        "centered patterns"
+      ],
+      "negative_tags": [
+        "irregular shapes",
+        "angular variations",
+        "noise-based",
+        "wave functions",
+        "polygonal forms",
+        "chaotic distributions"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "blob",
+      "positive_tags": [
+        "organic shapes",
+        "time-based wobble",
+        "dynamic deformation",
+        "fluid-like forms",
+        "animated contours",
+        "morphing boundaries"
+      ],
+      "negative_tags": [
+        "static geometry",
+        "sharp edges",
+        "periodic waves",
+        "random noise",
+        "symmetric patterns",
+        "grid-based"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "superformula",
+      "positive_tags": [
+        "parametric equations",
+        "complex curves",
+        "mathematical shapes",
+        "polar coordinates",
+        "exponential forms",
+        "generalized geometry"
+      ],
+      "negative_tags": [
+        "simple circles",
+        "random noise",
+        "grid patterns",
+        "cellular structures",
+        "linear functions",
+        "chaotic attractors"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "lissajous",
+      "positive_tags": [
+        "parametric curves",
+        "harmonic oscillations",
+        "figure-eight patterns",
+        "frequency ratios",
+        "smooth trajectories",
+        "mathematical orbits"
+      ],
+      "negative_tags": [
+        "random noise",
+        "cellular patterns",
+        "geometric polygons",
+        "organic blobs",
+        "static shapes",
+        "fractal designs"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "lorenzAttractor",
+      "positive_tags": [
+        "chaotic attractors",
+        "dynamical systems",
+        "butterfly effect",
+        "iterative simulations",
+        "non-linear dynamics",
+        "trajectory projections"
+      ],
+      "negative_tags": [
+        "static geometry",
+        "periodic waves",
+        "random noise",
+        "symmetric patterns",
+        "simple curves",
+        "grid-based"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "star",
+      "positive_tags": [
+        "polygonal shapes",
+        "star polygons",
+        "angular symmetry",
+        "pointed contours",
+        "geometric stars",
+        "radial patterns"
+      ],
+      "negative_tags": [
+        "smooth curves",
+        "organic blobs",
+        "noise-based",
+        "chaotic attractors",
+        "circular forms",
+        "wave functions"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "mandalaRadial",
+      "positive_tags": [
+        "radial symmetry",
+        "kaleidoscope effects",
+        "sector folding",
+        "circular repetition",
+        "mandala patterns",
+        "angular modulation"
+      ],
+      "negative_tags": [
+        "linear patterns",
+        "random noise",
+        "chaotic attractors",
+        "polygonal shapes",
+        "static geometry",
+        "grid-based"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "quasicrystal",
+      "positive_tags": [
+        "aperiodic patterns",
+        "rotational symmetry",
+        "wave interference",
+        "crystalline structures",
+        "multiple directions",
+        "harmonic sums"
+      ],
+      "negative_tags": [
+        "periodic grids",
+        "random noise",
+        "organic shapes",
+        "simple curves",
+        "cellular patterns",
+        "linear functions"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "voronoi",
+      "positive_tags": [
+        "cellular patterns",
+        "distance fields",
+        "feature points",
+        "tessellation",
+        "nearest neighbors",
+        "irregular polygons"
+      ],
+      "negative_tags": [
+        "smooth waves",
+        "periodic oscillations",
+        "organic blobs",
+        "symmetric curves",
+        "noise grids",
+        "chaotic attractors"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "roseCurve",
+      "positive_tags": [
+        "polar equations",
+        "petal patterns",
+        "rhodonea curves",
+        "angular harmonics",
+        "flower-like shapes",
+        "parametric roses"
+      ],
+      "negative_tags": [
+        "linear functions",
+        "random noise",
+        "cellular structures",
+        "grid patterns",
+        "chaotic dynamics",
+        "simple circles"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "superellipse",
+      "positive_tags": [
+        "rounded rectangles",
+        "squircle shapes",
+        "exponential boundaries",
+        "generalized ellipses",
+        "smooth corners",
+        "parametric curves"
+      ],
+      "negative_tags": [
+        "sharp polygons",
+        "random noise",
+        "wave functions",
+        "organic blobs",
+        "chaotic attractors",
+        "circular forms"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "phyllotaxis",
+      "positive_tags": [
+        "spiral distributions",
+        "golden angle",
+        "seed patterns",
+        "natural arrangements",
+        "radial growth",
+        "fibonacci sequences"
+      ],
+      "negative_tags": [
+        "random noise",
+        "grid patterns",
+        "chaotic attractors",
+        "geometric polygons",
+        "linear functions",
+        "symmetric curves"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "julia",
+      "positive_tags": [
+        "fractal sets",
+        "complex iterations",
+        "mathematical fractals",
+        "escape time algorithms",
+        "dynamical systems",
+        "parameterized orbits"
+      ],
+      "negative_tags": [
+        "simple curves",
+        "random noise",
+        "cellular patterns",
+        "organic shapes",
+        "grid-based",
+        "periodic waves"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "reactionDiffusion",
+      "positive_tags": [
+        "diffusion patterns",
+        "temporal warping",
+        "layered noise",
+        "simulated reactions",
+        "animated textures",
+        "fractal noise"
+      ],
+      "negative_tags": [
+        "static geometry",
+        "periodic waves",
+        "symmetric patterns",
+        "cellular structures",
+        "linear functions",
+        "chaotic attractors"
+      ]
+    },
+    {
+      "type": "structure",
+      "id": "branchNoise",
+      "positive_tags": [
+        "branching patterns",
+        "ridged noise",
+        "angular warping",
+        "tree-like structures",
+        "directional growth",
+        "natural formations"
+      ],
+      "negative_tags": [
+        "smooth curves",
+        "random noise",
+        "circular symmetry",
+        "geometric polygons",
+        "periodic oscillations",
+        "cellular patterns"
+      ]
+    }
+  ]
+}
